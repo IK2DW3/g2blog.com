@@ -44,7 +44,8 @@
 
 /* registro-login */
 .box-registro {
-  background-color: #8e8a8a;
+  align-items: stretch;
+  background: radial-gradient(circle, #555555, #535353, #505050, #4e4e4e, #4c4c4c);
   grid-column: 2 / 9;
   grid-row: 3 / 11;
   padding: 1em;
@@ -66,27 +67,68 @@
   padding: 1em;
 }
 /* inputs styles */
-.box-registro .formulario-registro input[type=text], .box-registro .formulario-registro input[type=password], .box-logueo .formulario-login input[type=text], .box-logueo .formulario-login input[type=password]{
+.box-registro .formulario-registro input[type=text], .box-registro .formulario-registro input[type=password],
+.box-registro .formulario-registro input[type=email], .box-registro .formulario-registro input[type=date],
+.box-logueo .formulario-login input[type=text], .box-logueo .formulario-login input[type=password]{
   border: none;
   background: none;
-  border-bottom: 1px solid #b3b3b3;
+  border-bottom: 1px solid #aaaaaa;
   color: white;
   display: block;
-  font-size: 1.1em;
+  font-size: 1em;
   font-family: 'Lato', sans-serif;
-  margin-bottom: 2.5%;
+  margin: 1.5% 0;
   outline: none;
   padding: 0.5em;
   width: 99%;
 }
-.box-registro .formulario-registro input[type=submit], .box-logueo .formulario-login input[type=submit] {
+.form-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  position: relative;
+  background-color: #f1f1f1;
+  color: #666;
+  top: 10px;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 7px;
+  outline: none;
+}
+.form-radio:checked::before {
+  position: absolute;
+  font: 13px/1 'Open Sans', sans-serif;
+  left: 11px;
+  top: 7px;
+  content: '\02143';
+  transform: rotate(40deg);
+}
+.form-radio:hover {
+  background-color: #f7f7f7;
+}
+.form-radio:checked {
+  background-color: #f1f1f1;
+}
+label {
+  font: 15px/1.7 'Open Sans', sans-serif;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+}
+.box-registro .formulario-registro input[type=submit],
+.box-logueo .formulario-login input[type=submit] {
   outline: none;
   border: none;
   cursor: pointer;
   width: 100%;
   height: 40px;
   border-radius: 5px;
-  font-size: 22px;
+  font-size: 1em;
   font-family: 'Lato', sans-serif;
   color:white;
   text-align: center;
@@ -95,9 +137,9 @@
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 .box-registro .formulario-registro ::placeholder, .box-logueo .formulario-login ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  opacity: 1; /* Firefox */
+  opacity: 1;
   color: white;
-  font-size: 20px;
+  font-size: 1em;
   font-weight: 300;
 }
 
