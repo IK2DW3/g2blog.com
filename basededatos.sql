@@ -20,6 +20,7 @@ CREATE TABLE usuarios(
 
 	PRIMARY KEY(nombre_usuario)
 );
+INSERT INTO `usuarios` VALUES ('admin','admin','ruben.izcara@gmail.com','G2RD', 'Administrador', '2019-10-16', '611111111', 'O', 0);
 
 /*Borramos la tabla si existe */
 DROP TABLE IF EXISTS `entradas`;
