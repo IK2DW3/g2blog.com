@@ -6,15 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../css/style.css" class="css">
   <title>G2BLOG - Registrarse</title>
+  <!-- Validacion registro-->
+  <script src="../js/validacion-registro.js"></script>
 </head>
 <body>
   <div class="grid-container">
     <header class="box1" id="box1">
-      <img src="" alt="">
+      <a href="index.html"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
       <h1>G2BLOG</h1>
     </header>
     <section class="box-registro" id="box-registro">
-      <form class="formulario-registro" action="nuevaPersona.php" method="post">
+      <form class="formulario-registro" action="nuevaPersona.php" method="post" onsubmit="return validacion()">
         <fieldset>
           <legend>Formulario De Registro</legend>
           <input type="text" name="name" id="name" placeholder="Nombre..." value="" required>
@@ -45,5 +47,6 @@
       <h4>Con la tecnología de nuestra imaginación</h4>
     </footer>
   </div>
+
 </body>
 </html>

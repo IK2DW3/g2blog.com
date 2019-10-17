@@ -28,30 +28,67 @@
   padding: 0 1%;
 }
 .box1 img {
+  height: 45px;
   flex-basis: 3.5%;
   flex-grow: 1;
   flex-shrink: 1;
-  height: 40px;
 }
 .box1 h1 {
-  flex-basis: 70%;
+  flex-basis: 65%;
   flex-grow: 2;
   flex-shrink: 1;
 }
 .box1 .login-index {
-  flex-basis: 30%;
+  flex-basis: 20%;
   flex-grow: 1;
   flex-shrink: 1;
 }
 .box1 .login-index input[type=text], .box1 .login-index input[type=password] {
   border: none;
+  color: #000;
   padding: 1%;
   width: 25%;
 }
-.box1 .login-index .usuariofield {
-  background-image: url(../img/contact.png);
-  background-position: 7px 7px;
-  background-repeat: no-repeat;
+.box1 .login-index input[type=text] {
+  background: #fff url('../img/contact.png') .5em 50% no-repeat;
+  background-size: 20px 20px;
+  border-bottom: 3px solid #048f64;
+  padding-left: 2em;
+}
+.box1 .login-index input[type=password] {
+  background: #fff url('../img/key.png') .5em 50% no-repeat;
+  background-size: 20px 20px;
+  border-bottom: 3px solid #048f64;
+  padding-left: 2em;
+}
+.box1 .login-index input[type=text]::placeholder,
+.box1 .login-index input[type=password]::placeholder {
+  color: #000;
+  font-weight: bold;
+  padding: 0 0 0 .25em;
+}
+.box1 .login-index input[type=submit] {
+  border: 1.5px solid #048f64;
+  background: #fff url('../img/log-in.png') .5em 50% no-repeat;
+  background-size: 20px 20px;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  padding: .33em;
+  width: 40px;
+}
+.box1 .login-index button {
+  background-color: #fff;
+  border: 1.5px solid #048f64;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: .33em;
+  width: auto;
+}
+.box1 .login-index button a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
 }
 /* Section */
 .box2 {
@@ -94,6 +131,13 @@
 }
 .box-registro .formulario-registro fieldset {
   border: 1px solid #00d5e3;
+  padding: 1em;
+}
+.box-registro .formulario-registro fieldset legend {
+  border: 1.5px solid #00d5e3;
+  color: #fff;
+  font-style: 1em;
+  font-weight: bold;
   padding: 1em;
 }
 /* inputs styles */
