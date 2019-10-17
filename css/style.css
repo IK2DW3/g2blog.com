@@ -1,7 +1,10 @@
+/* IMPORTS */
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro); /* Google Fonts */
 /* GENERAL */
 * {
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Utilizaremos para la página principal un diseño GRID */
@@ -22,6 +25,33 @@
   background-color: #9c9a9a;
   grid-column: 1 / -1;
   grid-row: 1 / 1;
+  padding: 0 1%;
+}
+.box1 img {
+  flex-basis: 3.5%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  height: 40px;
+}
+.box1 h1 {
+  flex-basis: 70%;
+  flex-grow: 2;
+  flex-shrink: 1;
+}
+.box1 .login-index {
+  flex-basis: 30%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.box1 .login-index input[type=text], .box1 .login-index input[type=password] {
+  border: none;
+  padding: 1%;
+  width: 25%;
+}
+.box1 .login-index .usuariofield {
+  background-image: url(../img/contact.png);
+  background-position: 7px 7px;
+  background-repeat: no-repeat;
 }
 /* Section */
 .box2 {
