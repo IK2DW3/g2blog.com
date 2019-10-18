@@ -19,7 +19,7 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
         </header>
 
         <section class="box2" id="box2">
-            <table id="tablaListar">
+            <table id="customers">
                 <thead>
                     <tr>
                         <th>Nombre_Usuario</th>
