@@ -10,7 +10,8 @@
 /* Utilizaremos para la página principal un diseño GRID */
 .grid-container {
   display: grid;
-  grid-template: repeat(12, 8.33vh) / repeat(12, 1fr);
+  grid-template: repeat(12, 8.33vh) / repeat(auto-fit, minmax(8.33%, 1fr));
+  min-height: 100vh;
 }
 
 /* objetos internos de las cajas centrados */
@@ -29,17 +30,17 @@
 }
 .box1 img {
   height: 45px;
-  flex-basis: 3.5%;
+  flex-basis: 5%;
   flex-grow: 1;
   flex-shrink: 1;
 }
 .box1 h1 {
   flex-basis: 65%;
-  flex-grow: 2;
+  flex-grow: 1;
   flex-shrink: 1;
 }
 .box1 .login-index {
-  flex-basis: 20%;
+  flex-basis: 30%;
   flex-grow: 1;
   flex-shrink: 1;
 }
@@ -111,50 +112,58 @@
 
 /* registro-login */
 .box-registro {
-  align-items: stretch;
   background: radial-gradient(circle, #555555, #535353, #505050, #4e4e4e, #4c4c4c);
   grid-column: 2 / 9;
   grid-row: 3 / 11;
-  padding: 1em;
+  padding: 2.5%;
 }
 .box-logueo {
   background-color: #797979;
   grid-column: 9 / 12;
   grid-row: 3 / 11;
-  padding: 5em;
+  padding: 10%;
   text-align: center;
 }
-
 .box-registro .formulario-registro, .box-logueo .formulario-login {
   overflow: hidden;
-  width: 100%;
+  flex-basis: 100%;
 }
 .box-registro .formulario-registro fieldset {
   border: 1px solid #00d5e3;
-  padding: 1em;
+  padding: 2%;
 }
 .box-registro .formulario-registro fieldset legend {
   border: 1.5px solid #00d5e3;
   color: #fff;
   font-style: 1em;
   font-weight: bold;
-  padding: 1em;
+  padding: 1%;;
 }
 /* inputs styles */
 .box-registro .formulario-registro input[type=text], .box-registro .formulario-registro input[type=password],
-.box-registro .formulario-registro input[type=email], .box-registro .formulario-registro input[type=date],
-.box-logueo .formulario-login input[type=text], .box-logueo .formulario-login input[type=password]{
+.box-registro .formulario-registro input[type=email], .box-registro .formulario-registro input[type=date] {
   border: none;
   background: none;
   border-bottom: 1px solid #aaaaaa;
   color: white;
-  display: block;
   font-size: 1em;
   font-family: 'Lato', sans-serif;
   margin: 1.5% 0;
   outline: none;
-  padding: 0.5em;
-  width: 99%;
+  padding: 1%;
+  width: 47.5%;
+}
+.box-logueo .formulario-login input[type=text], .box-logueo .formulario-login input[type=password] {
+  border: none;
+  background: none;
+  border-bottom: 1px solid #aaaaaa;
+  color: white;
+  font-size: 1em;
+  font-family: 'Lato', sans-serif;
+  margin: 1.5% 0;
+  outline: none;
+  padding: 1%;
+  width: 100%;
 }
 .form-radio {
   -webkit-appearance: none;
@@ -163,7 +172,7 @@
   display: inline-block;
   position: relative;
   background-color: #f1f1f1;
-  color: #666;
+  color: #000;
   top: 10px;
   height: 30px;
   width: 30px;
@@ -189,7 +198,7 @@
 }
 label {
   font: 15px/1.7 'Open Sans', sans-serif;
-  color: #333;
+  color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: pointer;

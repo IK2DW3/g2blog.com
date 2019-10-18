@@ -1,53 +1,58 @@
+function validateForm() {
+  var x = document.forms["formulario-registro"]["name"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
 function validacion() {
-  var nombrePersona = document.getElementById("campo").value;
-  var apellidosPersona  = document.getElementById("campo").value;
-  var nombreUsuario = document.getElementById("campo").value;
-  var passwordUsuario = document.getElementById("campo").value;
-  var confirmarPasswordUsuario = document.getElementById("campo").value;
-  var email = document.getElementById("email").value;
-  var numeroTelefono = document.getElementById("number").value;
-  var opciones = document.getElementsByName("sexo");
-  var mensaje = "[ERROR] El campo debe tener un valor de...";
+  nombrePersona = document.getElementById("name").value;
+  apellidosPersona  = document.getElementById("surname").value;
+  nombreUsuario = document.getElementById("usernameregister").value;
+  passwordUsuario = document.getElementById("passwordregister").value;
+  confirmarPasswordUsuario = document.getElementById("confirmpassword").value;
+  email = document.getElementById("email").value;
+  numeroTelefono = document.getElementById("number").value;
+  opciones = document.getElementsByName("sexo");
 
-  if (valor == null || valor.length == 0 || /^\s+$/.test(nombrePersona)) { // nombrePersona
+  if (nombrePersona == null || nombrePersona.length == 0 || /^\s+$/.test(nombrePersona)) { // nombrePersona
     // Si no se cumple la condicion...
-    console.log('[ERROR] El campo debe tener un valor de...');
+    alert("Se necesita un nombre de persona válido o ha excedido el número de carácteres");
     return false;
   }
-  else if (valor == null || valor.length == 0 || /^\s+$/.test(apellidosPersona)) { // apellidosPersona
+  else if (apellidosPersona == null || apellidosPersona.length == 0 || /^\s+$/.test(apellidosPersona)) { // apellidosPersona
     // Si no se cumple la condicion...
-    console.log('[ERROR] El campo debe tener un valor de...');
+    alert("Se necesita un apellido de persona válido o ha excedido el número de carácteres");
     return false;
   }
-  else if (valor == null || valor.length == 0 || /^\s+$/.test(nombreUsuario)) { // nombreUsuario
+  else if (nombreUsuario == null || nombreUsuario.length == 0 || /^\s+$/.test(nombreUsuario)) { // nombreUsuario
     // Si no se cumple la condicion...
-    console.log('[ERROR] El campo debe tener un valor de...');
+    alert("Nombre de usuario incorrecto / usuario ya existe");
     return false;
   }
-  else if (valor == null || valor.length == 0 || /^\s+$/.test(passwordUsuario)) { // passwordUsuario
+  else if (passwordUsuario == null || passwordUsuario.length == 0 || /^\s+$/.test(passwordUsuario)) { // passwordUsuario
     // Si no se cumple la condicion...
-    console.log('[ERROR] El campo debe tener un valor de...');
+    alert("La contraseña debe tener un minimo de 8 carácteres");
     return false;
   }
-  else if (valor == null || valor.length == 0 || /^\s+$/.test(confirmarPasswordUsuario)) { // confirmarPasswordUsuario
+  else if (confirmarPasswordUsuario == null || confirmarPasswordUsuario.length == 0 || /^\s+$/.test(confirmarPasswordUsuario)) { // confirmarPasswordUsuario
     // Si no se cumple la condicion...
-    console.log('[ERROR] El campo debe tener un valor de...');
+    alert("La contraseña debe tener un minimo de 8 carácteres");
     return false;
   }
   else if (!(passwordUsuario === confirmarPasswordUsuario)) { // Confirmar que las dos contraseñas son iguales
     // Si no se cumple la condicion...
-    console.log('[ERROR] Las contraseñas son diferentes...');
-    alert(mensaje);
+    alert("Las contraseñas deben coincidir");
     return false;
   }
-  else if ( !(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(email)) ) { // Validar el email
+  else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) { // Validar el email
     // Si no se cumple la condicion...
-    console.log('[ERROR] El campo debe tener un valor de...');
+    alert("Debe insertar una dirección de correo válido");
     return false;
   }
-  else if ( !(/^\d{9}$/.test(numeroTelefono)) ) { // Validar el numero de movil
+  else if ( passwordUsuario.length == 0 || !(/^\d{9}$/.test(numeroTelefono)) ) { // Validar el numero de movil
     // Si no se cumple la condicion...
-    console.log('[ERROR] El campo debe tener un valor de...');
+    alert("El número de teléfono debe tener 9 digitos");
     return false;
   }
   // Confirmacion del sexo del usuario
