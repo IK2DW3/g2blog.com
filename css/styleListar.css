@@ -1,0 +1,245 @@
+/* IMPORTS */
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro); /* Google Fonts */
+/* GENERAL */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Utilizaremos para la página principal un diseño GRID */
+.grid-container {
+  display: grid;
+  grid-template: repeat(12, 8.33vh) / repeat(12, 1fr);
+}
+
+/* objetos internos de las cajas centrados */
+.grid-container [class*="box"] {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+/* Header */
+.box1 {
+  background-color: #9c9a9a;
+  grid-column: 1 / -1;
+  grid-row: 1 / 1;
+  padding: 0 1%;
+}
+.box1 img {
+  height: 45px;
+  flex-basis: 3.5%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.box1 h1 {
+  flex-basis: 65%;
+  flex-grow: 2;
+  flex-shrink: 1;
+}
+.box1 .login-index {
+  flex-basis: 20%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.box1 .login-index input[type=text], .box1 .login-index input[type=password] {
+  border: none;
+  color: #000;
+  padding: 1%;
+  width: 25%;
+}
+.box1 .login-index input[type=text] {
+  background: #fff url('../img/contact.png') .5em 50% no-repeat;
+  background-size: 20px 20px;
+  border-bottom: 3px solid #048f64;
+  padding-left: 2em;
+}
+.box1 .login-index input[type=password] {
+  background: #fff url('../img/key.png') .5em 50% no-repeat;
+  background-size: 20px 20px;
+  border-bottom: 3px solid #048f64;
+  padding-left: 2em;
+}
+.box1 .login-index input[type=text]::placeholder,
+.box1 .login-index input[type=password]::placeholder {
+  color: #000;
+  font-weight: bold;
+  padding: 0 0 0 .25em;
+}
+.box1 .login-index input[type=submit] {
+  border: 1.5px solid #048f64;
+  background: #fff url('../img/log-in.png') .5em 50% no-repeat;
+  background-size: 20px 20px;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  padding: .33em;
+  width: 40px;
+}
+.box1 .login-index button {
+  background-color: #fff;
+  border: 1.5px solid #048f64;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: .33em;
+  width: auto;
+}
+.box1 .login-index button a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+/* Section */
+.box2 {
+  background-color: #8e8a8a;
+  grid-column: 2 / 10;
+  grid-row: 3 / 11;
+
+}
+/* Aside */
+.box3 {
+  background-color: #797979;
+  grid-column: 10 / 12;
+  grid-row: 3 / 11;
+}
+/* Footer */
+.box4 {
+  background-color: #707070;
+  grid-column: 1 / -1;
+  grid-row: 12 / -1;
+}
+
+/* registro-login */
+.box-registro {
+  align-items: stretch;
+  background: radial-gradient(circle, #555555, #535353, #505050, #4e4e4e, #4c4c4c);
+  grid-column: 2 / 9;
+  grid-row: 3 / 11;
+  padding: 1em;
+}
+.box-logueo {
+  background-color: #797979;
+  grid-column: 9 / 12;
+  grid-row: 3 / 11;
+  padding: 5em;
+  text-align: center;
+}
+
+.box-registro .formulario-registro, .box-logueo .formulario-login {
+  overflow: hidden;
+  width: 100%;
+}
+.box-registro .formulario-registro fieldset {
+  border: 1px solid #00d5e3;
+  padding: 1em;
+}
+.box-registro .formulario-registro fieldset legend {
+  border: 1.5px solid #00d5e3;
+  color: #fff;
+  font-style: 1em;
+  font-weight: bold;
+  padding: 1em;
+}
+/* inputs styles */
+.box-registro .formulario-registro input[type=text], .box-registro .formulario-registro input[type=password],
+.box-registro .formulario-registro input[type=email], .box-registro .formulario-registro input[type=date],
+.box-logueo .formulario-login input[type=text], .box-logueo .formulario-login input[type=password]{
+  border: none;
+  background: none;
+  border-bottom: 1px solid #aaaaaa;
+  color: white;
+  display: block;
+  font-size: 1em;
+  font-family: 'Lato', sans-serif;
+  margin: 1.5% 0;
+  outline: none;
+  padding: 0.5em;
+  width: 99%;
+}
+.form-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  position: relative;
+  background-color: #f1f1f1;
+  color: #666;
+  top: 10px;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 7px;
+  outline: none;
+}
+.form-radio:checked::before {
+  position: absolute;
+  font: 13px/1 'Open Sans', sans-serif;
+  left: 11px;
+  top: 7px;
+  content: '\02143';
+  transform: rotate(40deg);
+}
+.form-radio:hover {
+  background-color: #f7f7f7;
+}
+.form-radio:checked {
+  background-color: #f1f1f1;
+}
+label {
+  font: 15px/1.7 'Open Sans', sans-serif;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+}
+.box-registro .formulario-registro input[type=submit],
+.box-logueo .formulario-login input[type=submit] {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: 'Lato', sans-serif;
+  color:white;
+  text-align: center;
+  letter-spacing: 1px;
+  background: radial-gradient(circle, #24cfaa, #26c5a3, #28bb9c, #29b294, #2aa88d);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.box-registro .formulario-registro ::placeholder, .box-logueo .formulario-login ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  opacity: 1;
+  color: white;
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.box-logueo img {
+  width: 100px;
+  height: 100px;
+  margin: 0% auto;
+}
+.box-logueo h3 {
+  display: block;
+  padding-bottom: 4em;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+}
+
+.box-logueo .link {
+  display: block;
+  padding-top: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  margin: 1% 0;
+}
+
+#tablaListar{
+  font-size: 13px;
+
+}
