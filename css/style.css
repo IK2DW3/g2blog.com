@@ -36,60 +36,36 @@
 }
 .box1 h1 {
   flex-basis: 65%;
+  flex-grow: 2;
+  flex-shrink: 1;
+}
+.box1 .header-nav {
+  flex-basis: 20%;
   flex-grow: 1;
   flex-shrink: 1;
 }
-.box1 .login-index {
-  flex-basis: 30%;
-  flex-grow: 1;
-  flex-shrink: 1;
+.box1 .header-nav ul.hnavegador {
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  list-style: none;
 }
-.box1 .login-index input[type=text], .box1 .login-index input[type=password] {
-  border: none;
-  color: #000;
-  padding: 1%;
-  width: 25%;
+.box1 .header-nav ul.hnavegador li {
+  margin: 1%;
 }
-.box1 .login-index input[type=text] {
-  background: #fff url('../img/contact.png') .5em 50% no-repeat;
-  background-size: 20px 20px;
-  border-bottom: 3px solid #048f64;
-  padding-left: 2em;
-}
-.box1 .login-index input[type=password] {
-  background: #fff url('../img/key.png') .5em 50% no-repeat;
-  background-size: 20px 20px;
-  border-bottom: 3px solid #048f64;
-  padding-left: 2em;
-}
-.box1 .login-index input[type=text]::placeholder,
-.box1 .login-index input[type=password]::placeholder {
-  color: #000;
-  font-weight: bold;
-  padding: 0 0 0 .25em;
-}
-.box1 .login-index input[type=submit] {
-  border: 1.5px solid #048f64;
-  background: #fff url('../img/log-in.png') .5em 50% no-repeat;
-  background-size: 20px 20px;
-  border-radius: 5px;
-  color: #000;
-  cursor: pointer;
-  padding: .33em;
-  width: 40px;
-}
-.box1 .login-index button {
+.box1 .header-nav button {
   background-color: #fff;
   border: 1.5px solid #048f64;
-  border-radius: 5px;
   cursor: pointer;
-  padding: .33em;
+  padding: .75em;
   width: auto;
 }
-.box1 .login-index button a {
+.box1 .header-nav ul.hnavegador li a, .box1 .header-nav button a {
   color: #000;
   font-weight: bold;
   text-decoration: none;
+  text-transform: uppercase;
 }
 /* Section */
 .box2 {
@@ -196,7 +172,7 @@
 .form-radio:checked {
   background-color: #f1f1f1;
 }
-label {
+.formulario-registro label {
   font: 15px/1.7 'Open Sans', sans-serif;
   color: #fff;
   -webkit-font-smoothing: antialiased;
@@ -242,7 +218,69 @@ label {
   display: block;
   padding-top: 20px;
   text-decoration: none;
-  color: white;
+  color: #fff;
+  font-size: 20px;
+  margin: 1% 0;
+}
+.fPrincipal {
+  align-items: center;
+  background-color: #fff4d5;
+  display: flex;
+  grid-column: 6 / 8;
+  grid-row: 4 / 10;
+  flex-flow: column;
+  justify-content: center;
+  overflow: hidden;
+
+  filter: blur(0.4px);
+  box-shadow:
+  /*bottom shadow*/
+  0px 20px 20px rgba(0,0,0,0.2),
+  0px 5px 10px rgba(0,0,0,0.2),
+  /*long bottom shadow*/
+  0px 70px 50px rgba(0,0,0,0.4),
+  /*right shadow*/
+  30px 50px 50px rgba(0,0,0,0.2),
+  /*left shadow*/
+  -30px 50px 50px rgba(0,0,0,0.2),
+  /*right inset*/
+  inset 20px 0px 60px rgba(0,0,0,0.1),
+  /*left inset*/
+  inset -20px 0px 60px rgba(0,0,0,0.1);
+}
+.fPrincipal img {
+  width: 140px;
+  height: 100px;
+  margin: 1% 0;
+}
+.fPrincipal h2 {
+  font-size: 1.5em;
+  margin-bottom: 15%;
+}
+.fPrincipal input[type=text], .fPrincipal input[type=password] {
+  border: none;
+  border: 1.2px solid #6a6a6a;
+  padding: 1.5% .5%;
+  margin: 0 0 5% 0;
+  width: 50%;
+}
+.fPrincipal label {
+  color: #000;
+  font-weight: bold;
+  pointer-events: none;
+}
+.fPrincipal input[type=submit] {
+  background-color: #00a3ff;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 5%;
+}
+.fPrincipal .link {
+  display: block;
+  padding-top: 20px;
+  text-decoration: none;
+  color: #000;
   font-size: 20px;
   margin: 1% 0;
 }

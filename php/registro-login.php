@@ -31,7 +31,6 @@
           <input type="date" name="date" value="1960-01-01" min="1960-01-01" max="2003-12-31" required>
           <input type="radio" name="sexo" value="W" id="radio-one" class="form-radio" ><label for="radio-one">Mujer</label>
           <input type="radio" name="sexo" value="M" id="radio-two" class="form-radio" ><label for="radio-one">Hombre</label>
-
           <br>
           <input type="text" name="number" id="number" placeholder="Número teléfono..." value="">
           <input type="submit" name="submit" value="Registrarse">
@@ -45,13 +44,12 @@
         <input type="text" name="usernamelogin" id="usernamelogin" placeholder="Usuario..." value="" required><br>
         <input type="password" name="passwordlogin" id="passwordlogin" placeholder="Contraseña..." value="" required>
         <input type="submit" name="submit" value="Acceder">
-        <a class="link" href="#">Forgot password?</a>
+        <a class="link" href="#">¿Contraseña olvidada?</a>
       </form>
     </section>
     <footer class="box4" id="box4">
       <h4>Con la tecnología de nuestra imaginación</h4>
     </footer>
   </div>
-
 </body>
 </html>
