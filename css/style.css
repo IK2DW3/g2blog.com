@@ -213,7 +213,6 @@
   font-size: 28px;
   letter-spacing: 0.5px;
 }
-
 .box-logueo .link {
   display: block;
   padding-top: 20px;
@@ -222,12 +221,13 @@
   font-size: 20px;
   margin: 1% 0;
 }
+
 .fPrincipal {
   align-items: center;
   background-color: #fff4d5;
   display: flex;
-  grid-column: 6 / 8;
-  grid-row: 4 / 10;
+  grid-column: 5 / 9;
+  grid-row: 3 / 11;
   flex-flow: column;
   justify-content: center;
   overflow: hidden;

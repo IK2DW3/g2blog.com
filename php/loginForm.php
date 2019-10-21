@@ -6,27 +6,6 @@ $_SESSION['nombreDeUsuario'] = $nombreDeUsuario;
 $_SESSION['confirmPassword'] = $confirmPassword;
 /*session_register($nombreDeUsuario, $colorElegido);*/
 ?>
-<?php
-// Always start this first
-session_start();
-
-if ( ! empty( $_POST ) ) {
-    if ( isset( $_POST['nombreDeUsuario'] ) && isset( $_POST['confirmPassword'] ) ) {
-      // Getting submitted user data from database
-      $con = new mysqli($db_host, $db_user, $db_pass, $db_name);
-      $stmt = $con->prepare("SELECT * FROM usuarios WHERE nombre_usuario = ?");
-      $stmt->bind_param('s', $_POST['nombreDeUsuario']);
-      $stmt->execute();
-      $result = $stmt->get_result();
-    	$user = $result->fetch_object();
-
-    	// Verify user password and set $_SESSION
-    	if ( password_verify( $_POST['confirmPassword'], $user->password ) ) {
-    		$_SESSION['user_id'] = $user->ID;
-    	}
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
