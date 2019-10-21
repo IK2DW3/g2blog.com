@@ -1,5 +1,7 @@
-/* IMPORTS */
-@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro); /* Google Fonts */
+/*
+* Icons cheats
+* https://fontawesome.com/cheatsheet?from=io
+*/
 /* GENERAL */
 * {
   margin: 0;
@@ -20,17 +22,16 @@
   padding: .5%;
 }
 .header .a-logo{
-  flex-basis: 5%;
-  flex-grow: 1;
-  flex-shrink: 2;
+  flex-basis: 3.5%;
+  flex-shrink: 3;
 }
 .header .a-logo img {
   height: 40px;
   width: 50px;
 }
 .header h1 {
-  flex-basis: 70%;
-  flex-grow: 2;
+  flex-basis: 71.5%;
+  flex-grow: 3;
   flex-shrink: 1;
 }
 .header h1 a.a-title {
@@ -49,13 +50,14 @@
   list-style: none;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: center;
   list-style-type: none;
   overflow: hidden;
   height: 37px;
 }
 .header .header-nav ul.hnavegador li {
   font-size: .8em;
+  margin: 0 .5%;
   text-align: center;
 }
 .header .header-nav ul.hnavegador li a {
@@ -69,8 +71,12 @@
   font-weight: bold;
 }
 .header .header-nav ul.hnavegador li a.a-buttom {
-  background-color: #ddd9d9;
-  border: 1px solid green;
+  background-color: #ffffff;
+  border: 1px solid #f9ab5b;
+}
+.header .header-nav ul.hnavegador li:hover a.a-buttom {
+  background-color: #ffe6bd;
+  color: #000;
 }
 
 .container {
@@ -82,19 +88,50 @@
   background-color: #fff;
   flex-basis: 80%;
   overflow: hidden;
-  padding: 1%;
+  padding: 1em;
 }
 .container .entries h2 {
   display: block;
   padding: .1%;
   border-bottom: 1px solid #6ddeab;
 }
-.container .aside-bar{
+.container .aside-bar {
   flex-basis: 20%;
   overflow: hidden;
-  padding: .5%;
+  padding: 1em;
 }
-
+.container .aside-bar .searchbox {
+  margin-bottom: 1em;
+  overflow: hidden;
+  width: 100%;
+}
+.container .aside-bar .searchbox input[type=text] {
+  border: 2px solid #6ddeab;
+  margin: auto 20%;
+  padding: .5em;
+}
+.container .aside-bar h3 {
+  background-color: #fefefe;
+  display: block;
+  padding: 2% 5%;
+  border-bottom: 1px solid #6dd7de;
+}
+.container .aside-bar .aside-nav ul {
+  background-color: #fff;
+  list-style-type: none;
+  width: 100%;
+}
+.container .aside-bar .aside-nav ul li a {
+  color: #7e7e7e;
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+}
+.container .aside-bar .aside-nav ul li:hover,
+.container .aside-bar .aside-nav ul li:hover a {
+  background-color: #90dfa6;
+  color: #000;
+}
 
 .footer {
   align-items: center;
@@ -104,4 +141,188 @@
   height: 50px;
   justify-content: center;
   overflow: hidden;
+}
+
+
+/*
+*
+*  Login.php
+*
+*/
+
+.fPrincipal {
+  align-items: center;
+  border-bottom-left-radius: 25px;
+  border-bottom: 3px solid #6ddeab;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin: 5% 35%;
+  overflow: hidden;
+  padding: 1em;
+}
+.fPrincipal img {
+  height: 80px;
+  width: 100px;
+}
+.fPrincipal h2 {
+  font-size: 2em;
+  padding: 2%;
+  pointer-events: none;
+}
+.fPrincipal label.labelInput {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 1.5%;
+}
+.fPrincipal input[type=text], .fPrincipal input[type=password] {
+  border: 1px solid #00ff84;
+  margin-bottom: 3%;
+  padding: 1em;
+  width: 50%;
+}
+.fPrincipal input[type=text]:focus, .fPrincipal input[type=password]:focus {
+  border: 1px solid #00ff84;
+}
+.fPrincipal input[type=submit] {
+  background-color: #fff;
+  border: 1px solid #00ff84;
+  cursor: pointer;
+  color: #d0cdcd;
+  font-weight: bold;
+  padding: .75em;
+}
+.fPrincipal input[type=submit]:hover {
+  background-color: #a6eecb;
+  color: #000;
+}
+.fPrincipal .link {
+  color: #000;
+  display: block;
+  font-size: 1.1em;
+  padding: 1em;
+  text-decoration: none;
+
+}
+
+/*
+*
+*  Register.php
+*
+*/
+.formulario-registro{
+  align-items: center;
+  border-bottom: 3px solid #00d5e3;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5% 20%;
+  overflow: hidden;
+  padding: 1%;
+}
+.formulario-registro fieldset {
+  border: none;
+  padding: 3%;
+  width: 100%;
+}
+.formulario-registro fieldset legend {
+  color: #000000;
+  font-style: 1em;
+  font-weight: bold;
+  padding: 1%;;
+}
+/* inputs styles */
+.formulario-registro input[type=text], .formulario-registro input[type=password],
+.formulario-registro input[type=email], .formulario-registro input[type=date] {
+  border: none;
+  background: none;
+  border-bottom: 1px solid #aaaaaa;
+  color: #000;
+  font-size: 1em;
+  font-family: 'Lato', sans-serif;
+  margin: 1.5% 0;
+  outline: none;
+  padding: 1%;
+  width: 47.5%;
+}
+.formulario-registro .form-radio,
+.formulario-registro .form-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  position: relative;
+  background-color: #f1f1f1;
+  color: #000;
+  top: 10px;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  cursor: pointer;
+  margin-right: 7px;
+  outline: none;
+}
+.formulario-registro .form-checkbox {
+  border-radius: 3px;
+}
+.formulario-registro .form-radio {
+  border-radius: 50px;
+}
+.formulario-registro .form-radio:checked::before,
+.formulario-registro .form-checkbox:checked::before {
+  position: absolute;
+  font: 13px/1 'Open Sans', sans-serif;
+  left: 11px;
+  top: 7px;
+  content: '\02143';
+  transform: rotate(40deg);
+}
+.formulario-registro .form-radio:hover,
+.formulario-registro .form-checkbox:hover {
+  background-color: #f7f7f7;
+}
+.formulario-registro .form-radio:checked,
+.formulario-registro .form-checkbox:checked {
+  background-color: #f1f1f1;
+}
+.formulario-registro label {
+  font: 15px/1.7 'Open Sans', sans-serif;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  pointer-events: none;
+}
+.formulario-registro input[type=submit] {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: 'Lato', sans-serif;
+  color:white;
+  text-align: center;
+  letter-spacing: 1px;
+  background: radial-gradient(circle, #24cfaa, #26c5a3, #28bb9c, #29b294, #2aa88d);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.formulario-registro::placeholder {
+  opacity: 1;
+  color: #000000;
+  font-size: 1em;
+  font-weight: 300;
+}
+.formulario-registro .form-checkbox a {
+  cursor: pointer;
+}
+.formulario-registro .loginquest {
+  border-top: 1px inset #00d5e3;
+  flex-basis: 100%;
+  padding: 2% 0;
+  text-align: center;
+}
+.formulario-registro .loginquest a {
+  color: #000;
 }

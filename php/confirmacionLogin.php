@@ -37,6 +37,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
     header("Location: index.php");
 } else {
     // Redirect them to the login page
-    header("Location: loginForm.php");
+    header("Location: login.php");
 }
 ?>

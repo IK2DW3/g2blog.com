@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +10,17 @@
   <link rel="stylesheet" href="css/index.css" class="css"> <!-- Website Stylesheet -->
   <title>G2BLOG - Inicio</title> <!-- Website title -->
 </head>
+
 <body>
   <header class="header" id="header">
-    <a class="a-logo" href="index.html"><img src="img/iconlogo.png" alt="G2BLOG"></a>
-    <h1><a class="a-title" href="index.html">G2BLOG</a></h1>
+    <a class="a-logo" href="index.php"><img src="img/iconlogo.png" alt="G2BLOG"></a>
+    <h1><a class="a-title" href="index.php">G2BLOG</a></h1>
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
-        <li><a class="highlight" href="inicio.html">Inicio</a></li>
+        <li><a class="highlight" href="index.php">Inicio</a></li>
         <li><a href="php/entradas.php">Entradas</a></li>
-        <li><a class="a-buttom" href="php/loginForm.php">Log in</a></li>
-        <li><a class="a-buttom" href="php/registro-login.php">Registrarse</a></li>
+        <li><a class="a-buttom" href="php/login.php">Log in</a></li>
+        <li><a class="a-buttom" href="php/register.php">Registrarse</a></li>
       </ul>
     </nav>
   </header>
@@ -27,7 +29,7 @@
       <h2>Ultimas publicaciones</h2>
     </section>
     <aside class="aside-bar">
-      <div class="serchbox">
+      <div class="searchbox">
         <input type="text" name="searchfield" placeholder="Buscar...">
       </div>
       <h3>Categorías</h3>
@@ -43,4 +45,5 @@
     <p>Con la tecnología de nuestra imaginación</p>
   </footer>
 </body>
+
 </html>

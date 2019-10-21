@@ -32,7 +32,7 @@
   height: 45px;
   flex-basis: 5%;
   flex-grow: 1;
-  flex-shrink: 1;
+  flex-shrink: 2;
 }
 .box1 h1 {
   flex-basis: 65%;
