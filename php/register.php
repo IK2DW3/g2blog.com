@@ -20,18 +20,17 @@
       <legend>Formulario De Registro</legend>
       <input type="text" name="name" id="name" placeholder="Nombre..." value="" autocomplete="off">
       <input type="text" name="surname" id="surname" placeholder="Apellido(s)..." value="" autocomplete="off">
-      <input type="text" name="usernameregister" id="usernameregister" placeholder="Usuario..." value="" autocomplete="off">
-      <input type="password" name="passwordregister" id="passwordregister" placeholder="Contraseña..." value="" autocomplete="off">
+      <input type="text" name="usernameRegister" id="usernameRegister" placeholder="Usuario..." value="" autocomplete="off">
+      <input type="password" name="passwordRegister" id="passwordRegister" placeholder="Contraseña..." value="" autocomplete="off">
       <br>
       <input type="email" name="email" id="email" placeholder="Email..." value="" autocomplete="off">
-      <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirmar contraseña..." value="">
+      <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar contraseña..." value="">
       <br>
       <input type="date" name="date" value="1960-01-01" min="1960-01-01" max="2003-12-31" required>
       <input type="radio" name="sexo" value="W" id="radio-one" class="form-radio" ><label for="radio-one">Mujer</label>
       <input type="radio" name="sexo" value="M" id="radio-two" class="form-radio" ><label for="radio-two">Hombre</label>
       <br>
-      <input type="text" name="number" id="number" placeholder="Número teléfono..." value="" autocomplete="off">
-      <input type="checkbox" name="terminosCondiciones" id="terminosCondiciones" class="form-checkbox" value=""><label>He leído los <a href="">Terminos & condiciones</a>.</label>
+      <input type="checkbox" name="terminosCondiciones" id="terminosCondiciones" class="form-checkbox" value="Yes"><label>He leído los <a href="">Terminos & condiciones</a>.</label>
       <input type="submit" name="submit" value="Registrarse">
     </fieldset>
     <div class="loginquest">

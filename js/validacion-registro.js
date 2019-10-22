@@ -12,8 +12,8 @@ function validacion() {
   passwordUsuario = document.getElementById("passwordregister").value;
   confirmarPasswordUsuario = document.getElementById("confirmpassword").value;
   email = document.getElementById("email").value;
-  numeroTelefono = document.getElementById("number").value;
   opciones = document.getElementsByName("sexo");
+  elemento = document.getElementById("terminosCondiciones");
 
   if (nombrePersona == null || nombrePersona.length == 0 || /^\s+$/.test(nombrePersona)) { // nombrePersona
     // Si no se cumple la condicion...
@@ -50,9 +50,8 @@ function validacion() {
     alert("Debe insertar una dirección de correo válido");
     return false;
   }
-  else if ( passwordUsuario.length == 0 || !(/^\d{9}$/.test(numeroTelefono)) ) { // Validar el numero de movil
-    // Si no se cumple la condicion...
-    alert("El número de teléfono debe tener 9 digitos");
+  else if( !elemento.checked ) {
+    alert("Debe aceptar los terminos y condiciones");
     return false;
   }
   // Confirmacion del sexo del usuario

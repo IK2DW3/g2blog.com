@@ -20,7 +20,7 @@ $_SESSION['confirmPassword'] = $confirmPassword;
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
   </header>
-  <form name="fPrincipal" class="fPrincipal" id="fPrincipal" action="confirmacionLogin.php" method="post">
+  <form name="fPrincipal" class="fPrincipal" id="fPrincipal" action="userSettings.php" method="post">
     <img src="../img/iconlogo.png" alt="G2BLOG">
     <h2>Login</h2>
     <label class="labelInput" for="nombreDeUsuario">Usuario o Email</label>
