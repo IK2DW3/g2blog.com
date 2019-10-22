@@ -8,7 +8,11 @@
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-
+/*
+*
+*  index.php
+*
+*/
 .header {
   align-items: center;
   background-color: #d1d1d1;
@@ -77,6 +81,29 @@
 .header .header-nav ul.hnavegador li:hover a.a-buttom {
   background-color: #ffe6bd;
   color: #000;
+}
+.header .header-nav .dropdown .buttonDropdown {
+  background-color: #ffffff;
+  border: 1px solid #f9ab5b;
+  padding: 8px 16px;
+}
+.header .header-nav .dropdown .dropdown-menu {
+  display: none;
+}
+.header .header-nav .dropdown .dropdown-menu ul {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+}
+.header .header-nav .dropdown .dropdown-menu ul li {
+  flex-basis: 100%;
+  padding: 1%;
+}
+.header .header-nav .dropdown .dropdown-menu ul li a{
+  color: #000;
+  text-decoration: none;
 }
 
 .container {

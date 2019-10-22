@@ -1,6 +1,9 @@
 <?php
-// destroy session, it will remove ALL session settings
-session_destroy();
+// start session
+session_start();
+
+// Destroy user session
+unset($_SESSION['nombre_usuario']);
 
 //redirect to login page
 header("Location: ../index.php");

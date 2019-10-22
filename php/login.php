@@ -1,9 +1,5 @@
 <?php
 session_start();
-$nombreDeUsuario = "";
-$confirmPassword = "";
-$_SESSION['nombreDeUsuario'] = $nombreDeUsuario;
-$_SESSION['confirmPassword'] = $confirmPassword;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,13 +10,15 @@ $_SESSION['confirmPassword'] = $confirmPassword;
   <link rel="shortcut icon" href="../fav/favicon.ico" type="image/x-icon"> <!-- Favicon -->
   <link rel="stylesheet" href="../css/index.css" class="css"> <!-- Website Stylesheet -->
   <title>G2BLOG - Login</title> <!-- Website title -->
+  <!-- Validacion login-->
+  <script src="../js/validacion-registro.js"></script>
 </head>
 <body>
   <header class="header" id="header">
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
   </header>
-  <form name="fPrincipal" class="fPrincipal" id="fPrincipal" action="userSettings.php" method="post">
+  <form name="fPrincipal" class="fPrincipal" id="fPrincipal" action="confirmacionLogin.php" onsubmit="return validacionLogin()" method="post">
     <img src="../img/iconlogo.png" alt="G2BLOG">
     <h2>Login</h2>
     <label class="labelInput" for="nombreDeUsuario">Usuario o Email</label>

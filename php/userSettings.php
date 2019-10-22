@@ -1,10 +1,6 @@
 <?php
 session_start();
-if (isset($_POST['nombreDeUsuario'])) {
-  $_SESSION['nombreDeUsuario'] == $_POST['nombreDeUsuario'];
-} else {
-  $_SESSION['nombreDeUsuario'] == "Undefined";
-}
+$usuarioLogin = $_SESSION['nombre_usuario'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +10,7 @@ if (isset($_POST['nombreDeUsuario'])) {
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="../fav/favicon.ico" type="image/x-icon"> <!-- Favicon -->
   <link rel="stylesheet" href="../css/index.css" class="css"> <!-- Website Stylesheet -->
-  <title><?php echo "G2BLOG - Perfil ".$_SESSION['nombreDeUsuario']; ?></title>
+  <title><?php echo "G2BLOG - Perfil ".$usuarioLogin; ?></title>
 </head>
 <body>
   <header class="header" id="header">
@@ -33,17 +29,17 @@ if (isset($_POST['nombreDeUsuario'])) {
     <nav class="nav-user">
       <?php
       include_once "base_de_datos.php";
-      $user = $_SESSION['nombreDeUsuario'];
-      $sql= "SELECT img_avatar FROM usuarios WHERE nombre_usuario = '$user'";
-      $stmt = $base_de_datos->query($sql);
-      $row = $stmt->fetchObject();
-      if ($row == true) {
-        echo ("<img src='.$row->img_avatar'>");
+      $consulta= "SELECT img_avatar FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
+      $sentencia= $base_de_datos->query($consulta);
+      if ($sentencia == TRUE ) {
+        $results = $sentencia->fetch();
+        echo ("<img src='.$results[0]'>");
       } else {
         echo ("<img src='../img/contact.png'>");
+        /*echo ("<img src='.$row->img_avatar'>");*/
       }
       ?>
-      <h3><?php if ($user == "") {echo ("Undefined");} else {echo ($user);} ?></h3>
+      <h3><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$_SESSION['nombre_usuario']);} ?></h3>
       <ul>
         <li><a href="#">Perfil</a></li>
         <li><a href="#">Cuenta</a></li>

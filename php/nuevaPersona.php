@@ -27,7 +27,7 @@ $resultado = $sentencia->execute([$username, $password, $tipo, $email, $name, $s
 #Con eso podemos evaluar
 #if($resultado === TRUE) echo "Insertado correctamente";
 #header("Location: true.html");
-$url = "../userSettings.php";
+$url = "../index.php";
 if($resultado === TRUE) header("Location: $url");
 else echo "Algo salió mal. Por favor verifica que la tabla exista";
 ?>

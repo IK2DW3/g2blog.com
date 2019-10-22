@@ -1,9 +1,14 @@
-function validateForm() {
-  var x = document.forms["formulario-registro"]["name"].value;
+function validacionLogin() {
+  var x = document.forms["fPrincipal"]["nombreDeUsuario"].value;
+  var y = document.forms["fPrincipal"]["confirmPassword"].value;
   if (x == "") {
-    alert("Name must be filled out");
+    alert("Has dejado el campo nombre sin rellenar");
+    return false;
+  } else if (y == "") {
+    alert("Has dejado el campo contraseña sin rellenar");
     return false;
   }
+  return true;
 }
 function validacion() {
   nombrePersona = document.getElementById("name").value;
@@ -65,8 +70,5 @@ function validacion() {
   if(!seleccionado) {
     return false;
   }
-
-  // Si el script ha llegado a este punto, todas las condiciones
-  // se han cumplido, por lo que se devuelve el valor true
   return true;
 }
