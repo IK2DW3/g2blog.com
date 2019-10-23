@@ -31,12 +31,12 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       <div class="user-icon">
         <?php
         include_once "base_de_datos.php";
-        $consulta= "SELECT img_avatar FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
+        $consulta= "SELECT nombre, apellidos, email, img_avatar FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
         $sentencia= $base_de_datos->query($consulta);
         if ($sentencia == TRUE ) {
           $results = $sentencia->fetch();
           if (!$results[0] == '') {
-            echo ("<img src='.$results[0]'>");
+            echo ("<img src=../img/$results[3]>");
           } else {
             echo ("<img src='../img/contact.png'>");
           }
@@ -44,7 +44,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           echo ("<img src='../img/contact.png'>");
         }
         ?>
-        <h3><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$_SESSION['nombre_usuario']);} ?></h3>
+        <h3><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$usuarioLogin);} ?></h3>
       </div>
       <nav class="user-nav">
         <ul>
@@ -59,11 +59,14 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <label for="usuarioCambiar">Nombre de usuario</label>
         <input type="text" name="usuarioCambiar" value="<?php echo ($_SESSION['nombre_usuario']); ?>">
         <label for="nombreCambiar">Email</label>
-        <input type="email" name="emailNuevo" value="">
+        <input type="email" name="emailNuevo" value="<?php echo ($results[2]); ?>" readonly>
         <label for="nombreCambiar">Nombre</label>
-        <input type="text" name="nombreCambiar" value="">
+        <input type="text" name="nombreCambiar" value="<?php echo ($results[0]); ?>" readonly>
         <label for="apellidosCambiar">Apellidos</label>
-        <input type="text" name="apellidosCambiar" value="">
+        <input type="text" name="apellidosCambiar" value="<?php echo ($results[1]); ?>" readonly>
+        <label for="passwordVieja">Contraseña actual</label>
+        <p class="subText">Ingresa tu contraseña actual para verificar los cambios</p>
+        <input type="password" name="passwordVieja" value="">
         <input type="submit" name="submitName" value="Actualizar">
       </form>
 

@@ -471,6 +471,9 @@
   margin-bottom: 3%;
   width: 40%;
 }
+.panelUsuario .user-account .user-data-form .subText {
+  font-size: .75em;
+}
 .panelUsuario .user-account .user-avar-form ol {
   list-style-type: none;
 }
