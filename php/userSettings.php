@@ -10,12 +10,13 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="../fav/favicon.ico" type="image/x-icon"> <!-- Favicon -->
   <link rel="stylesheet" href="../css/index.css" class="css"> <!-- Website Stylesheet -->
+  <script src="../js/profileSettings.js"></script>
   <title><?php echo "G2BLOG - Perfil ".$usuarioLogin; ?></title>
 </head>
 <body>
   <header class="header" id="header">
     <a class="a-logo" href="index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
-    <h1><a class="a-title" href="index.php">G2BLOG</a></h1>
+    <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
         <li><a href="../index.php">Inicio</a></li>
@@ -51,11 +52,28 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </nav>
     <section class="user-account" id="user-account">
       <h3>Mis datos</h3>
-      <label for="nombreCambiar">Nombre de usuario</label>
-      <input type="text" name="nombreCambiar" value="<?php echo ($_SESSION['nombre_usuario']); ?>">
+      <label for="usuarioCambiar">Nombre de usuario</label>
+      <input type="text" name="usuarioCambiar" value="<?php echo ($_SESSION['nombre_usuario']); ?>">
       <br>
       <label for="nombreCambiar">Email</label>
       <input type="email" name="emailNuevo" value="">
+      <br>
+      <label for="nombreCambiar">Nombre</label>
+      <input type="text" name="nombreCambiar" value="">
+      <br>
+      <label for="apellidosCambiar">Apellidos</label>
+      <input type="text" name="apellidosCambiar" value="">
+      <br>
+      <form action="userSettings.php" method="post">
+        <label for="cambiarAvatar">Subir imagen avatar</label>
+        <br>
+        <div class="preview" id="preview">
+          <p>No se ha seleccionado ningun archivo</p>
+        </div>
+        <input type="file" name="cambiarAvatar" id="cambiarAvatar" accept=".jpg, .jpeg, .png">
+        <input type="submit" name="submitAvatar" value="Cambiar">
+      </form>
+
       <h4 id="Seguridad">Seguridad</h4>
       <h4>Cambiar contraseña</h4>
       <label for="nombreCambiar">Contraseña actual</label>
