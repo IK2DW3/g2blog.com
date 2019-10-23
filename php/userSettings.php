@@ -27,63 +27,66 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
   </header>
 
   <div class="panelUsuario">
-    <nav class="nav-user">
-      <?php
-      include_once "base_de_datos.php";
-      $consulta= "SELECT img_avatar FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
-      $sentencia= $base_de_datos->query($consulta);
-      if ($sentencia == TRUE ) {
-        $results = $sentencia->fetch();
-        if (!$results[0] == '') {
-          echo ("<img src='.$results[0]'>");
+    <aside class="user-aside">
+      <div class="user-icon">
+        <?php
+        include_once "base_de_datos.php";
+        $consulta= "SELECT img_avatar FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
+        $sentencia= $base_de_datos->query($consulta);
+        if ($sentencia == TRUE ) {
+          $results = $sentencia->fetch();
+          if (!$results[0] == '') {
+            echo ("<img src='.$results[0]'>");
+          } else {
+            echo ("<img src='../img/contact.png'>");
+          }
         } else {
           echo ("<img src='../img/contact.png'>");
         }
-      } else {
-        echo ("<img src='../img/contact.png'>");
-      }
-      ?>
-      <h3><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$_SESSION['nombre_usuario']);} ?></h3>
-      <ul>
-        <li><a href="#">Perfil / Cuenta</a></li>
-        <li><a href="#Seguridad">Seguridad</a></li>
-        <li><a href="#">Mis publicaciones</a></li>
-      </ul>
-    </nav>
+        ?>
+        <h3><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$_SESSION['nombre_usuario']);} ?></h3>
+      </div>
+      <nav class="user-nav">
+        <ul>
+          <li><a href="#">Perfil / Cuenta</a></li>
+          <li><a href="#">Mis publicaciones</a></li>
+        </ul>
+      </nav>
+    </aside>
     <section class="user-account" id="user-account">
-      <h3>Mis datos</h3>
-      <label for="usuarioCambiar">Nombre de usuario</label>
-      <input type="text" name="usuarioCambiar" value="<?php echo ($_SESSION['nombre_usuario']); ?>">
-      <br>
-      <label for="nombreCambiar">Email</label>
-      <input type="email" name="emailNuevo" value="">
-      <br>
-      <label for="nombreCambiar">Nombre</label>
-      <input type="text" name="nombreCambiar" value="">
-      <br>
-      <label for="apellidosCambiar">Apellidos</label>
-      <input type="text" name="apellidosCambiar" value="">
-      <br>
-      <form action="userSettings.php" method="post">
+      <form class="user-data-form" action="userSettings.php" method="post">
+        <legend>Mis datos</legend>
+        <label for="usuarioCambiar">Nombre de usuario</label>
+        <input type="text" name="usuarioCambiar" value="<?php echo ($_SESSION['nombre_usuario']); ?>">
+        <label for="nombreCambiar">Email</label>
+        <input type="email" name="emailNuevo" value="">
+        <label for="nombreCambiar">Nombre</label>
+        <input type="text" name="nombreCambiar" value="">
+        <label for="apellidosCambiar">Apellidos</label>
+        <input type="text" name="apellidosCambiar" value="">
+        <input type="submit" name="submitName" value="Actualizar">
+      </form>
+
+      <form class="user-avar-form" action="userSettings.php" method="post">
+        <legend>Cambiar avatar</legend>
         <label for="cambiarAvatar">Subir imagen avatar</label>
-        <br>
+        <input type="file" name="cambiarAvatar" id="cambiarAvatar" accept=".jpg, .jpeg, .png">
         <div class="preview" id="preview">
           <p>No se ha seleccionado ningun archivo</p>
         </div>
-        <input type="file" name="cambiarAvatar" id="cambiarAvatar" accept=".jpg, .jpeg, .png">
         <input type="submit" name="submitAvatar" value="Cambiar">
       </form>
 
-      <h4 id="Seguridad">Seguridad</h4>
-      <h4>Cambiar contraseña</h4>
-      <label for="nombreCambiar">Contraseña actual</label>
-      <input type="text" name="nombreCambiar" value="">
-      <br>
-      <label for="passwordNueva">Contraseña nueva</label>
-      <input type="text" name="passwordNueva" value="">
-      <br>
-      <label for="confirmarPasswordNueva">Confirmar contraseña</label>
-      <input type="text" name="confirmarPasswordNueva" value="">
+      <form class="user-secu-form" action="userSettings.php" method="post">
+        <legend>Cambiar contraseña</legend>
+        <label for="passwordVieja">Contraseña actual</label>
+        <input type="password" name="passwordVieja" value="">
+        <label for="passwordNueva">Contraseña nueva</label>
+        <input type="password" name="passwordNueva" value="">
+        <label for="confirmarPasswordNueva">Confirmar contraseña</label>
+        <input type="password" name="confirmarPasswordNueva" value="">
+        <input type="submit" name="submitPassword" value="Actualizar">
+      </form>
     </section>
   </div>
 
