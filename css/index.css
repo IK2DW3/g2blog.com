@@ -54,7 +54,7 @@
   list-style: none;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: flex-end;
   list-style-type: none;
   overflow: hidden;
   height: 37px;
@@ -85,10 +85,18 @@
 .header .header-nav .dropdown .buttonDropdown {
   background-color: #ffffff;
   border: 1px solid #f9ab5b;
+  cursor: pointer;
   padding: 8px 16px;
 }
 .header .header-nav .dropdown .dropdown-menu {
+  background-color: #9e9e9e;
   display: none;
+  position:absolute;
+  right: 0;
+  top: 48px;
+}
+.header .header-nav .dropdown .dropdown-menu.active {
+  display: block;
 }
 .header .header-nav .dropdown .dropdown-menu ul {
   align-items: center;

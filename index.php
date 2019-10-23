@@ -29,7 +29,7 @@ session_start();
         <li><a class="a-buttom" href="php/register.php">Registrarse</a></li>
         <?php } else { ?>
         <div class="dropdown">
-          <button type="button" class="buttonDropdown" id="dropdownMenuButton" ><?php echo ("Hey, ".$_SESSION['nombre_usuario']); ?></button>
+          <button type="button" class="buttonDropdown" id="dropdownMenuButton" ><?php echo ("Hey, ".$_SESSION['nombre_usuario']." &#9660"); ?></button>
           <div class="dropdown-menu" id="dropdown-menu">
             <ul>
               <li><a href="php/userSettings.php">Mi perfil</a></li>

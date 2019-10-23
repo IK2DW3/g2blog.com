@@ -1,13 +1,12 @@
-window.onload = function() {
-  document.getElementById("dropdownMenuButton").onclick = dropdown;
-}
-
-function dropdown() {
-  var buttomMenu = document.getElementById("dropdown-menu");
-
-  if (buttomMenu.style.display == "none") {
-    buttomMenu.style.display == "absolute";
-  } else {
-    buttomMenu.style.display == "none";
+window.onload = function(){
+  // put your code here
+  document.getElementById("dropdownMenuButton").addEventListener("click", dropdown);
+  function dropdown() {
+    document.getElementById("dropdown-menu").classList.toggle('active');
   }
 }
+/*
+document.addEventListener("click", function(){
+  document.getElementById("dropdownMenuButton").innerHTML = "Hello World";
+});
+*/
