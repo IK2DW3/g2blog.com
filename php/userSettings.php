@@ -33,23 +33,39 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       $sentencia= $base_de_datos->query($consulta);
       if ($sentencia == TRUE ) {
         $results = $sentencia->fetch();
-        echo ("<img src='.$results[0]'>");
+        if (!$results[0] == '') {
+          echo ("<img src='.$results[0]'>");
+        } else {
+          echo ("<img src='../img/contact.png'>");
+        }
       } else {
         echo ("<img src='../img/contact.png'>");
-        /*echo ("<img src='.$row->img_avatar'>");*/
       }
       ?>
       <h3><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$_SESSION['nombre_usuario']);} ?></h3>
       <ul>
-        <li><a href="#">Perfil</a></li>
-        <li><a href="#">Cuenta</a></li>
+        <li><a href="#">Perfil / Cuenta</a></li>
+        <li><a href="#Seguridad">Seguridad</a></li>
+        <li><a href="#">Mis publicaciones</a></li>
       </ul>
     </nav>
-    <section class="user-settings" id="user-settings">
-
-    </section>
     <section class="user-account" id="user-account">
-
+      <h3>Mis datos</h3>
+      <label for="nombreCambiar">Nombre de usuario</label>
+      <input type="text" name="nombreCambiar" value="<?php echo ($_SESSION['nombre_usuario']); ?>">
+      <br>
+      <label for="nombreCambiar">Email</label>
+      <input type="email" name="emailNuevo" value="">
+      <h4 id="Seguridad">Seguridad</h4>
+      <h4>Cambiar contraseña</h4>
+      <label for="nombreCambiar">Contraseña actual</label>
+      <input type="text" name="nombreCambiar" value="">
+      <br>
+      <label for="passwordNueva">Contraseña nueva</label>
+      <input type="text" name="passwordNueva" value="">
+      <br>
+      <label for="confirmarPasswordNueva">Confirmar contraseña</label>
+      <input type="text" name="confirmarPasswordNueva" value="">
     </section>
   </div>
 

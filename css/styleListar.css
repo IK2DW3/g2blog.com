@@ -95,7 +95,9 @@
   background-color: #8e8a8a;
   grid-column: 2 / 10;
   grid-row: 3 / 11;
-
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 /* Aside */
 .box3 {
@@ -246,7 +248,6 @@ label {
 #customers {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 100%;
 }
 
 #customers td, #customers th {
@@ -264,4 +265,35 @@ label {
   text-align: left;
   background-color: #4CAF50;
   color: white;
+}
+
+
+
+/* tabla responsive */
+.responsive-table{
+  width: 100%;
+  overflow-x: scroll; 
+  overflow-y: auto; 
+  max-height: 300px;
+}
+
+.buscador{
+  height: 25px;
+  background: white;
+  display: flex;
+  position:relative;
+  margin-bottom: 10px;
+}
+.buscador input{
+  width: 100%;
+  background: transparent;
+  z-index: 2;
+  border: none;
+}
+
+.buscador i{
+  font-size:25px;
+  position: absolute;
+  right: 0;
+  z-index: 1;
 }

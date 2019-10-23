@@ -368,6 +368,7 @@
   background-color: #b4b4b4;
   display: flex;
   margin: 5% 10%;
+  overflow: hidden;
   width: 80%;
 }
 .panelUsuario .nav-user {
@@ -375,6 +376,7 @@
   background-color: #3c4f70;
   display: flex;
   flex-basis: 20%;
+  flex-grow: 1;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -400,4 +402,13 @@
 .panelUsuario .nav-user ul li a {
   color: #dddbdb;
   text-decoration: none;
+}
+
+.panelUsuario .user-account {
+  background-color: #405477;
+  color: #dddbdb;
+  flex-basis: 80%;
+  flex-grow: 3;
+  overflow: hidden;
+  padding: 1%;
 }

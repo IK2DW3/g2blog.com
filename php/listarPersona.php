@@ -9,6 +9,8 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 	<meta charset="UTF-8">
     <title>Listar usuarios</title>
     <link rel="stylesheet" href="../css/styleListar.css" class="css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 </head>
 <body>
@@ -19,43 +21,47 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
         </header>
 
         <section class="box2" id="box2">
-            <table id="customers">
-                <thead>
-                    <tr>
-                        <th>Nombre_Usuario</th>
-                        <th>Password</th>
-                        <th>Email</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Fecha_Nacimiento</th>
-                        <th>Num_Teléfono</th>
-                        <th>Género</th>
-                        <th>Entradas_Publicadas</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--
-                        Atención aquí, sólo esto cambiará
-                        Pd: no ignores las llaves de inicio y cierre {}
-                    -->
-                    <?php foreach($usuario as $usuarios){ ?>
-                    <tr>
-                        <td><?php echo $usuarios->nombre_usuario ?></td>
-                        <td><?php echo $usuarios->password ?></td>
-                        <td><?php echo $usuarios->email ?></td>
-                        <td><?php echo $usuarios->nombre ?></td>
-                        <td><?php echo $usuarios->apellidos ?></td>
-                        <td><?php echo $usuarios->fecha_nacimiento ?></td>
-                        <td><?php echo $usuarios->num_telefono ?></td>
-                        <td><?php echo $usuarios->sexo ?></td>
-                        <td><?php echo $usuarios->entradas_publicadas ?></td>
+            <div class="buscador">
+                <input type="text">
+                <i class="material-icons">find_in_page</i>
+            </div>
+            <div class="responsive-table">
+                <table id="customers">
+                    <thead>
+                        <tr>
+                            <th>Nombre_Usuario</th>
+                            <th>Password</th>
+                            <th>Email</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Fecha_Nacimiento</th>
+                            <th>Género</th>
+                            <th>Entradas_Publicadas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--
+                            Atención aquí, sólo esto cambiará
+                            Pd: no ignores las llaves de inicio y cierre {}
+                        -->
+                        <?php foreach($usuario as $usuarios){ ?>
+                        <tr>
+                            <td><?php echo $usuarios->nombre_usuario ?></td>
+                            <td><?php echo $usuarios->password ?></td>
+                            <td><?php echo $usuarios->email ?></td>
+                            <td><?php echo $usuarios->nombre ?></td>
+                            <td><?php echo $usuarios->apellidos ?></td>
+                            <td><?php echo $usuarios->fecha_nacimiento ?></td>
+                            <td><?php echo $usuarios->sexo ?></td>
+                            <td><?php echo $usuarios->entradas_publicadas ?></td>
 
-                        <!--<td><a href="<?php echo "editar.php?id=" . $persona->id?>">Editar</a></td>
-                        <td><a href="<?php echo "eliminar.php?id=" . $persona->id?>">Eliminar</a></td>-->
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                            <!--<td><a href="<?php echo "editar.php?id=" . $persona->id?>">Editar</a></td>
+                            <td><a href="<?php echo "eliminar.php?id=" . $persona->id?>">Eliminar</a></td>-->
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section class="box3" id="box3">
