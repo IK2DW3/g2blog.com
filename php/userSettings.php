@@ -44,15 +44,15 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           echo ("<img src='../img/contact.png'>");
         }
         ?>
-        <h3><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$usuarioLogin);} ?></h3>
+        <h2><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$usuarioLogin);} ?></h2>
       </div>
       <nav class="user-nav">
         <ul>
-          <li><a href="#">Perfil / Cuenta</a></li>
-          <li><a href="#">Mis publicaciones</a></li>
+          <li id="Opcion1"><a href="#">Perfil / Cuenta</a></li>
+          <li id="Opcion2"><a href="#">Mis publicaciones</a></li>
           <?php if ($results[2] == "Administrador") { ?>
-          <li><a href="#">Usuario</a></li>
-          <li><a href="#">Entradas</a></li>
+          <li id="Opcion3"><a href="#">Usuario</a></li>
+          <li id="Opcion4"><a href="#">Entradas</a></li>
           <?php
           }?>
         </ul>
@@ -64,7 +64,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <label for="usuarioCambiar">Nombre de usuario</label>
         <input type="text" name="usuarioCambiar" value="<?php echo ($_SESSION['nombre_usuario']); ?>" autocomplete="off">
         <label for="nombreCambiar">Email</label>
-        <input type="email" name="emailNuevo" value="<?php echo ($results[2]); ?>" readonly>
+        <input type="email" name="emailNuevo" value="<?php echo ($results[3]); ?>" readonly>
         <label for="nombreCambiar">Nombre</label>
         <input type="text" name="nombreCambiar" value="<?php echo ($results[0]); ?>" readonly>
         <label for="apellidosCambiar">Apellidos</label>
@@ -95,6 +95,10 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <input type="password" name="confirmarPasswordNueva" value="">
         <input type="submit" name="submitPassword" value="Actualizar">
       </form>
+    </section>
+
+    <section class="user-entries" id="user-entries">
+      <h2>Prueba</h2>
     </section>
   </div>
 

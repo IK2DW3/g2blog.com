@@ -388,7 +388,7 @@
   height: 50px;
   width: 50px;
 }
-.panelUsuario .user-aside .user-icon h3 {
+.panelUsuario .user-aside .user-icon h2 {
   color: #dddbdb;
 }
 .panelUsuario .user-aside .user-nav{
@@ -483,4 +483,17 @@
 }
 .panelUsuario .user-account .user-avar-form .preview {
   flex-basis: 100%;
+}
+
+.panelUsuario .user-entries {
+  background-color: #f2f2f2;
+  color: #282828;
+  flex-basis: 80%;
+  flex-grow: 3;
+  overflow: hidden;
+  padding: 1%;
+}
+
+.panelUsuario .activo {
+  border-left: 1.5px solid #01f4fb;
 }

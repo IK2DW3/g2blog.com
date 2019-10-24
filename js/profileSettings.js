@@ -79,4 +79,42 @@ window.onload = function() {
     }
   }
 
+  document.getElementById("Opcion1").addEventListener("click", displaySection);
+  document.getElementById("Opcion2").addEventListener("click", displaySection);
+  document.getElementById("user-entries").style.display = "none";
+
+  function displaySection() {
+    var elementoActivo = false;
+
+    var entradas = document.getElementById("user-entries");
+    var perfil = document.getElementById("user-account");
+
+    var op1 = document.getElementById("Opcion1");
+    var op2 = document.getElementById("Opcion2");
+
+    if (op1.classList != "activo") {
+      op1.classList.add("activo");
+      op2.classList.remove("activo");
+    } else if (op2.classList != "activo") {
+      op1.classList.remove("activo");
+      op2.classList.add("activo");
+    }
+
+
+    /*
+    if(elementoActivo == false) {
+      elementoActivo = true;
+       alert("button was clicked");
+    }*/
+
+    /*
+    if (entradas.style.display === "none") {
+      entradas.style.display = "flex";
+      perfil.style.display = "none";
+    } else {
+      entradas.style.display = "none";
+      perfil.style.display = "block";
+    }*/
+  }
+
 }

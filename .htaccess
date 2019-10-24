@@ -1,13 +1,14 @@
 #Fix Rewrite
-Options -Multiviews
+Options +Multiviews
 
 # Mod Rewrite
 Options +FollowSymLinks
+
 RewriteEngine On
 RewriteBase /g2blog.com/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# used for php pages such as "yoursite.com/login.php" will become "yoursite.com/login/"
-RewriteRule ^([a-z_]+)\/?$ $1.php [NC]
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*?)/?$ /g2blog.com/$1.php [NC,END]
