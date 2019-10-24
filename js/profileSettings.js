@@ -6,7 +6,7 @@ window.onload = function() {
   /* Asignar un tamaño máximo a las imagenes */
   var uploadField = document.getElementById("cambiarAvatar");
   uploadField.onchange = function() {
-      if(this.files[0].size > 5120){
+      if(this.files[0].size > 304800){
          alert("Tamaño de imagen demasiado grande.");
          this.value = "";
       };

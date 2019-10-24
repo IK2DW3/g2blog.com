@@ -31,12 +31,12 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       <div class="user-icon">
         <?php
         include_once "base_de_datos.php";
-        $consulta= "SELECT nombre, apellidos, email, img_avatar FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
+        $consulta= "SELECT nombre, apellidos, tipo_usuario, email, img_avatar FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
         $sentencia= $base_de_datos->query($consulta);
         if ($sentencia == TRUE ) {
           $results = $sentencia->fetch();
           if (!$results[0] == '') {
-            echo ("<img src=../img/$results[3]>");
+            echo ("<img src=../img/$results[4]>");
           } else {
             echo ("<img src='../img/contact.png'>");
           }
@@ -50,14 +50,19 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <ul>
           <li><a href="#">Perfil / Cuenta</a></li>
           <li><a href="#">Mis publicaciones</a></li>
+          <?php if ($results[2] == "Administrador") { ?>
+          <li><a href="#">Usuario</a></li>
+          <li><a href="#">Entradas</a></li>
+          <?php
+          }?>
         </ul>
       </nav>
     </aside>
     <section class="user-account" id="user-account">
-      <form class="user-data-form" action="userSettings.php" method="post">
+      <form class="user-data-form" action="updateUsername.php" method="post">
         <legend>Mis datos</legend>
         <label for="usuarioCambiar">Nombre de usuario</label>
-        <input type="text" name="usuarioCambiar" value="<?php echo ($_SESSION['nombre_usuario']); ?>">
+        <input type="text" name="usuarioCambiar" value="<?php echo ($_SESSION['nombre_usuario']); ?>" autocomplete="off">
         <label for="nombreCambiar">Email</label>
         <input type="email" name="emailNuevo" value="<?php echo ($results[2]); ?>" readonly>
         <label for="nombreCambiar">Nombre</label>
@@ -70,7 +75,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <input type="submit" name="submitName" value="Actualizar">
       </form>
 
-      <form class="user-avar-form" action="userSettings.php" method="post">
+      <form class="user-avar-form" action="uploadAvatar.php" method="post" enctype="multipart/form-data">
         <legend>Cambiar avatar</legend>
         <label for="cambiarAvatar">Subir imagen avatar</label>
         <input type="file" name="cambiarAvatar" id="cambiarAvatar" accept=".jpg, .jpeg, .png">
@@ -80,7 +85,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <input type="submit" name="submitAvatar" value="Cambiar">
       </form>
 
-      <form class="user-secu-form" action="userSettings.php" method="post">
+      <form class="user-secu-form" action="updatePassword.php" method="post">
         <legend>Cambiar contraseña</legend>
         <label for="passwordVieja">Contraseña actual</label>
         <input type="password" name="passwordVieja" value="">
