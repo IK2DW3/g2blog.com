@@ -48,11 +48,11 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       </div>
       <nav class="user-nav">
         <ul>
-          <li id="Opcion1"><a href="#">Perfil / Cuenta</a></li>
-          <li id="Opcion2"><a href="#">Mis publicaciones</a></li>
+          <li id="op1"><a href="#">Perfil / Cuenta</a></li>
+          <li id="op2"><a href="#">Mis publicaciones</a></li>
           <?php if ($results[2] == "Administrador") { ?>
-          <li id="Opcion3"><a href="#">Usuario</a></li>
-          <li id="Opcion4"><a href="#">Entradas</a></li>
+          <li id="op3"><a href="#">Usuario</a></li>
+          <li id="op4"><a href="#">Entradas</a></li>
           <?php
           }?>
         </ul>
@@ -98,7 +98,37 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </section>
 
     <section class="user-entries" id="user-entries">
-      <h2>Prueba</h2>
+      <h2 id="Entradas">Mis entradas</h2>
+      <div class="user-entries-table">
+        <input type="text" id="myInput" placeholder="Buscar título..." title="Type in a name">
+        <?php
+    			include_once "base_de_datos.php";
+    			$sentencia = $base_de_datos->query("SELECT id, titulo, fecha_publicacion, categoria, num_comentarios  FROM entradas WHERE name_usuario = '$usuarioLogin' ORDER BY fecha_publicacion DESC ;");
+    			$entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    		?>
+        <table id="myTable">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Categoria</th>
+              <th>Nº Comentarios</th>
+              <th>Fecha Publicada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach($entrada as $entradas){ ?>
+            <tr>
+              <td><?php echo $entradas->titulo ?></td>
+              <td><?php echo $entradas->categoria ?></td>
+              <td><?php echo $entradas->num_comentarios ?></td>
+              <td><?php echo $entradas->fecha_publicacion ?></td>
+              <!--<td><a href="<?php echo "editar.php?id=" . $entradas->id?>">Editar</a></td>
+              <td><a href="<?php echo "eliminar.php?id=" . $entradas->id?>">Eliminar</a></td>-->
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
     </section>
   </div>
 

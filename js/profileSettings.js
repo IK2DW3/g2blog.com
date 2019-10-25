@@ -79,42 +79,43 @@ window.onload = function() {
     }
   }
 
-  document.getElementById("Opcion1").addEventListener("click", displaySection);
-  document.getElementById("Opcion2").addEventListener("click", displaySection);
+  document.getElementById("op1").addEventListener("click", mostrarElemento);
+  document.getElementById("op2").addEventListener("click", mostrarElemento);
   document.getElementById("user-entries").style.display = "none";
 
-  function displaySection() {
-    var elementoActivo = false;
-
-    var entradas = document.getElementById("user-entries");
-    var perfil = document.getElementById("user-account");
-
-    var op1 = document.getElementById("Opcion1");
-    var op2 = document.getElementById("Opcion2");
-
-    if (op1.classList != "activo") {
-      op1.classList.add("activo");
-      op2.classList.remove("activo");
-    } else if (op2.classList != "activo") {
-      op1.classList.remove("activo");
-      op2.classList.add("activo");
+  function mostrarElemento(){
+    // Accion por defecto para Buttons;
+    switch (this.id){
+      case 'op1':
+        document.getElementById('user-account').style.display = 'block';
+        document.getElementById('user-entries').style.display = 'none';
+        break;
+      case 'op2':
+        document.getElementById('user-account').style.display = 'none';
+        document.getElementById('user-entries').style.display = 'block';
+        break;
     }
 
+  }
 
-    /*
-    if(elementoActivo == false) {
-      elementoActivo = true;
-       alert("button was clicked");
-    }*/
-
-    /*
-    if (entradas.style.display === "none") {
-      entradas.style.display = "flex";
-      perfil.style.display = "none";
-    } else {
-      entradas.style.display = "none";
-      perfil.style.display = "block";
-    }*/
+  document.getElementById("myInput").addEventListener("keyup", myFunction);
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
   }
 
 }

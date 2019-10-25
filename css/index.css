@@ -494,6 +494,48 @@
   padding: 1%;
 }
 
-.panelUsuario .activo {
-  border-left: 1.5px solid #01f4fb;
+.panelUsuario .user-entries .user-entries-table {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.panelUsuario .user-entries h2 {
+  border-bottom: 1px solid rgb(213, 213, 213);
+  flex-basis: 100%;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: .5% 0;
+}
+
+
+#myInput {
+  flex-basis: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  flex-basis: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
 }
