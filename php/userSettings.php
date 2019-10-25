@@ -35,7 +35,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         $sentencia= $base_de_datos->query($consulta);
         if ($sentencia == TRUE ) {
           $results = $sentencia->fetch();
-          if (!$results[0] == '') {
+          if (!$results[4] == '') {
             echo ("<img src='../img/$results[4]' alt='Avatar'>");
           } else {
             echo ("<img src='../img/contact.png' alt='Avatar'>");
@@ -53,8 +53,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           <?php if ($results[2] == "Administrador") { ?>
           <li id="op3"><a href="#">&#128101; Gestionar Usuarios</a></li>
           <li id="op4"><a href="#">&#128218; Gestionar Entradas</a></li>
-          <?php
-          }?>
+          <?php } ?>
         </ul>
       </nav>
     </aside>
@@ -144,7 +143,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         </form>
       </div>
     </section>
-
+    <?php if ($results[2] == "Administrador") { ?>
     <section class="adm-users" id="adm-users">
       <h3 id="Entradas">Lista usuarios</h3>
       <div class="adm-users-table">
@@ -184,6 +183,8 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         </table>
       </div>
     </section>
+    <?php } ?>
+    
   </div>
 
   <footer class="footer">

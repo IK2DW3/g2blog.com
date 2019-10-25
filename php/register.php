@@ -26,7 +26,7 @@
       <input type="email" name="email" id="email" placeholder="Email..." value="" autocomplete="off">
       <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar contraseña..." value="">
       <br>
-      <input type="date" name="date" value="1960-01-01" min="1960-01-01" max="2003-12-31" required>
+      <input type="date" name="date" id="date" value="1960-01-01" min="1960-01-01" max="2003-12-31" required>
       <input type="radio" name="sexo" value="W" id="radio-one" class="form-radio" ><label for="radio-one">Mujer</label>
       <input type="radio" name="sexo" value="M" id="radio-two" class="form-radio" ><label for="radio-two">Hombre</label>
       <br>

@@ -13,9 +13,9 @@ function validacionLogin() {
 function validacion() {
   nombrePersona = document.getElementById("name").value;
   apellidosPersona  = document.getElementById("surname").value;
-  nombreUsuario = document.getElementById("usernameregister").value;
-  passwordUsuario = document.getElementById("passwordregister").value;
-  confirmarPasswordUsuario = document.getElementById("confirmpassword").value;
+  nombreUsuario = document.getElementById("usernameRegister").value;
+  passwordUsuario = document.getElementById("passwordRegister").value;
+  confirmarPasswordUsuario = document.getElementById("confirmPassword").value;
   email = document.getElementById("email").value;
   opciones = document.getElementsByName("sexo");
   elemento = document.getElementById("terminosCondiciones");
