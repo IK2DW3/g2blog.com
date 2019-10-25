@@ -14,7 +14,7 @@ if(isset($_POST['submitName'])) {
       header('Location: userSettings.php');
       break;
     } else {
-      if ($_POST["passwordVieja"] == $resultados->password) {
+      if (md5($_POST["passwordVieja"]) == $resultados->password) {
         $consulta= "UPDATE usuarios SET nombre_usuario = '$nuevoNombre' WHERE nombre_usuario = '$usuarioLogin'";
         $sentencia= $base_de_datos->query($consulta);
         header('Location: logout.php');

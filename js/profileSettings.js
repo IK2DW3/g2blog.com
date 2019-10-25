@@ -79,11 +79,12 @@ window.onload = function() {
     }
   }
 
-  document.getElementById("op1").addEventListener("click", mostrarElemento);
-  document.getElementById("op2").addEventListener("click", mostrarElemento);
-  //document.getElementById("op3").addEventListener("click", mostrarElemento);
-  document.getElementById("user-entries").style.display = "none";
-  document.getElementById("adm-users").style.display = "none";
+  for (var i = 0; i < document.getElementsByClassName('adm').length; i++) {
+    document.getElementsByClassName('adm')[i].style.display = "none";
+  }
+  for (var i = 0; i < document.getElementsByClassName('op').length; i++) {
+    document.getElementsByClassName('op')[i].addEventListener("click", mostrarElemento);
+  }
 
   function mostrarElemento(){
     // Accion por defecto para Buttons;

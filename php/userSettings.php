@@ -48,11 +48,11 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       </div>
       <nav class="user-nav">
         <ul>
-          <li id="op1"><a href="#">&#128100; Perfil / Cuenta</a></li>
-          <li id="op2"><a href="#">&#128209; Mis publicaciones</a></li>
+          <li class="op adm-li" id="op1"><a href="#">&#128100; Perfil / Cuenta</a></li>
+          <li class="op adm-li" id="op2"><a href="#">&#128209; Mis publicaciones</a></li>
           <?php if ($results[2] == "Administrador") { ?>
-          <li id="op3"><a href="#">&#128101; Gestionar Usuarios</a></li>
-          <li id="op4"><a href="#">&#128218; Gestionar Entradas</a></li>
+          <li class="op adm-li" id="op3"><a href="#">&#128101; Gestionar Usuarios</a></li>
+          <li class="op adm-li" id="op4"><a href="#">&#128218; Gestionar Entradas</a></li>
           <?php } ?>
         </ul>
       </nav>
@@ -96,7 +96,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       </form>
     </section>
 
-    <section class="user-entries" id="user-entries">
+    <section class="adm user-entries" id="user-entries">
       <h3 id="Entradas">Mis entradas</h3>
       <div class="user-entries-table">
         <input type="text" class="user-searchfiled" id="myInput" placeholder="Buscar título..." title="Type in a name">
@@ -144,7 +144,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       </div>
     </section>
     <?php if ($results[2] == "Administrador") { ?>
-    <section class="adm-users" id="adm-users">
+    <section class="adm adm-users" id="adm-users">
       <h3 id="Entradas">Lista usuarios</h3>
       <div class="adm-users-table">
         <input type="text" class="user-searchfiled" id="myInput" placeholder="Buscar título..." title="Type in a name">
@@ -184,7 +184,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       </div>
     </section>
     <?php } ?>
-    
+
   </div>
 
   <footer class="footer">
