@@ -51,7 +51,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           <li id="op1"><a href="#">Perfil / Cuenta</a></li>
           <li id="op2"><a href="#">Mis publicaciones</a></li>
           <?php if ($results[2] == "Administrador") { ?>
-          <li id="op3"><a href="#">Usuario</a></li>
+          <li id="op3"><a href="#">Usuarios</a></li>
           <li id="op4"><a href="#">Entradas</a></li>
           <?php
           }?>
