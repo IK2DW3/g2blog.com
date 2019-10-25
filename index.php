@@ -10,7 +10,7 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="fav/favicon.ico" type="image/x-icon"> <!-- Favicon -->
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet"> <!-- Icon pack link https://ionicons.com/ -->
-  <link rel="stylesheet" href="css/index.css" class="css"> <!-- Website Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" class="css"> <!-- Website Stylesheet -->
   <script src="js/interaccionesUsuario.js"></script>
   <title>G2BLOG - Inicio</title> <!-- Website title -->
 </head>

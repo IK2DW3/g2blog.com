@@ -9,7 +9,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="../fav/favicon.ico" type="image/x-icon"> <!-- Favicon -->
-  <link rel="stylesheet" href="../css/index.css" class="css"> <!-- Website Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css" class="css"> <!-- Website Stylesheet -->
   <script src="../js/profileSettings.js"></script>
   <title><?php echo "G2BLOG - Perfil ".$usuarioLogin; ?></title>
 </head>
@@ -36,12 +36,12 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         if ($sentencia == TRUE ) {
           $results = $sentencia->fetch();
           if (!$results[0] == '') {
-            echo ("<img src=../img/$results[4]>");
+            echo ("<img src='../img/$results[4]' alt='Avatar'>");
           } else {
-            echo ("<img src='../img/contact.png'>");
+            echo ("<img src='../img/contact.png' alt='Avatar'>");
           }
         } else {
-          echo ("<img src='../img/contact.png'>");
+          echo ("<img src='../img/contact.png' alt='Avatar'>");
         }
         ?>
         <h2><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$usuarioLogin);} ?></h2>
@@ -51,8 +51,8 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           <li id="op1"><a href="#">Perfil / Cuenta</a></li>
           <li id="op2"><a href="#">Mis publicaciones</a></li>
           <?php if ($results[2] == "Administrador") { ?>
-          <li id="op3"><a href="#">Usuarios</a></li>
-          <li id="op4"><a href="#">Entradas</a></li>
+          <li id="op3"><a href="#">Gestionar Usuarios</a></li>
+          <li id="op4"><a href="#">Gestionar Entradas</a></li>
           <?php
           }?>
         </ul>
@@ -100,13 +100,13 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     <section class="user-entries" id="user-entries">
       <h2 id="Entradas">Mis entradas</h2>
       <div class="user-entries-table">
-        <input type="text" id="myInput" placeholder="Buscar título..." title="Type in a name">
+        <input type="text" class="user-searchfiled" id="myInput" placeholder="Buscar título..." title="Type in a name">
         <?php
     			include_once "base_de_datos.php";
     			$sentencia = $base_de_datos->query("SELECT id, titulo, fecha_publicacion, categoria, num_comentarios  FROM entradas WHERE name_usuario = '$usuarioLogin' ORDER BY fecha_publicacion DESC ;");
     			$entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
     		?>
-        <table id="myTable">
+        <table class="info-tabla" id="myTable">
           <thead>
             <tr>
               <th>Título</th>
@@ -134,8 +134,40 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     <section class="adm-users" id="adm-users">
       <h2 id="Entradas">Lista usuarios</h2>
       <div class="adm-users-table">
-        <input type="text" id="myInput" placeholder="Buscar título..." title="Type in a name">
-        
+        <input type="text" class="user-searchfiled" id="myInput" placeholder="Buscar título..." title="Type in a name">
+        <?php
+        include_once "base_de_datos.php";
+        $sentencia = $base_de_datos->query("SELECT * FROM usuarios;");
+        $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        ?>
+        <table class="info-tabla" id="myTable">
+            <thead>
+              <tr>
+                <th>Nombre usuario</th>
+                <th>Email</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Fecha Nacimiento</th>
+                <th>Género</th>
+                <th>Nº Entradas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach($usuario as $usuarios){ ?>
+              <tr>
+                <td><?php echo $usuarios->nombre_usuario ?></td>
+                <td><?php echo $usuarios->email ?></td>
+                <td><?php echo $usuarios->nombre ?></td>
+                <td><?php echo $usuarios->apellidos ?></td>
+                <td><?php echo $usuarios->fecha_nacimiento ?></td>
+                <td><?php echo $usuarios->sexo ?></td>
+                <td><?php echo $usuarios->entradas_publicadas ?></td>
+                <!--<td><a href="<?php echo "editar.php?id=" . $persona->id?>">Editar</a></td>
+                <td><a href="<?php echo "eliminar.php?id=" . $persona->id?>">Eliminar</a></td>-->
+              </tr>
+              <?php } ?>
+            </tbody>
+        </table>
       </div>
     </section>
   </div>

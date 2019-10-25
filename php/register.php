@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="../fav/favicon.ico" type="image/x-icon"> <!-- Favicon -->
-  <link rel="stylesheet" href="../css/index.css" class="css"> <!-- Website Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css" class="css"> <!-- Website Stylesheet -->
   <title>G2BLOG - Registrarse</title>
   <!-- Validacion registro-->
   <script src="../js/validacion-registro.js"></script>
