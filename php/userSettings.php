@@ -8,7 +8,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="shortcut icon" href="../fav/favicon.ico" type="image/x-icon"> <!-- Favicon -->
+  <link rel="shortcut icon" href="../fav/favicon.ico" type="image/x-icon"> <!-- Favicon http://www.mclibre.org/consultar/htmlcss/html/html-unicode-dibujos.html -->
   <link rel="stylesheet" href="../css/style.css" class="css"> <!-- Website Stylesheet -->
   <script src="../js/profileSettings.js"></script>
   <title><?php echo "G2BLOG - Perfil ".$usuarioLogin; ?></title>
@@ -48,11 +48,11 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       </div>
       <nav class="user-nav">
         <ul>
-          <li id="op1"><a href="#">Perfil / Cuenta</a></li>
-          <li id="op2"><a href="#">Mis publicaciones</a></li>
+          <li id="op1"><a href="#">&#128100; Perfil / Cuenta</a></li>
+          <li id="op2"><a href="#">&#128209; Mis publicaciones</a></li>
           <?php if ($results[2] == "Administrador") { ?>
-          <li id="op3"><a href="#">Gestionar Usuarios</a></li>
-          <li id="op4"><a href="#">Gestionar Entradas</a></li>
+          <li id="op3"><a href="#">&#128101; Gestionar Usuarios</a></li>
+          <li id="op4"><a href="#">&#128218; Gestionar Entradas</a></li>
           <?php
           }?>
         </ul>
@@ -98,7 +98,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </section>
 
     <section class="user-entries" id="user-entries">
-      <h2 id="Entradas">Mis entradas</h2>
+      <h3 id="Entradas">Mis entradas</h3>
       <div class="user-entries-table">
         <input type="text" class="user-searchfiled" id="myInput" placeholder="Buscar título..." title="Type in a name">
         <?php
@@ -128,11 +128,25 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
             <?php } ?>
           </tbody>
         </table>
+
+        <form class="" action="" method="post">
+          <legend>Crear Entrada</legend>
+          <label for="entrieTitle">Contraseña actual</label>
+          <input type="text" name="entrieTitle" value="" placeholder="Título de entrada...">
+          <label for="entrieContent">Texto</label>
+          <textarea name="entrieContent" rows="8" cols="80">Texto a escribir...</textarea>
+          <select class="entrie-categori" name="entrie-categori">
+            <option value="none">Selecciona categoria</option>
+            <option value="Informatica">Informática</option>
+            <option value="Off-Topic">Off-Topic</option>
+          </select>
+          <input type="submit" name="submitEntrie" value="Actualizar">
+        </form>
       </div>
     </section>
 
     <section class="adm-users" id="adm-users">
-      <h2 id="Entradas">Lista usuarios</h2>
+      <h3 id="Entradas">Lista usuarios</h3>
       <div class="adm-users-table">
         <input type="text" class="user-searchfiled" id="myInput" placeholder="Buscar título..." title="Type in a name">
         <?php
