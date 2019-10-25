@@ -421,19 +421,23 @@
   overflow: hidden;
   padding: 1%;
 }
-.panelUsuario .user-account legend {
+.panelUsuario .user-account legend,
+.panelUsuario .user-entries legend {
   border-bottom: 1px solid rgb(213, 213, 213);
   flex-basis: 100%;
   font-size: 1.5em;
   font-weight: bold;
+  margin-bottom: 1%;
   padding: .5% 0;
 }
+.panelUsuario .label-info,
 .panelUsuario .user-account label {
   flex-basis: 100%;
   font-size: 1em;
   font-weight: bold;
   padding: 1.5% 0 .5%;
 }
+.panelUsuario .input-field,
 .panelUsuario .user-account input[type=text],
 .panelUsuario .user-account input[type=password],
 .panelUsuario .user-account input[type=email] {
@@ -453,6 +457,35 @@
   padding: 6px 8px;
   vertical-align: middle;
 }
+.panelUsuario .input-textarea {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(27,31,35,.075);
+  color: #24292e;
+  height: 100px;
+  font-size: 1em;
+  flex-basis: 100%;
+  line-height: 20px;
+  margin: .5% 0 1%;
+  outline: none;
+  padding: 6px 8px;
+  vertical-align: middle;
+}
+.panelUsuario .entrie-categori {
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(27,31,35,.075);
+  color: #24292e;
+  height: 30px;
+  font-size: 1em;
+  flex-basis: 100%;
+  margin: .5% 0 1%;
+  outline: none;
+}
+.panelUsuario .input-submit,
 .panelUsuario .user-account input[type=submit] {
   background-color: #28a745;
   background-image: linear-gradient(-180deg,#34d058,#28a745 90%);
@@ -467,7 +500,8 @@
 }
 .panelUsuario .user-account .user-data-form,
 .panelUsuario .user-account .user-avar-form,
-.panelUsuario .user-account .user-secu-form {
+.panelUsuario .user-account .user-secu-form,
+.panelUsuario .user-entries .user-entries-form {
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
@@ -475,7 +509,7 @@
   margin-bottom: 3%;
   width: 40%;
 }
-.panelUsuario .user-account .user-data-form .subText {
+.panelUsuario .subText {
   font-size: .75em;
 }
 .panelUsuario .user-account .user-avar-form ol {
@@ -517,19 +551,24 @@
 
 
 .user-searchfiled {
+  background-image: url('../img/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  border: 1px solid #ddd;
   flex-basis: 100%;
   font-size: 16px;
   padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
   margin-bottom: 12px;
   margin-top: 12px;
 }
 
 .info-tabla {
+  border: 1px solid #ddd;
   border-collapse: collapse;
   flex-basis: 100%;
-  border: 1px solid #ddd;
   font-size: .9em;
+  margin-bottom: 3%;
 }
 .info-tabla th {
   font-size: .9em;

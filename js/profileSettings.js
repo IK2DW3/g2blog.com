@@ -85,7 +85,7 @@ window.onload = function() {
   for (var i = 0; i < document.getElementsByClassName('op').length; i++) {
     document.getElementsByClassName('op')[i].addEventListener("click", mostrarElemento);
   }
-
+  // Funcion para mostar una sección según el elmento elegido
   function mostrarElemento(){
     // Accion por defecto para Buttons;
     switch (this.id){
@@ -108,10 +108,14 @@ window.onload = function() {
 
   }
 
-  document.getElementById("myInput").addEventListener("keyup", myFunction);
-  function myFunction() {
+
+  for (var i = 0; i < document.getElementsByClassName('user-searchfiled').length; i++) {
+    document.getElementsByClassName('user-searchfiled')[i].addEventListener("keyup", buscarTabla);
+  }
+  // Funcion para buscar elementos en una tabla
+  function buscarTabla() {
     var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
+    input = document.getElementsByClassName("user-searchfiled");
     filter = input.value.toUpperCase();
     table = document.getElementById("myTable");
     tr = table.getElementsByTagName("tr");

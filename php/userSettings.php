@@ -81,7 +81,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <div class="preview" id="preview">
           <p>No se ha seleccionado ningun archivo</p>
         </div>
-        <input type="submit" name="submitAvatar" value="Cambiar">
+        <input type="submit" name="submitAvatar" value="Actualizar">
       </form>
 
       <form class="user-secu-form" action="updatePassword.php" method="post">
@@ -97,9 +97,22 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </section>
 
     <section class="adm user-entries" id="user-entries">
+      <form class="user-entries-form" action="" method="post">
+        <legend>Crear Entrada</legend>
+        <label class="label-info" for="entrieTitle">Título de la entrada</label>
+        <input class="input-field" type="text" name="entrieTitle" value="" placeholder="Título de entrada...">
+        <label class="label-info" for="entrieContent">Texto</label>
+        <textarea class="input-textarea" name="entrieContent" rows="8" cols="80" placeholder="Texto de entrada..."></textarea>
+        <select class="entrie-categori" name="entrie-categori">
+          <option value="none">Seleccionar categoria</option>
+          <option value="Informatica">Informática</option>
+          <option value="Off-Topic">Off-Topic</option>
+        </select>
+        <input class="input-submit" type="submit" name="submitEntrie" value="Publicar">
+      </form>
       <h3 id="Entradas">Mis entradas</h3>
       <div class="user-entries-table">
-        <input type="text" class="user-searchfiled" id="myInput" placeholder="Buscar título..." title="Type in a name">
+        <input type="text" class="user-searchfiled" id="user-searchfiled-0" placeholder="Buscar título..." title="Type in a name">
         <?php
     			include_once "base_de_datos.php";
     			$sentencia = $base_de_datos->query("SELECT id, titulo, fecha_publicacion, categoria, num_comentarios  FROM entradas WHERE name_usuario = '$usuarioLogin' ORDER BY fecha_publicacion DESC ;");
@@ -112,6 +125,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
               <th>Categoria</th>
               <th>Nº Comentarios</th>
               <th>Fecha Publicada</th>
+              <th>Accion</th>
             </tr>
           </thead>
           <tbody>
@@ -121,33 +135,32 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
               <td><?php echo $entradas->categoria ?></td>
               <td><?php echo $entradas->num_comentarios ?></td>
               <td><?php echo $entradas->fecha_publicacion ?></td>
-              <!--<td><a href="<?php echo "editar.php?id=" . $entradas->id?>">Editar</a></td>
-              <td><a href="<?php echo "eliminar.php?id=" . $entradas->id?>">Eliminar</a></td>-->
+              <td><a href="#">Eliminar</a></td>
             </tr>
             <?php } ?>
           </tbody>
         </table>
-
-        <form class="" action="" method="post">
-          <legend>Crear Entrada</legend>
-          <label for="entrieTitle">Contraseña actual</label>
-          <input type="text" name="entrieTitle" value="" placeholder="Título de entrada...">
-          <label for="entrieContent">Texto</label>
-          <textarea name="entrieContent" rows="8" cols="80">Texto a escribir...</textarea>
-          <select class="entrie-categori" name="entrie-categori">
-            <option value="none">Selecciona categoria</option>
-            <option value="Informatica">Informática</option>
-            <option value="Off-Topic">Off-Topic</option>
-          </select>
-          <input type="submit" name="submitEntrie" value="Actualizar">
-        </form>
       </div>
+      <form class="user-entries-form" action="" method="post">
+        <legend>Editar Entrada</legend>
+        <p class="subText">Para editar una entrada selecciona el titulo desde la tabla.</p>
+        <label class="label-info" for="entrieTitle">Título de la entrada</label>
+        <input class="input-field" type="text" name="entrieTitle" value="" placeholder="Título de entrada...">
+        <label class="label-info" for="entrieContent">Texto</label>
+        <textarea class="input-textarea" name="entrieContent" rows="8" cols="80" placeholder="Texto de entrada..."></textarea>
+        <select class="entrie-categori" name="entrie-categori">
+          <option value="none">Seleccionar categoria</option>
+          <option value="Informatica">Informática</option>
+          <option value="Off-Topic">Off-Topic</option>
+        </select>
+        <input class="input-submit" type="submit" name="submitEntrie" value="Actualizar">
+      </form>
     </section>
     <?php if ($results[2] == "Administrador") { ?>
     <section class="adm adm-users" id="adm-users">
       <h3 id="Entradas">Lista usuarios</h3>
       <div class="adm-users-table">
-        <input type="text" class="user-searchfiled" id="myInput" placeholder="Buscar título..." title="Type in a name">
+        <input type="text" class="user-searchfiled" id="user-searchfiled-1" placeholder="Buscar título..." title="Type in a name">
         <?php
         include_once "base_de_datos.php";
         $sentencia = $base_de_datos->query("SELECT * FROM usuarios;");
@@ -175,8 +188,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
                 <td><?php echo $usuarios->fecha_nacimiento ?></td>
                 <td><?php echo $usuarios->sexo ?></td>
                 <td><?php echo $usuarios->entradas_publicadas ?></td>
-                <!--<td><a href="<?php echo "editar.php?id=" . $persona->id?>">Editar</a></td>
-                <td><a href="<?php echo "eliminar.php?id=" . $persona->id?>">Eliminar</a></td>-->
+                <!--<td><a href="<?php echo "eliminar.php?id=" . $persona->id?>">Eliminar</a></td>-->
               </tr>
               <?php } ?>
             </tbody>
