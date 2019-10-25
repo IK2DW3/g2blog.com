@@ -81,7 +81,9 @@ window.onload = function() {
 
   document.getElementById("op1").addEventListener("click", mostrarElemento);
   document.getElementById("op2").addEventListener("click", mostrarElemento);
+  document.getElementById("op3").addEventListener("click", mostrarElemento);
   document.getElementById("user-entries").style.display = "none";
+  document.getElementById("adm-users").style.display = "none";
 
   function mostrarElemento(){
     // Accion por defecto para Buttons;
@@ -89,10 +91,17 @@ window.onload = function() {
       case 'op1':
         document.getElementById('user-account').style.display = 'block';
         document.getElementById('user-entries').style.display = 'none';
+        document.getElementById('adm-users').style.display = 'none';
         break;
       case 'op2':
         document.getElementById('user-account').style.display = 'none';
         document.getElementById('user-entries').style.display = 'block';
+        document.getElementById('adm-users').style.display = 'none';
+        break;
+      case 'op3':
+        document.getElementById('user-account').style.display = 'none';
+        document.getElementById('user-entries').style.display = 'none';
+        document.getElementById('adm-users').style.display = 'block';
         break;
     }
 

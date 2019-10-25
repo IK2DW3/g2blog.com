@@ -485,7 +485,8 @@
   flex-basis: 100%;
 }
 
-.panelUsuario .user-entries {
+.panelUsuario .user-entries,
+.panelUsuario .adm-users  {
   background-color: #f2f2f2;
   color: #282828;
   flex-basis: 80%;
@@ -494,13 +495,15 @@
   padding: 1%;
 }
 
-.panelUsuario .user-entries .user-entries-table {
+.panelUsuario .user-entries .user-entries-table,
+.panelUsuario .adm-users .adm-users-table {
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-.panelUsuario .user-entries h2 {
+.panelUsuario .user-entries h2,
+.panelUsuario .adm-users h2 {
   border-bottom: 1px solid rgb(213, 213, 213);
   flex-basis: 100%;
   font-size: 1.5em;

@@ -130,6 +130,14 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         </table>
       </div>
     </section>
+
+    <section class="adm-users" id="adm-users">
+      <h2 id="Entradas">Lista usuarios</h2>
+      <div class="adm-users-table">
+        <input type="text" id="myInput" placeholder="Buscar título..." title="Type in a name">
+        
+      </div>
+    </section>
   </div>
 
   <footer class="footer">
