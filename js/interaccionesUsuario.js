@@ -3,7 +3,7 @@ window.onload = function(){
   document.getElementById("dropdownMenuButton").addEventListener("click", dropdown);
 
   function dropdown() {
-    document.getElementById("dropdown-menu").classList.toggle('active');
+    document.getElementById("dropdown").classList.toggle('active');
   }
 
 }
