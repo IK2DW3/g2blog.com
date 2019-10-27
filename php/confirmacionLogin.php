@@ -12,7 +12,7 @@ $stmt->execute();
 $results = $stmt->fetch();
 if($stmt->rowCount() > 0 ){
   $_SESSION['nombre_usuario'] = $nombreUsuario;
-  header('Location: userSettings.php');
+  header('Location: ../index.php');
 }else{
   header('Location: login.php');
 }
