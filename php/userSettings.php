@@ -192,12 +192,33 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
                 <td><?php echo $usuarios->fecha_nacimiento ?></td>
                 <td><?php echo $usuarios->sexo ?></td>
                 <td><?php echo $usuarios->entradas_publicadas ?></td>
-                <!--<td><a href="<?php echo "eliminar.php?id=" . $persona->id?>">Eliminar</a></td>-->
+                <!--<td><a href="<?php echo "removeUser.php?nombre_usuario=" . $usuarios->nombre_usuario?>">Eliminar</a></td>-->
               </tr>
               <?php } ?>
             </tbody>
         </table>
       </div>
+      <form class="adm-users-edit" action="" method="post">
+        <legend>Editar Usuario</legend>
+        <p class="subText">Para editar una entrada selecciona el titulo desde la tabla.</p>
+        <label class="label-info" for="userName">Nombre usuario</label>
+        <input class="input-field" id="adm-field-edit" type="text" name="userName" placeholder="Nombre usuario..." autocomplete="off">
+        <label class="label-info" for="userPassword">Contraseña</label>
+        <input class="input-field" id="adm-pwd-edit" type="text" name="userPassword" placeholder="Contraseña..." autocomplete="off">
+        <label class="label-info" for="userPassword">Nombre</label>
+        <input class="input-field" id="adm-pwd-edit" type="text" name="userPassword" placeholder="Nombre..." autocomplete="off">
+        <label class="label-info" for="userPassword">Apellidos</label>
+        <input class="input-field" id="adm-pwd-edit" type="text" name="userPassword" placeholder="Apellido(s)..." autocomplete="off">
+        <label class="label-info" for="userPassword">Correo electrónico</label>
+        <input class="input-field" id="adm-pwd-edit" type="text" name="userPassword" placeholder="Email..." autocomplete="off">
+        <select class="user-type" id="adm-categori-edit" name="user-type">
+          <option value="none">Seleccionar tipo</option>
+          <option value="Administrador">Administrador</option>
+          <option value="Usuario">Usuario</option>
+        </select>
+        <input class="input-submit" type="submit" name="submitEntrie" value="Actualizar">
+        <input class="input-reset" type="reset" name="resetFields" value="Limpiar">
+      </form>
     </section>
     <?php } ?>
 
