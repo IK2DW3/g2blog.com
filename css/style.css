@@ -250,6 +250,71 @@
   text-decoration: none;
 
 }
+.pop-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0.5% 20% 0;
+  position: absolute;
+  transition: linear 1s;
+  width: 60%;
+}
+.pop-container [class*="pop"] {
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  justify-content: flex-start;
+  height: 60px;
+  margin: 8px 0;
+  overflow: hidden;
+  width: 600px;
+}
+.pop-container .icon {
+  flex-basis: 2.5%;
+  flex-grow: 1;
+  height: inherit;
+  display: inherit;
+  justify-content: center;
+  align-items: center;
+}
+.pop-container ion-icon {
+  font-size: 2em;
+}
+.pop-container p {
+  padding: 0 6px;
+  flex-basis: 80%;
+  flex-grow: 2;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.pop-1 {
+  background-color: #3498db;
+}
+.pop-1 .icon {
+  background-color: #2980b9;
+}
+
+.pop-2 {
+  background-color: #2ecc71;
+}
+.pop-2 .icon {
+  background-color: #27ae60;
+}
+
+.pop-3 {
+  background-color: #f1c40f;
+}
+.pop-3 .icon {
+  background-color: #f39c12;
+}
+
+.pop-4 {
+  background-color: #e74c3c;
+}
+.pop-4 .icon {
+  background-color: #c0392b;
+}
 
 /*
 *

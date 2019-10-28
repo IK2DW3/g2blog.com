@@ -7,6 +7,9 @@
   <link rel="shortcut icon" href="../fav/favicon.ico" type="image/x-icon"> <!-- Favicon -->
   <link rel="stylesheet" href="../css/style.css" class="css"> <!-- Website Stylesheet -->
   <title>G2BLOG - Registrarse</title>
+  <!-- Icon pack link https://ionicons.com/ -->
+  <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <!-- Validacion registro-->
   <script src="../js/validacion-registro.js"></script>
 </head>
@@ -15,6 +18,13 @@
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
   </header>
+  <div class="pop-container" id="pop-container">
+    <div class="pop" id="pop">
+      <div class="icon" id="icon">
+      </div>
+      <p id="text"></p>
+    </div>
+  </div>
   <form class="formulario-registro" name="formulario-registro" action="nuevaPersona.php" onsubmit="return validacion()" method="post">
     <fieldset>
       <legend>Formulario De Registro</legend>

@@ -1,15 +1,80 @@
-function validacionLogin() {
-  var x = document.forms["fPrincipal"]["nombreDeUsuario"].value;
-  var y = document.forms["fPrincipal"]["confirmPassword"].value;
-  if (x == "") {
-    alert("Has dejado el campo nombre sin rellenar");
-    return false;
-  } else if (y == "") {
-    alert("Has dejado el campo contraseña sin rellenar");
-    return false;
-  }
-  return true;
+window.onload = function() {
+  document.getElementById('pop').style.display = 'none';
 }
+/*
+* Creamos una funcion de prototipado para crear mensajes de alerta
+* Añadimos parametros aplicados DOM
+*/
+var mensaje = function() {
+  // Inicio de las funciones tipo
+  function info(txt) {
+    var popBox = document.getElementById('pop');
+    var texto = document.getElementById('text');
+    popBox.classList.add('pop-1');
+    texto.innerHTML = txt;
+    var iconoBox = document.getElementById('icon');
+    var icono = document.createElement('ion-icon');
+    icono.setAttribute("name", "information-circle-outline");
+    iconoBox.appendChild(icono);
+    document.getElementById('pop').style.display = 'inherit';
+  }
+
+  function valido(txt) {
+    var popBox = document.getElementById('pop');
+    var texto = document.getElementById('text');
+    popBox.classList.add('pop-2');
+    texto.innerHTML = txt;
+    var iconoBox = document.getElementById('icon');
+    var icono = document.createElement('ion-icon');
+    icono.setAttribute("name", "checkmark-circle-outline");
+    iconoBox.appendChild(icono);
+    document.getElementById('pop').style.display = 'inherit';
+  }
+
+  function alerta(txt) {
+    var popBox = document.getElementById('pop');
+    var texto = document.getElementById('text');
+    popBox.classList.add('pop-3');
+    texto.innerHTML = txt;
+    var iconoBox = document.getElementById('icon');
+    var icono = document.createElement('ion-icon');
+    icono.setAttribute("name", "alert");
+    iconoBox.appendChild(icono);
+    document.getElementById('pop').style.display = 'inherit';
+  }
+
+  function error(txt) {
+    var popBox = document.getElementById('pop');
+    var texto = document.getElementById('text');
+    popBox.classList.add('pop-4');
+    texto.innerHTML = txt;
+    var iconoBox = document.getElementById('icon');
+    var icono = document.createElement('ion-icon');
+    icono.setAttribute("name", "close-circle-outline");
+    iconoBox.appendChild(icono);
+    document.getElementById('pop').style.display = 'inherit';
+  }
+
+  return {
+    mostrarInfo: function(txt) {
+      info(txt);
+    },
+    mostrarValido: function(txt) {
+      valido(txt);
+    },
+    mostrarAlerta: function(txt) {
+      alerta(txt);
+    },
+    mostrarError: function(txt) {
+      error(txt);
+    }
+  }
+}
+var msg = mensaje();
+
+/*
+* Funcion para validar el registro del usuario
+*/
 function validacion() {
   nombrePersona = document.getElementById("name").value;
   apellidosPersona  = document.getElementById("surname").value;
@@ -21,42 +86,35 @@ function validacion() {
   elemento = document.getElementById("terminosCondiciones");
 
   if (nombrePersona == null || nombrePersona.length == 0 || /^\s+$/.test(nombrePersona)) { // nombrePersona
-    // Si no se cumple la condicion...
-    alert("Se necesita un nombre de persona válido o ha excedido el número de carácteres");
+    msg.mostrarError("Se necesita nombre válido");
     return false;
   }
   else if (apellidosPersona == null || apellidosPersona.length == 0 || /^\s+$/.test(apellidosPersona)) { // apellidosPersona
-    // Si no se cumple la condicion...
-    alert("Se necesita un apellido de persona válido o ha excedido el número de carácteres");
+    msg.mostrarError("Se necesita apellido válido");
     return false;
   }
   else if (nombreUsuario == null || nombreUsuario.length == 0 || /^\s+$/.test(nombreUsuario)) { // nombreUsuario
-    // Si no se cumple la condicion...
-    alert("Nombre de usuario incorrecto / usuario ya existe");
+    msg.mostrarError("Nombre de usuario incorrecto / usuario ya existe");
     return false;
   }
   else if (passwordUsuario == null || passwordUsuario.length == 0 || /^\s+$/.test(passwordUsuario)) { // passwordUsuario
-    // Si no se cumple la condicion...
-    alert("La contraseña debe tener un minimo de 8 carácteres");
+    msg.mostrarError("La contraseña debe tener un minimo de 8 carácteres");
     return false;
   }
   else if (confirmarPasswordUsuario == null || confirmarPasswordUsuario.length == 0 || /^\s+$/.test(confirmarPasswordUsuario)) { // confirmarPasswordUsuario
-    // Si no se cumple la condicion...
-    alert("La contraseña debe tener un minimo de 8 carácteres");
+    msg.mostrarError("La contraseña debe tener un minimo de 8 carácteres");
     return false;
   }
   else if (!(passwordUsuario === confirmarPasswordUsuario)) { // Confirmar que las dos contraseñas son iguales
-    // Si no se cumple la condicion...
-    alert("Las contraseñas deben coincidir");
+    msg.mostrarError("Las contraseñas deben coincidir");
     return false;
   }
   else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) { // Validar el email
-    // Si no se cumple la condicion...
-    alert("Debe insertar una dirección de correo válido");
+    msg.mostrarError("Debe insertar una dirección de correo válido");
     return false;
   }
   else if( !elemento.checked ) {
-    alert("Debe aceptar los terminos y condiciones");
+    msg.mostrarError("Debe aceptar los terminos y condiciones");
     return false;
   }
   // Confirmacion del sexo del usuario
@@ -68,6 +126,22 @@ function validacion() {
     }
   }
   if(!seleccionado) {
+    return false;
+  }
+  return true;
+}
+
+/*
+* Funcion para la validacion de login
+*/
+function validacionLogin() {
+  var x = document.forms["fPrincipal"]["nombreDeUsuario"].value;
+  var y = document.forms["fPrincipal"]["confirmPassword"].value;
+  if (x == "") {
+    msg.mostrarError("Has dejado el campo nombre sin rellenar");
+    return false;
+  } else if (y == "") {
+    msg.mostrarError("Has dejado el campo contraseña sin rellenar");
     return false;
   }
   return true;

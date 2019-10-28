@@ -10,6 +10,9 @@ session_start();
   <link rel="shortcut icon" href="../fav/favicon.ico" type="image/x-icon"> <!-- Favicon -->
   <link rel="stylesheet" href="../css/style.css" class="css"> <!-- Website Stylesheet -->
   <title>G2BLOG - Login</title> <!-- Website title -->
+  <!-- Icon pack link https://ionicons.com/ -->
+  <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <!-- Validacion login-->
   <script src="../js/validacion-registro.js"></script>
 </head>
@@ -18,6 +21,13 @@ session_start();
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
   </header>
+  <div class="pop-container" id="pop-container">
+    <div class="pop" id="pop">
+      <div class="icon" id="icon">
+      </div>
+      <p id="text"></p>
+    </div>
+  </div>
   <form name="fPrincipal" class="fPrincipal" id="fPrincipal" action="confirmacionLogin.php" onsubmit="return validacionLogin()" method="post">
     <img src="../img/iconlogo.png" alt="G2BLOG">
     <h2>Login</h2>
