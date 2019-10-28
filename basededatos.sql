@@ -34,7 +34,7 @@ CREATE TABLE entradas(
   titulo VARCHAR(30) DEFAULT NULL COMMENT 'Título de la entrada',
   descripcion VARCHAR(255) DEFAULT NULL COMMENT 'Contenido',
   fecha_publicacion DATE NOT NULL,
-  categoria CHAR NOT NULL,
+  categoria VARCHAR(30) NOT NULL,
   num_comentarios INT(255) DEFAULT '0',
   name_usuario VARCHAR(20) NOT NULL,
   FOREIGN KEY (name_usuario) REFERENCES usuarios(nombre_usuario),

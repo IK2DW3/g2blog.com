@@ -132,4 +132,34 @@ window.onload = function() {
     }
   }
 
+
+  // Creacion y validación de entradas
+  document.getElementById('input-textarea').addEventListener("keyup",count_descendente);
+  /* TextArea 2 */
+  function count_descendente() {
+    var element = document.getElementById('contador');
+    var obj = document.getElementById('input-textarea');
+
+    obj.maxLength = 250;
+    element.innerHTML = 250 - obj.value.length;
+
+    if (200 - obj.value.length < 0) {
+      element.style.color = 'red';
+
+    } else {
+      element.style.color = 'grey';
+    }
+  }
+
+  var table = document.getElementById('myTable');
+  // Funcion tabla a campo de Texto a tabla
+  for(var i = 1; i < table.rows.length; i++) {
+    table.rows[i].onclick = function() {
+     document.getElementById("input-field-edit").value = this.cells[0].innerHTML;
+     document.getElementById("input-textarea-edit").value = this.cells[1].innerHTML;
+     document.getElementById("entrie-categori-edit").value = this.cells[2].innerHTML;
+    };
+  }
+
+
 }

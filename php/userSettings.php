@@ -97,12 +97,13 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </section>
 
     <section class="adm user-entries" id="user-entries">
-      <form class="user-entries-form" action="" method="post">
+      <form class="user-entries-form" action="createEntrie.php" method="post">
         <legend>Crear Entrada</legend>
         <label class="label-info" for="entrieTitle">Título de la entrada</label>
-        <input class="input-field" type="text" name="entrieTitle" value="" placeholder="Título de entrada...">
+        <input class="input-field" id="entrieTitle" type="text" name="entrieTitle" value="" placeholder="Título de entrada..." autocomplete="off">
         <label class="label-info" for="entrieContent">Texto</label>
-        <textarea class="input-textarea" name="entrieContent" rows="8" cols="80" placeholder="Texto de entrada..."></textarea>
+        <textarea class="input-textarea" id="input-textarea" name="entrieContent" placeholder="Texto de entrada..."></textarea>
+        <p class="subText">Texto restante:</p> <p class="subText" id="contador">250</p>
         <select class="entrie-categori" name="entrie-categori">
           <option value="none">Seleccionar categoria</option>
           <option value="Informatica">Informática</option>
@@ -115,13 +116,14 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <input type="text" class="user-searchfiled" id="user-searchfiled-0" placeholder="Buscar título..." title="Type in a name">
         <?php
     			include_once "base_de_datos.php";
-    			$sentencia = $base_de_datos->query("SELECT id, titulo, fecha_publicacion, categoria, num_comentarios  FROM entradas WHERE name_usuario = '$usuarioLogin' ORDER BY fecha_publicacion DESC ;");
+    			$sentencia = $base_de_datos->query("SELECT id, titulo, descripcion, fecha_publicacion, categoria, num_comentarios  FROM entradas WHERE name_usuario = '$usuarioLogin' ORDER BY fecha_publicacion DESC ;");
     			$entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
     		?>
         <table class="info-tabla" id="myTable">
           <thead>
             <tr>
               <th>Título</th>
+              <th style="display:none;">Contenido</th>
               <th>Categoria</th>
               <th>Nº Comentarios</th>
               <th>Fecha Publicada</th>
@@ -132,10 +134,11 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
             <?php foreach($entrada as $entradas){ ?>
             <tr>
               <td><?php echo $entradas->titulo ?></td>
+              <td style="display:none;"><?php echo $entradas->descripcion ?></td>
               <td><?php echo $entradas->categoria ?></td>
               <td><?php echo $entradas->num_comentarios ?></td>
               <td><?php echo $entradas->fecha_publicacion ?></td>
-              <td><a href="#">Eliminar</a></td>
+              <td><a href="<?php echo "removeEntrie.php?id=" . $entradas->id?>">Eliminar</a></td>
             </tr>
             <?php } ?>
           </tbody>
@@ -145,10 +148,10 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <legend>Editar Entrada</legend>
         <p class="subText">Para editar una entrada selecciona el titulo desde la tabla.</p>
         <label class="label-info" for="entrieTitle">Título de la entrada</label>
-        <input class="input-field" type="text" name="entrieTitle" value="" placeholder="Título de entrada...">
+        <input class="input-field" id="input-field-edit" type="text" name="entrieTitle" placeholder="Título de entrada..." autocomplete="off">
         <label class="label-info" for="entrieContent">Texto</label>
-        <textarea class="input-textarea" name="entrieContent" rows="8" cols="80" placeholder="Texto de entrada..."></textarea>
-        <select class="entrie-categori" name="entrie-categori">
+        <textarea class="input-textarea" id="input-textarea-edit" name="entrieContent" rows="8" cols="80" placeholder="Texto de entrada..."></textarea>
+        <select class="entrie-categori" id="entrie-categori-edit" name="entrie-categori">
           <option value="none">Seleccionar categoria</option>
           <option value="Informatica">Informática</option>
           <option value="Off-Topic">Off-Topic</option>
