@@ -16,7 +16,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
        $sentencia= $base_de_datos->query($consulta);
        header('Location: userSettings.php');
      } else{
-       echo "There was an error uploading the file, please try again!";
+       header('Location: userSettings.php');
      }
    }
  }

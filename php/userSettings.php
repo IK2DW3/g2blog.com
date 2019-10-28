@@ -157,6 +157,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           <option value="Off-Topic">Off-Topic</option>
         </select>
         <input class="input-submit" type="submit" name="submitEntrie" value="Actualizar">
+        <input class="input-reset" type="reset" name="resetFields" value="Limpiar">
       </form>
     </section>
     <?php if ($results[2] == "Administrador") { ?>

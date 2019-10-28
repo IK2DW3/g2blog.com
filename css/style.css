@@ -507,6 +507,7 @@
   outline: none;
 }
 .panelUsuario .input-submit,
+.panelUsuario .input-reset,
 .panelUsuario .user-account input[type=submit] {
   background-color: #28a745;
   background-image: linear-gradient(-180deg,#34d058,#28a745 90%);
@@ -516,7 +517,7 @@
   cursor: pointer;
   font-size: .9em;
   line-height: 20px;
-  margin: 1.5% 0;
+  margin: 1.5% 1% 1%;
   padding: 3px 10px;
 }
 .panelUsuario .user-account .user-data-form,
@@ -603,8 +604,11 @@
 }
 .info-tabla tr {
   border-bottom: 1px solid #ddd;
+  cursor: pointer;
 }
-
-.info-tabla tr.header, .info-tabla tr:hover {
-  background-color: #f1f1f1;
+.info-tabla thead tr{
+  cursor: default;
+}
+.info-tabla tbody tr:hover {
+  background-color: #d9d4d4;
 }
