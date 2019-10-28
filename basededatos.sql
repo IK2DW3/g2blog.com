@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS `usuarios`;
 /* Creamos la tabla de usuarios */
 CREATE TABLE usuarios(
 	nombre_usuario VARCHAR(20) NOT NULL,
-  password VARCHAR(20) NOT NULL,
+  password VARBINARY(100) NOT NULL,
 	tipo_usuario VARCHAR(20) DEFAULT 'Usuario',
   email VARCHAR(40) NOT NULL,
 	nombre VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE usuarios(
 
 	PRIMARY KEY(nombre_usuario)
 );
-INSERT INTO `usuarios` VALUES ('admin','admin','Administrador','ruben.izcara@gmail.com','G2RD', 'Administrador', '2019-10-16', 'O', 'Yes', 0, '', '2019-10-16', '');
+INSERT INTO `usuarios` VALUES ('admin','21232f297a57a5a743894a0e4a801fc3','Administrador','ruben.izcara@gmail.com','G2RD', 'Administrador', '2019-10-16', 'O', 'Yes', 0, '', '2019-10-16', '');
 
 /*Borramos la tabla si existe */
 DROP TABLE IF EXISTS `entradas`;
