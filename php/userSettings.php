@@ -119,7 +119,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     			$sentencia = $base_de_datos->query("SELECT id, titulo, descripcion, fecha_publicacion, categoria, num_comentarios  FROM entradas WHERE name_usuario = '$usuarioLogin' ORDER BY fecha_publicacion DESC ;");
     			$entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
     		?>
-        <table class="info-tabla" id="myTable">
+        <table class="info-tabla" id="user-entries-table">
           <thead>
             <tr>
               <th>Título</th>
@@ -164,16 +164,18 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     <section class="adm adm-users" id="adm-users">
       <h3 id="Entradas">Lista usuarios</h3>
       <div class="adm-users-table">
-        <input type="text" class="user-searchfiled" id="user-searchfiled-1" placeholder="Buscar título..." title="Type in a name">
+        <input type="text" class="user-searchfiled" id="user-searchfiled-1" placeholder="Buscar usuario..." title="Escribe un nombre">
         <?php
         include_once "base_de_datos.php";
         $sentencia = $base_de_datos->query("SELECT * FROM usuarios;");
         $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
         ?>
-        <table class="info-tabla" id="myTable">
+        <table class="info-tabla" id="adm-users-table">
             <thead>
               <tr>
                 <th>Nombre usuario</th>
+                <th style="display:none;">Password</th>
+                <th style="display:none;">Tipo</th>
                 <th>Email</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
@@ -186,6 +188,8 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
               <?php foreach($usuario as $usuarios){ ?>
               <tr>
                 <td><?php echo $usuarios->nombre_usuario ?></td>
+                <td style="display:none;"><?php echo $usuarios->password ?></td>
+                <td style="display:none;"><?php echo $usuarios->tipo_usuario ?></td>
                 <td><?php echo $usuarios->email ?></td>
                 <td><?php echo $usuarios->nombre ?></td>
                 <td><?php echo $usuarios->apellidos ?></td>
@@ -201,17 +205,27 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       <form class="adm-users-edit" action="" method="post">
         <legend>Editar Usuario</legend>
         <p class="subText">Para editar una entrada selecciona el titulo desde la tabla.</p>
-        <label class="label-info" for="userName">Nombre usuario</label>
-        <input class="input-field" id="adm-field-edit" type="text" name="userName" placeholder="Nombre usuario..." autocomplete="off">
-        <label class="label-info" for="userPassword">Contraseña</label>
-        <input class="input-field" id="adm-pwd-edit" type="text" name="userPassword" placeholder="Contraseña..." autocomplete="off">
-        <label class="label-info" for="userPassword">Nombre</label>
-        <input class="input-field" id="adm-pwd-edit" type="text" name="userPassword" placeholder="Nombre..." autocomplete="off">
-        <label class="label-info" for="userPassword">Apellidos</label>
-        <input class="input-field" id="adm-pwd-edit" type="text" name="userPassword" placeholder="Apellido(s)..." autocomplete="off">
-        <label class="label-info" for="userPassword">Correo electrónico</label>
-        <input class="input-field" id="adm-pwd-edit" type="text" name="userPassword" placeholder="Email..." autocomplete="off">
-        <select class="user-type" id="adm-categori-edit" name="user-type">
+        <label class="label-info" for="usernameEdit">Nombre usuario</label>
+        <input class="input-field" id="adm-username-edit" type="text" name="usernameEdit" placeholder="Nombre usuario..." autocomplete="off">
+        <label class="label-info" for="userPasswordEdit">Contraseña</label>
+        <input class="input-field" id="adm-pwd-edit" type="text" name="userPasswordEdit" placeholder="Contraseña..." autocomplete="off">
+        <label class="label-info" for="emailEdit">Correo electrónico</label>
+        <input class="input-field" id="adm-email-edit" type="text" name="emailEdit" placeholder="Email..." autocomplete="off">
+        <label class="label-info" for="nameEdit">Nombre</label>
+        <input class="input-field" id="adm-name-edit" type="text" name="nameEdit" placeholder="Nombre..." autocomplete="off">
+        <label class="label-info" for="surnameEdit">Apellidos</label>
+        <input class="input-field" id="adm-surname-edit" type="text" name="surnameEdit" placeholder="Apellido(s)..." autocomplete="off">
+        <label class="label-info" for="dateEdit">Fecha nacimiento</label>
+        <input type="date" class="adm-dateEdit" id="adm-dateEdit" name="dateEdit" value="1960-01-01" min="1960-01-01" max="2003-12-31">
+        <label class="label-info" for="sexEdit">Sexo</label>
+        <select class="user-type" id="adm-sexo-edit" name="sexEdit">
+          <option value="none">Seleccionar sexo</option>
+          <option value="O">Otro</option>
+          <option value="W">Mujer</option>
+          <option value="M">Hombre</option>
+        </select>
+        <label class="label-info" for="user-type">Tipo usuario</label>
+        <select class="user-type" id="adm-type-edit" name="user-type">
           <option value="none">Seleccionar tipo</option>
           <option value="Administrador">Administrador</option>
           <option value="Usuario">Usuario</option>
