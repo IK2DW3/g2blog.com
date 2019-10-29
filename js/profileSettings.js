@@ -164,9 +164,10 @@ window.onload = function() {
   // Funcion tabla a campo de Texto a tabla entradas usuario
   for(var i = 1; i < tableUserEntries.rows.length; i++) {
     tableUserEntries.rows[i].onclick = function() {
-     document.getElementById("input-field-edit").value = this.cells[0].innerHTML;
-     document.getElementById("input-textarea-edit").value = this.cells[1].innerHTML;
-     document.getElementById("entrie-categori-edit").value = this.cells[2].innerHTML;
+      document.getElementById("input-field-id").value = this.cells[0].innerHTML;
+      document.getElementById("input-field-edit").value = this.cells[1].innerHTML;
+      document.getElementById("input-textarea-edit").value = this.cells[2].innerHTML;
+      document.getElementById("entrie-categori-edit").value = this.cells[3].innerHTML;
     };
   }
 
@@ -174,14 +175,14 @@ window.onload = function() {
   // Funcion tabla a campo de Texto a tabla usuarios
   for(var i = 1; i < tableUsers.rows.length; i++) {
     tableUsers.rows[i].onclick = function() {
-     document.getElementById("adm-username-edit").value = this.cells[0].innerHTML;
-     document.getElementById("adm-pwd-edit").value = this.cells[1].innerHTML;
-     document.getElementById("adm-email-edit").value = this.cells[3].innerHTML;
-     document.getElementById("adm-name-edit").value = this.cells[4].innerHTML;
-     document.getElementById("adm-surname-edit").value = this.cells[5].innerHTML;
-     document.getElementById("adm-dateEdit").value = this.cells[6].innerHTML;
-     document.getElementById("adm-sexo-edit").value = this.cells[7].innerHTML;
-     document.getElementById("adm-type-edit").value = this.cells[2].innerHTML;
+      document.getElementById("adm-username-edit").value = this.cells[0].innerHTML;
+      document.getElementById("adm-pwd-edit").value = this.cells[1].innerHTML;
+      document.getElementById("adm-email-edit").value = this.cells[3].innerHTML;
+      document.getElementById("adm-name-edit").value = this.cells[4].innerHTML;
+      document.getElementById("adm-surname-edit").value = this.cells[5].innerHTML;
+      document.getElementById("adm-dateEdit").value = this.cells[6].innerHTML;
+      document.getElementById("adm-sexo-edit").value = this.cells[7].innerHTML;
+      document.getElementById("adm-type-edit").value = this.cells[2].innerHTML;
     };
   }
 
@@ -189,11 +190,12 @@ window.onload = function() {
   // Funcion tabla a campo de Texto a tabla usuarios
   for(var i = 1; i < tableAdmEntries.rows.length; i++) {
     tableAdmEntries.rows[i].onclick = function() {
-     document.getElementById("adm-entrie-field-edit").value = this.cells[0].innerHTML;
-     document.getElementById("adm-entrie-textarea-edit").value = this.cells[1].innerHTML;
-     document.getElementById("adm-entrie-categori-edit").value = this.cells[2].innerHTML;
-     document.getElementById("adm-entrie-dateEdit").value = this.cells[4].innerHTML;
-     document.getElementById("adm-user-publi").value = this.cells[5].innerHTML;
+      document.getElementById("adm-entrie-field-edit-id").value = this.cells[0].innerHTML;
+      document.getElementById("adm-entrie-field-edit").value = this.cells[1].innerHTML;
+      document.getElementById("adm-entrie-textarea-edit").value = this.cells[2].innerHTML;
+      document.getElementById("adm-entrie-categori-edit").value = this.cells[3].innerHTML;
+      document.getElementById("adm-entrie-dateEdit").value = this.cells[5].innerHTML;
+      document.getElementById("adm-user-publi").value = this.cells[6].innerHTML;
     };
   }
 }
@@ -229,7 +231,7 @@ function validarEditEntrada() {
   contenidoEntrada  = document.getElementById("input-textarea-edit").value;
   categoriaEntrada = document.getElementById("entrie-categori-edit").value;
 
-  if (tituloEntrada == null || tituloEntrada.length == 0 || tituloEntrada.length > 30 || /^\s+$/.test(tituloEntrada)) { // nombrePersona
+  if (tituloEntrada == null || tituloEntrada.length == 0 || /^\s+$/.test(tituloEntrada)) { // nombrePersona
     //msg.mostrarError("Se necesita nombre válido");
     alert("Titulo de entrada inválido o has excedido número de caracteres (max.30)");
     return false;
@@ -242,6 +244,60 @@ function validarEditEntrada() {
   else if (categoriaEntrada == null || categoriaEntrada.length == 0 || /^\s+$/.test(categoriaEntrada)) { // nombreUsuario
     //msg.mostrarError("Nombre de usuario incorrecto / usuario ya existe");
     alert("Selecciona una categoría válida");
+    return false;
+  }
+  return true;
+}
+
+function validarAdmEditEntrada() {
+  tituloEntrada = document.getElementById("adm-entrie-field-edit").value;
+  contenidoEntrada  = document.getElementById("adm-entrie-textarea-edit").value;
+  categoriaEntrada = document.getElementById("adm-entrie-categori-edit").value;
+
+  if (tituloEntrada == null || tituloEntrada.length == 0 || /^\s+$/.test(tituloEntrada)) { // nombrePersona
+    //msg.mostrarError("Se necesita nombre válido");
+    alert("Titulo de entrada inválido o has excedido número de caracteres (max.30)");
+    return false;
+  }
+  else if (contenidoEntrada == null || contenidoEntrada.length == 0 || /^\s+$/.test(contenidoEntrada)) { // apellidosPersona
+    //msg.mostrarError("Se necesita apellido válido");
+    alert("Ingresa contenido a tu entrada");
+    return false;
+  }
+  else if (categoriaEntrada == null || categoriaEntrada.length == 0 || /^\s+$/.test(categoriaEntrada)) { // nombreUsuario
+    //msg.mostrarError("Nombre de usuario incorrecto / usuario ya existe");
+    alert("Selecciona una categoría válida");
+    return false;
+  }
+  return true;
+}
+
+function validarAdmEditUsuario() {
+
+  nombreUsuario = document.getElementById("adm-username-edit").value;
+  passwordUsuario = document.getElementById("adm-pwd-edit").value;
+  email = document.getElementById("adm-email-edit").value;
+  nombrePersona = document.getElementById("adm-name-edit").value;
+  apellidosPersona  = document.getElementById("adm-surname-edit").value;
+
+  if (nombrePersona == null || nombrePersona.length == 0 || /^\s+$/.test(nombrePersona)) { // nombrePersona
+    //msg.mostrarError("Se necesita nombre válido");
+    return false;
+  }
+  else if (apellidosPersona == null || apellidosPersona.length == 0 || /^\s+$/.test(apellidosPersona)) { // apellidosPersona
+    //msg.mostrarError("Se necesita apellido válido");
+    return false;
+  }
+  else if (nombreUsuario == null || nombreUsuario.length == 0 || /^\s+$/.test(nombreUsuario)) { // nombreUsuario
+    //msg.mostrarError("Nombre de usuario incorrecto / usuario ya existe");
+    return false;
+  }
+  else if (passwordUsuario == null || passwordUsuario.length == 0 || /^\s+$/.test(passwordUsuario)) { // passwordUsuario
+    //msg.mostrarError("La contraseña debe tener un minimo de 8 carácteres");
+    return false;
+  }
+  else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) { // Validar el email
+    //msg.mostrarError("Debe insertar una dirección de correo válido");
     return false;
   }
   return true;

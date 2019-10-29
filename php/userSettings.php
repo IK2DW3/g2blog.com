@@ -116,12 +116,13 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <input type="text" class="user-searchfiled" id="user-searchfiled-0" placeholder="Buscar título..." title="Type in a name">
         <?php
     			include_once "base_de_datos.php";
-    			$sentencia = $base_de_datos->query("SELECT id, titulo, descripcion, fecha_publicacion, categoria, num_comentarios  FROM entradas WHERE name_usuario = '$usuarioLogin' ORDER BY fecha_publicacion DESC ;");
+    			$sentencia = $base_de_datos->query("SELECT * FROM entradas WHERE name_usuario = '$usuarioLogin' ORDER BY fecha_publicacion DESC ;");
     			$entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
     		?>
         <table class="info-tabla" id="user-entries-table">
           <thead>
             <tr>
+              <th style="display:none;">ID</th>
               <th>Título</th>
               <th style="display:none;">Contenido</th>
               <th>Categoria</th>
@@ -133,6 +134,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           <tbody>
             <?php foreach($entrada as $entradas){ ?>
             <tr>
+              <td style="display:none;"><?php echo $entradas->id ?></td>
               <td><?php echo $entradas->titulo ?></td>
               <td style="display:none;"><?php echo $entradas->descripcion ?></td>
               <td><?php echo $entradas->categoria ?></td>
@@ -147,11 +149,13 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       <form class="user-entries-form" action="updateEntrie.php" onsubmit="return validarEditEntrada()" method="post">
         <legend>Editar Entrada</legend>
         <p class="subText">Para editar una entrada selecciona el titulo desde la tabla.</p>
+        <label class="label-info" for="entrieID">ID de entrada</label>
+        <input class="input-field" id="input-field-id" type="number" name="entrieID" placeholder="ID..." readonly>
         <label class="label-info" for="entrieTitle">Título de la entrada</label>
         <input class="input-field" id="input-field-edit" type="text" name="entrieTitle" placeholder="Título de entrada..." autocomplete="off">
         <label class="label-info" for="entrieContent">Texto</label>
         <textarea class="input-textarea" id="input-textarea-edit" name="entrieContent" rows="8" cols="80" placeholder="Texto de entrada..."></textarea>
-        <select class="entrie-categori" id="entrie-categori-edit" name="entrie-categori">
+        <select class="entrie-categori" id="entrie-categori-edit" name="entrieCategori">
           <option value="none">Seleccionar categoria</option>
           <option value="Informatica">Informática</option>
           <option value="Off-Topic">Off-Topic</option>
@@ -202,11 +206,11 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
             </tbody>
         </table>
       </div>
-      <form class="adm-users-edit" action="" method="post">
+      <form class="adm-users-edit" action="updateAdmUser.php" onsubmit="return validarAdmEditUsuario()" method="post">
         <legend>Editar Usuario</legend>
         <p class="subText">Para editar un usuario selecciona el nombre desde la tabla.</p>
         <label class="label-info" for="usernameEdit">Nombre usuario</label>
-        <input class="input-field" id="adm-username-edit" type="text" name="usernameEdit" placeholder="Nombre usuario..." autocomplete="off">
+        <input class="input-field" id="adm-username-edit" type="text" name="usernameEdit" placeholder="Nombre usuario..." readonly>
         <label class="label-info" for="userPasswordEdit">Contraseña</label>
         <input class="input-field" id="adm-pwd-edit" type="text" name="userPasswordEdit" placeholder="Contraseña..." autocomplete="off">
         <label class="label-info" for="emailEdit">Correo electrónico</label>
@@ -216,7 +220,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <label class="label-info" for="surnameEdit">Apellidos</label>
         <input class="input-field" id="adm-surname-edit" type="text" name="surnameEdit" placeholder="Apellido(s)..." autocomplete="off">
         <label class="label-info" for="dateEdit">Fecha nacimiento</label>
-        <input type="date" class="adm-dateEdit" id="adm-dateEdit" name="dateEdit" value="1960-01-01" min="1960-01-01" max="2003-12-31">
+        <input type="date" class="adm-dateEdit" id="adm-dateEdit" name="dateEdit" value="1960-01-01" min="1960-01-01" max="2020-12-31">
         <label class="label-info" for="sexEdit">Sexo</label>
         <select class="user-type" id="adm-sexo-edit" name="sexEdit">
           <option value="none">Seleccionar sexo</option>
@@ -230,11 +234,11 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           <option value="Administrador">Administrador</option>
           <option value="Usuario">Usuario</option>
         </select>
-        <input class="input-submit" type="submit" name="submitEntrie" value="Actualizar">
+        <input class="input-submit" type="submit" name="adm-submitEditUser" value="Actualizar">
         <input class="input-reset" type="reset" name="resetFields" value="Limpiar">
       </form>
     </section>
-    <?php } ?>
+
 
     <section class="adm adm-entries" id="adm-entries">
       <h3>Lista entradas</h3>
@@ -248,18 +252,20 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <table class="info-tabla" id="adm-entries-table">
           <thead>
             <tr>
+              <th style="display:none;">ID</th>
               <th>Título</th>
               <th style="display:none;">Contenido</th>
               <th>Categoria</th>
               <th>Nº Comentarios</th>
               <th>Fecha Publicada</th>
-              <th style="display:none;">Publicador</th>
+              <th>Publicador</th>
               <th>Accion</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach($entrada as $entradas){ ?>
             <tr>
+              <td style="display:none;"><?php echo $entradas->id ?></td>
               <td><?php echo $entradas->titulo ?></td>
               <td style="display:none;"><?php echo $entradas->descripcion ?></td>
               <td><?php echo $entradas->categoria ?></td>
@@ -272,9 +278,11 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           </tbody>
         </table>
       </div>
-      <form class="adm-entries-form" action="" method="post">
+      <form class="adm-entries-form" action="updateAdmEntries.php" onsubmit="return validarAdmEditEntrada()" method="post">
         <legend>Editar Entrada</legend>
         <p class="subText">Para editar una entrada selecciona el titulo desde la tabla.</p>
+        <label class="label-info" for="adm-entrieID">ID</label>
+        <input class="input-field" id="adm-entrie-field-edit-id" type="text" name="adm-entrieID" placeholder="ID..." readonly>
         <label class="label-info" for="adm-entrieTitle">Título de la entrada</label>
         <input class="input-field" id="adm-entrie-field-edit" type="text" name="adm-entrieTitle" placeholder="Título de entrada..." autocomplete="off">
         <label class="label-info" for="adm-entrieContent">Texto</label>
@@ -286,13 +294,14 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           <option value="Off-Topic">Off-Topic</option>
         </select>
         <label class="label-info" for="adm-entrie-dateEdit">Fecha publicada</label>
-        <input type="date" class="adm-dateEdit" id="adm-entrie-dateEdit" name="adm-entrie-dateEdit" value="1960-01-01" min="1960-01-01" max="2003-12-31">
+        <input type="date" class="adm-dateEdit" id="adm-entrie-dateEdit" name="adm-entrie-dateEdit" value="1960-01-01" min="1960-01-01" max="2020-12-31">
         <label class="label-info" for="adm-user-publi">Usuario publicador</label>
-        <input class="input-field" id="adm-user-publi" type="text" name="adm-user-publi" placeholder="Nombre publicador..." autocomplete="off">
-        <input class="input-submit" type="submit" name="submitEntrie" value="Actualizar">
+        <input class="input-field" id="adm-user-publi" type="text" name="adm-user-publi" placeholder="Nombre publicador..." readonly>
+        <input class="input-submit" type="submit" name="adm-submitEntrie" value="Actualizar">
         <input class="input-reset" type="reset" name="resetFields" value="Limpiar">
       </form>
     </section>
+    <?php } ?>
   </div>
 
   <footer class="footer">
