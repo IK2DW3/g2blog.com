@@ -196,6 +196,53 @@ window.onload = function() {
      document.getElementById("adm-user-publi").value = this.cells[5].innerHTML;
     };
   }
+}
 
+/*
+* Funcion para validar el registro del usuario
+*/
+function validarEntrada() {
+  tituloEntrada = document.getElementById("entrieTitle").value;
+  contenidoEntrada  = document.getElementById("input-textarea").value;
+  categoriaEntrada = document.getElementById("entrie-categori").value;
 
+  if (tituloEntrada == null || tituloEntrada.length == 0 || tituloEntrada.length > 30 || /^\s+$/.test(tituloEntrada)) { // nombrePersona
+    //msg.mostrarError("Se necesita nombre válido");
+    alert("Titulo de entrada inválido o has excedido número de caracteres (max.30)");
+    return false;
+  }
+  else if (contenidoEntrada == null || contenidoEntrada.length == 0 || /^\s+$/.test(contenidoEntrada)) { // apellidosPersona
+    //msg.mostrarError("Se necesita apellido válido");
+    alert("Ingresa contenido a tu entrada");
+    return false;
+  }
+  else if (categoriaEntrada == null || categoriaEntrada.length == 0 || /^\s+$/.test(categoriaEntrada)) { // nombreUsuario
+    //msg.mostrarError("Nombre de usuario incorrecto / usuario ya existe");
+    alert("Selecciona una categoría válida");
+    return false;
+  }
+  return true;
+}
+
+function validarEditEntrada() {
+  tituloEntrada = document.getElementById("input-field-edit").value;
+  contenidoEntrada  = document.getElementById("input-textarea-edit").value;
+  categoriaEntrada = document.getElementById("entrie-categori-edit").value;
+
+  if (tituloEntrada == null || tituloEntrada.length == 0 || tituloEntrada.length > 30 || /^\s+$/.test(tituloEntrada)) { // nombrePersona
+    //msg.mostrarError("Se necesita nombre válido");
+    alert("Titulo de entrada inválido o has excedido número de caracteres (max.30)");
+    return false;
+  }
+  else if (contenidoEntrada == null || contenidoEntrada.length == 0 || /^\s+$/.test(contenidoEntrada)) { // apellidosPersona
+    //msg.mostrarError("Se necesita apellido válido");
+    alert("Ingresa contenido a tu entrada");
+    return false;
+  }
+  else if (categoriaEntrada == null || categoriaEntrada.length == 0 || /^\s+$/.test(categoriaEntrada)) { // nombreUsuario
+    //msg.mostrarError("Nombre de usuario incorrecto / usuario ya existe");
+    alert("Selecciona una categoría válida");
+    return false;
+  }
+  return true;
 }

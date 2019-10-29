@@ -97,15 +97,15 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </section>
 
     <section class="adm user-entries" id="user-entries">
-      <form class="user-entries-form" action="createEntrie.php" method="post">
+      <form class="user-entries-form" action="createEntrie.php"  onsubmit="return validarEntrada()" method="post">
         <legend>Crear Entrada</legend>
         <label class="label-info" for="entrieTitle">Título de la entrada</label>
         <input class="input-field" id="entrieTitle" type="text" name="entrieTitle" value="" placeholder="Título de entrada..." autocomplete="off">
         <label class="label-info" for="entrieContent">Texto</label>
         <textarea class="input-textarea" id="input-textarea" name="entrieContent" placeholder="Texto de entrada..."></textarea>
         <p class="subText">Texto restante:</p> <p class="subText" id="contador">250</p>
-        <select class="entrie-categori" name="entrie-categori">
-          <option value="none">Seleccionar categoria</option>
+        <select class="entrie-categori" name="entrie-categori" id="entrie-categori">
+          <option value="">Seleccionar categoria</option>
           <option value="Informatica">Informática</option>
           <option value="Off-Topic">Off-Topic</option>
         </select>
@@ -144,7 +144,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           </tbody>
         </table>
       </div>
-      <form class="user-entries-form" action="" method="post">
+      <form class="user-entries-form" action="updateEntrie.php" onsubmit="return validarEditEntrada()" method="post">
         <legend>Editar Entrada</legend>
         <p class="subText">Para editar una entrada selecciona el titulo desde la tabla.</p>
         <label class="label-info" for="entrieTitle">Título de la entrada</label>
@@ -156,7 +156,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           <option value="Informatica">Informática</option>
           <option value="Off-Topic">Off-Topic</option>
         </select>
-        <input class="input-submit" type="submit" name="submitEntrie" value="Actualizar">
+        <input class="input-submit" type="submit" name="submitUpdateEntrie" value="Actualizar">
         <input class="input-reset" type="reset" name="resetFields" value="Limpiar">
       </form>
     </section>
