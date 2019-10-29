@@ -93,16 +93,25 @@ window.onload = function() {
         document.getElementById('user-account').style.display = 'block';
         document.getElementById('user-entries').style.display = 'none';
         document.getElementById('adm-users').style.display = 'none';
+        document.getElementById('adm-entries').style.display = 'none';
         break;
       case 'op2':
         document.getElementById('user-account').style.display = 'none';
         document.getElementById('user-entries').style.display = 'block';
         document.getElementById('adm-users').style.display = 'none';
+        document.getElementById('adm-entries').style.display = 'none';
         break;
       case 'op3':
         document.getElementById('user-account').style.display = 'none';
         document.getElementById('user-entries').style.display = 'none';
         document.getElementById('adm-users').style.display = 'block';
+        document.getElementById('adm-entries').style.display = 'none';
+        break;
+      case 'op4':
+        document.getElementById('user-account').style.display = 'none';
+        document.getElementById('user-entries').style.display = 'none';
+        document.getElementById('adm-users').style.display = 'none';
+        document.getElementById('adm-entries').style.display = 'block';
         break;
     }
 
@@ -173,6 +182,18 @@ window.onload = function() {
      document.getElementById("adm-dateEdit").value = this.cells[6].innerHTML;
      document.getElementById("adm-sexo-edit").value = this.cells[7].innerHTML;
      document.getElementById("adm-type-edit").value = this.cells[2].innerHTML;
+    };
+  }
+
+  var tableAdmEntries = document.getElementById('adm-entries-table');
+  // Funcion tabla a campo de Texto a tabla usuarios
+  for(var i = 1; i < tableAdmEntries.rows.length; i++) {
+    tableAdmEntries.rows[i].onclick = function() {
+     document.getElementById("adm-entrie-field-edit").value = this.cells[0].innerHTML;
+     document.getElementById("adm-entrie-textarea-edit").value = this.cells[1].innerHTML;
+     document.getElementById("adm-entrie-categori-edit").value = this.cells[2].innerHTML;
+     document.getElementById("adm-entrie-dateEdit").value = this.cells[4].innerHTML;
+     document.getElementById("adm-user-publi").value = this.cells[5].innerHTML;
     };
   }
 

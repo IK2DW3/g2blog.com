@@ -204,7 +204,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       </div>
       <form class="adm-users-edit" action="" method="post">
         <legend>Editar Usuario</legend>
-        <p class="subText">Para editar una entrada selecciona el titulo desde la tabla.</p>
+        <p class="subText">Para editar un usuario selecciona el nombre desde la tabla.</p>
         <label class="label-info" for="usernameEdit">Nombre usuario</label>
         <input class="input-field" id="adm-username-edit" type="text" name="usernameEdit" placeholder="Nombre usuario..." autocomplete="off">
         <label class="label-info" for="userPasswordEdit">Contraseña</label>
@@ -236,6 +236,63 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </section>
     <?php } ?>
 
+    <section class="adm adm-entries" id="adm-entries">
+      <h3>Lista entradas</h3>
+      <div class="adm-entries-table">
+        <input type="text" class="user-searchfiled" id="adm-searchfiled-0" placeholder="Buscar título..." title="Escribe un título">
+        <?php
+    			include_once "base_de_datos.php";
+    			$sentencia = $base_de_datos->query("SELECT *  FROM entradas ORDER BY titulo ASC ;");
+    			$entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    		?>
+        <table class="info-tabla" id="adm-entries-table">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th style="display:none;">Contenido</th>
+              <th>Categoria</th>
+              <th>Nº Comentarios</th>
+              <th>Fecha Publicada</th>
+              <th style="display:none;">Publicador</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach($entrada as $entradas){ ?>
+            <tr>
+              <td><?php echo $entradas->titulo ?></td>
+              <td style="display:none;"><?php echo $entradas->descripcion ?></td>
+              <td><?php echo $entradas->categoria ?></td>
+              <td><?php echo $entradas->num_comentarios ?></td>
+              <td><?php echo $entradas->fecha_publicacion ?></td>
+              <td><?php echo $entradas->name_usuario ?></td>
+              <td><a href="<?php echo "removeEntrie.php?id=" . $entradas->id?>">Eliminar</a></td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+      <form class="adm-entries-form" action="" method="post">
+        <legend>Editar Entrada</legend>
+        <p class="subText">Para editar una entrada selecciona el titulo desde la tabla.</p>
+        <label class="label-info" for="adm-entrieTitle">Título de la entrada</label>
+        <input class="input-field" id="adm-entrie-field-edit" type="text" name="adm-entrieTitle" placeholder="Título de entrada..." autocomplete="off">
+        <label class="label-info" for="adm-entrieContent">Texto</label>
+        <textarea class="input-textarea" id="adm-entrie-textarea-edit" name="adm-entrieContent" rows="8" cols="80" placeholder="Texto de entrada..."></textarea>
+        <p class="subText">Texto restante:</p> <p class="subText" id="contador1">250</p>
+        <select class="entrie-categori" id="adm-entrie-categori-edit" name="adm-entrie-categori">
+          <option value="none">Seleccionar categoria</option>
+          <option value="Informatica">Informática</option>
+          <option value="Off-Topic">Off-Topic</option>
+        </select>
+        <label class="label-info" for="adm-entrie-dateEdit">Fecha publicada</label>
+        <input type="date" class="adm-dateEdit" id="adm-entrie-dateEdit" name="adm-entrie-dateEdit" value="1960-01-01" min="1960-01-01" max="2003-12-31">
+        <label class="label-info" for="adm-user-publi">Usuario publicador</label>
+        <input class="input-field" id="adm-user-publi" type="text" name="adm-user-publi" placeholder="Nombre publicador..." autocomplete="off">
+        <input class="input-submit" type="submit" name="submitEntrie" value="Actualizar">
+        <input class="input-reset" type="reset" name="resetFields" value="Limpiar">
+      </form>
+    </section>
   </div>
 
   <footer class="footer">

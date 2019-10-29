@@ -509,7 +509,8 @@
 }
 .panelUsuario .user-account legend,
 .panelUsuario .user-entries legend,
-.panelUsuario .adm-users legend {
+.panelUsuario .adm-users legend,
+.panelUsuario .adm-entries legend {
   border-bottom: 1px solid rgb(213, 213, 213);
   flex-basis: 100%;
   font-size: 1.5em;
@@ -592,13 +593,14 @@
 .panelUsuario .user-account .user-avar-form,
 .panelUsuario .user-account .user-secu-form,
 .panelUsuario .adm-users .adm-users-edit,
-.panelUsuario .user-entries .user-entries-form {
+.panelUsuario .user-entries .user-entries-form,
+.panelUsuario .adm-entries .adm-entries-form {
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 3%;
-  width: 40%;
+  width: 60%;
 }
 .panelUsuario .subText {
   font-size: .75em;
@@ -615,7 +617,8 @@
 }
 
 .panelUsuario .user-entries,
-.panelUsuario .adm-users  {
+.panelUsuario .adm-users,
+.panelUsuario .adm-entries  {
   background-color: #f2f2f2;
   color: #282828;
   flex-basis: 80%;
@@ -625,14 +628,16 @@
 }
 
 .panelUsuario .user-entries .user-entries-table,
-.panelUsuario .adm-users .adm-users-table {
+.panelUsuario .adm-users .adm-users-table,
+.panelUsuario .adm-entries .adm-entries-table {
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 .panelUsuario .user-entries h3,
-.panelUsuario .adm-users h3 {
+.panelUsuario .adm-users h3,
+.panelUsuario .adm-entries h3 {
   border-bottom: 1px solid rgb(213, 213, 213);
   flex-basis: 100%;
   font-size: 1.5em;
