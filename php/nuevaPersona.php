@@ -3,7 +3,7 @@
 include_once "base_de_datos.php";
 $username = $_POST["usernameRegister"];
 $password = $_POST["confirmPassword"];
-$password = md5($password); // Encryptar contraseña
+$password = password_hash($password, PASSWORD_DEFAULT); // Encryptar contraseña
 $tipo = "Usuario";
 $email = $_POST["email"];
 $name = $_POST["name"];

@@ -7,7 +7,7 @@ if(isset($_POST['adm-submitEditUser'])) {
   $results = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
   $nuevoUsername = $_POST['usernameEdit'];
-  $nuevaContraseña = md5($_POST['userPasswordEdit']);
+  $nuevaContraseña = password_hash($_POST['userPasswordEdit'], PASSWORD_DEFAULT);
   $nuevoTipo = $_POST['user-type'];
   $nuevoEmail = $_POST['emailEdit'];
   $nuevoNombre = $_POST['nameEdit'];
@@ -20,7 +20,7 @@ if(isset($_POST['adm-submitEditUser'])) {
     if ($nuevoUsername == $resultados->nombre_usuario) {
       $consulta= "UPDATE usuarios SET nombre_usuario = '$nuevoUsername', password = '$nuevaContraseña', tipo_usuario = '$nuevoTipo', email = '$nuevoEmail', nombre = '$nuevoNombre', apellidos = '$nuevoApellido', fecha_nacimiento = '$nuevaFechanacimiento', sexo = '$nuevoGenero' WHERE nombre_usuario = '$nuevoUsername'";
       $sentencia= $base_de_datos->query($consulta);
-      header('Location: userSettings.php');  
+      header('Location: userSettings.php');
     }
   }
 

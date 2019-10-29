@@ -1,6 +1,6 @@
 <?php
 /*
-* Comienzo de archivo de funciones
+* Comienzo de archivo de funciones de pruebas
 */
 
 // Variables para la funcion de encrypt contraseñas y decrypt

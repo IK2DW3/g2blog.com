@@ -8,7 +8,7 @@ if(isset($_POST['submitPassword'])) {
   $sentencia= $base_de_datos->query($consulta);
   $results = $sentencia->fetch();
 
-  if (!md5($_POST['passwordVieja']) == $results ) {
+  if (!password_verify($_POST['passwordVieja'], $results[0])) {
     header('Location: userSettings.php');
   } else {
     if ($_POST['passwordNueva'] == '' || $_POST['confirmarPasswordNueva'] == '') {
@@ -16,7 +16,7 @@ if(isset($_POST['submitPassword'])) {
     } else if ($_POST['passwordVieja'] == $_POST['passwordNueva'] && $_POST['passwordVieja'] == $_POST['confirmarPasswordNueva']) {
       header('Location: userSettings.php');
     } else if ($_POST['passwordNueva'] == $_POST['confirmarPasswordNueva']) {
-      $nuevaContrasena = md5($_POST['passwordNueva']);
+      $nuevaContrasena = password_hash($_POST['passwordNueva'], PASSWORD_DEFAULT);
       $consulta= "UPDATE usuarios SET password = '$nuevaContrasena' WHERE nombre_usuario = '$usuarioLogin'";
       $sentencia= $base_de_datos->query($consulta);
       header('Location: logout.php');
