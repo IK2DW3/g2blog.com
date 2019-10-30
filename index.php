@@ -42,7 +42,20 @@ session_start();
   </header>
   <div class="container">
     <section class="entries">
-      <h2>Ultimas publicaciones</h2>
+      <h2>Últimas publicaciones</h2>
+      <div class="entries-container">
+        <?php
+        include_once "php/base_de_datos.php";
+        $result = $base_de_datos->prepare("SELECT * FROM entradas ORDER BY fecha_publicacion DESC LIMIT 6");
+        $result->execute();
+        for($i=0; $row = $result->fetch(); $i++){ ?>
+          <article class="post">
+            <h3 class="entrieTitle"><a href="php/showEntrie.php?id=<?php echo $row['id'];?>"><?php echo $row['titulo']; ?></a></h3>
+            <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?></span>
+            <p><?php echo strip_tags(substr($row['descripcion'],0,200)) ;?>... <a href="php/showEntrie.php?id=<?php echo $row['id'];?>">Leer mas...</a></p>
+          </article>
+        <?php } ?>
+      </div>
     </section>
     <aside class="aside-bar">
       <?php if(!empty($_SESSION['nombre_usuario'])) { ?>

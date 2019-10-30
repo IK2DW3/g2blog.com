@@ -129,6 +129,37 @@
   padding: .1%;
   border-bottom: 1px solid #6ddeab;
 }
+.container .entries-container {
+  align-items: stretch;
+  display: flex;
+  flex-flow: column;
+  padding: 1%;
+}
+
+.container .entries-container .post {
+  background-color: #fbfbfb;
+  border-bottom: 1px solid #fc7978;
+  height: 150px;
+  margin: 1% 0;
+  overflow: hidden;
+  padding: 2%;
+}
+.container .entries-container .post:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.container .entries-container .post h3 a {
+  color: #000;
+  font-size: 2vw;
+  text-decoration: none;
+}
+.container .entries-container .post span {
+  font-size: .8vw;
+}
+.container .entries-container .post p {
+  font-size: 1vw;
+  padding-top: 2.5%;
+  text-align: justify;
+}
 .container .aside-bar {
   flex-basis: 20%;
   overflow: hidden;

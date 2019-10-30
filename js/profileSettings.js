@@ -149,8 +149,8 @@ window.onload = function() {
     var element = document.getElementById('contador');
     var obj = document.getElementById('input-textarea');
 
-    obj.maxLength = 250;
-    element.innerHTML = 250 - obj.value.length;
+    obj.maxLength = 5000;
+    element.innerHTML = 5000 - obj.value.length;
 
     if (200 - obj.value.length < 0) {
       element.style.color = 'red';

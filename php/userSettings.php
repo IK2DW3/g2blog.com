@@ -103,7 +103,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <input class="input-field" id="entrieTitle" type="text" name="entrieTitle" value="" placeholder="Título de entrada..." autocomplete="off">
         <label class="label-info" for="entrieContent">Texto</label>
         <textarea class="input-textarea" id="input-textarea" name="entrieContent" placeholder="Texto de entrada..."></textarea>
-        <p class="subText">Texto restante:</p> <p class="subText" id="contador">250</p>
+        <p class="subText">Texto restante:</p> <p class="subText" id="contador">5000</p>
         <select class="entrie-categori" name="entrie-categori" id="entrie-categori">
           <option value="">Seleccionar categoria</option>
           <option value="Informatica">Informática</option>

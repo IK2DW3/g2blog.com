@@ -32,7 +32,7 @@ DROP TABLE IF EXISTS `entradas`;
 CREATE TABLE entradas(
 	id INT(255) NOT NULL AUTO_INCREMENT,
   titulo VARCHAR(50) DEFAULT NULL COMMENT 'Título de la entrada',
-  descripcion VARCHAR(255) DEFAULT NULL COMMENT 'Contenido',
+  descripcion VARCHAR(5000) DEFAULT NULL COMMENT 'Contenido',
   fecha_publicacion DATE NOT NULL,
   categoria VARCHAR(30) NOT NULL,
   num_comentarios INT(255) DEFAULT '0',
