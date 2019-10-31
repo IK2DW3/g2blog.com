@@ -3,7 +3,7 @@
 session_start();
 include_once "base_de_datos.php";
 $id=$_GET['id'];
-$result = $base_de_datos->prepare("SELECT * FROM entradas where id= :post_id");
+$result = $base_de_datos->prepare("SELECT * FROM entradas WHERE id = :post_id");
 $result->bindParam(':post_id', $id);
 $result->execute();
 
@@ -20,6 +20,7 @@ for($i=0; $row = $result->fetch(); $i++){
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <script src="../js/interaccionesUsuario.js"></script>
+  <script src="../js/entries.js"></script>
   <title>G2BLOG - <?php echo $row['titulo']; ?></title> <!-- Website title -->
 </head>
 <body>
@@ -47,8 +48,11 @@ for($i=0; $row = $result->fetch(); $i++){
   </header>
   <div class="container">
     <section class="entries">
-      <h2><?php echo $row['titulo']; ?></h2>
-
+      <article class="showEntrie">
+        <h2><?php echo $row['titulo']; ?></h2>
+        <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?></span>
+          <p><?php echo $row['descripcion'];?></p>
+      </article>
     </section>
     <aside class="aside-bar">
       <?php if(!empty($_SESSION['nombre_usuario'])) { ?>
@@ -85,7 +89,6 @@ for($i=0; $row = $result->fetch(); $i++){
       </nav>
     </aside>
   </div>
-
   <?php } ?>
   <footer class="footer">
     <p>Con la tecnología de nuestra imaginación</p>
