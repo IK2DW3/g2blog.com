@@ -172,7 +172,7 @@ window.onload = function() {
   }
 
   var tableUsers = document.getElementById('adm-users-table');
-  // Funcion tabla a campo de Texto a tabla usuarios
+  // Funcion tabla a campo de Texto a tabla entradas
   for(var i = 1; i < tableUsers.rows.length; i++) {
     tableUsers.rows[i].onclick = function() {
       document.getElementById("adm-username-edit").value = this.cells[0].innerHTML;
@@ -187,7 +187,7 @@ window.onload = function() {
   }
 
   var tableAdmEntries = document.getElementById('adm-entries-table');
-  // Funcion tabla a campo de Texto a tabla usuarios
+  // Funcion tabla a campo de Texto a tabla entradas
   for(var i = 1; i < tableAdmEntries.rows.length; i++) {
     tableAdmEntries.rows[i].onclick = function() {
       document.getElementById("adm-entrie-field-edit-id").value = this.cells[0].innerHTML;

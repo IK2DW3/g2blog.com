@@ -51,8 +51,16 @@ for($i=0; $row = $result->fetch(); $i++){
       <article class="showEntrie">
         <h2><?php echo $row['titulo']; ?></h2>
         <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?></span>
-          <p><?php echo $row['descripcion'];?></p>
+        <p><?php echo $row['descripcion'];?></p>
       </article>
+      <?php if(!empty($_SESSION['nombre_usuario'])) { ?>
+      <form class="entrie-comment" action="addComment.php" method="post">
+        <legend>Deja tu comentario...</legend>
+        <input type="hidden" name="entrie-id-comment" value="<?php echo $row['id']; ?>" readonly>
+        <textarea name="textarea-comment" id="textarea-comment" placeholder="Deja tu comentario..."></textarea>
+        <input class="comment-submit" type="submit" name="comment-submit" value="Comentar">
+      </form>
+      <?php } ?>
     </section>
     <aside class="aside-bar">
       <?php if(!empty($_SESSION['nombre_usuario'])) { ?>
