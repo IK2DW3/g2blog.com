@@ -67,10 +67,13 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
       for($i=0; $row = $result->fetch(); $i++){
       ?>
       <div class="comment">
-        <img src="../img/<?php echo $row['img_avatar']; ?>" alt="Avatar">
-        <h3><?php echo $row['name_usuario']; ?></h3>
-        <p><?php echo $row['descripcion']; ?></p>
-        <span><?php echo $row['fecha_comentario']; ?></span>
+        <aside class="comment-izda">
+          <img src="../img/avatars/<?php echo $row['img_avatar']; ?>" alt="Avatar">
+        </aside>
+        <article class="comment-dcha">
+          <h3><?php echo $row['name_usuario']; ?><span> publicado el <?php echo $row['fecha_comentario']; ?></span></h3>
+          <p><?php echo $row['descripcion']; ?></p>
+        </article>
       </div>
       <?php } ?>
     </section>
@@ -84,13 +87,7 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
         $sentencia= $base_de_datos->query($consulta);
         if ($sentencia == TRUE ) {
           $results = $sentencia->fetch();
-          if (!$results[0] == '') {
-            echo ("<img src='../img/$results[0]' alt='Avatar'>");
-          } else {
-            echo ("<img src='../img/contact.png' alt='Avatar'>");
-          }
-        } else {
-          echo ("<img src='../img/contact.png' alt='Avatar'>");
+          echo ("<img src='../img/avatars/$results[0]' alt='Avatar'>");
         }
         ?>
         <a href="userSettings.php"><ion-icon name="person"></ion-icon>Perfil</a>

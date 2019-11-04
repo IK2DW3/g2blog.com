@@ -46,7 +46,7 @@ session_start();
       <div class="entries-container">
         <?php
         include_once "php/base_de_datos.php";
-        $result = $base_de_datos->prepare("SELECT * FROM entradas ORDER BY fecha_publicacion DESC LIMIT 6");
+        $result = $base_de_datos->prepare("SELECT * FROM entradas ORDER BY hora_publicacion AND fecha_publicacion DESC LIMIT 6");
         $result->execute();
         for($i=0; $row = $result->fetch(); $i++){ ?>
           <article class="post">
