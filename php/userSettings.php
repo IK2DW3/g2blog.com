@@ -15,12 +15,12 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
 </head>
 <body>
   <header class="header" id="header">
-    <a class="a-logo" href="index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
+    <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
         <li><a href="../index.php">Inicio</a></li>
-        <li><a href="php/entradas.php">Entradas</a></li>
+        <li><a href="entradas.php">Entradas</a></li>
         <li><a class="a-buttom" href="logout.php">Log out</a></li>
       </ul>
     </nav>
@@ -35,13 +35,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         $sentencia= $base_de_datos->query($consulta);
         if ($sentencia == TRUE ) {
           $results = $sentencia->fetch();
-          if (!$results[4] == '') {
-            echo ("<img src='../img/$results[4]' alt='Avatar'>");
-          } else {
-            echo ("<img src='../img/contact.png' alt='Avatar'>");
-          }
-        } else {
-          echo ("<img src='../img/contact.png' alt='Avatar'>");
+          echo ("<img src='../img/avatars/$results[4]' alt='Avatar'>");
         }
         ?>
         <h2><?php if ($usuarioLogin == "") {echo ("Undefined");} else {echo ("Hey, ".$usuarioLogin);} ?></h2>

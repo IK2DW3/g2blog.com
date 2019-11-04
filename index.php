@@ -67,13 +67,7 @@ session_start();
         $sentencia= $base_de_datos->query($consulta);
         if ($sentencia == TRUE ) {
           $results = $sentencia->fetch();
-          if (!$results[0] == '') {
-            echo ("<img src='img/$results[0]' alt='Avatar'>");
-          } else {
-            echo ("<img src='img/contact.png' alt='Avatar'>");
-          }
-        } else {
-          echo ("<img src='img/contact.png' alt='Avatar'>");
+          echo ("<img src='img/avatars/$results[0]' alt='Avatar'>");
         }
         ?>
         <a href="php/userSettings.php"><ion-icon name="person"></ion-icon>Perfil</a>

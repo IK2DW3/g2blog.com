@@ -7,8 +7,7 @@ $result = $base_de_datos->prepare("SELECT * FROM entradas WHERE id = :post_id");
 $result->bindParam(':post_id', $id);
 $result->execute();
 
-for($i=0; $row = $result->fetch(); $i++){
-?>
+for($i=0; $row = $result->fetch(); $i++){ ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -60,6 +59,19 @@ for($i=0; $row = $result->fetch(); $i++){
         <textarea name="textarea-comment" id="textarea-comment" placeholder="Deja tu comentario..."></textarea>
         <input class="comment-submit" type="submit" name="comment-submit" value="Comentar">
       </form>
+      <?php }
+      /*SELECT `comentarios`.*, `usuarios`.`img_avatar` FROM `comentarios` LEFT JOIN `usuarios` ON `comentarios`.`name_usuario` = `usuarios`.`nombre_usuario` WHERE id_entrada = :post_id ORDER BY fecha_comentario DESC*/
+      $result = $base_de_datos->prepare("SELECT `comentarios`.*, `usuarios`.img_avatar FROM comentarios  LEFT JOIN `usuarios` ON `comentarios`.`name_usuario` = `usuarios`.`nombre_usuario` WHERE id_entrada = :post_id ORDER BY fecha_comentario DESC");
+      $result->bindParam(':post_id', $id);
+      $result->execute();
+      for($i=0; $row = $result->fetch(); $i++){
+      ?>
+      <div class="comment">
+        <img src="../img/<?php echo $row['img_avatar']; ?>" alt="Avatar">
+        <h3><?php echo $row['name_usuario']; ?></h3>
+        <p><?php echo $row['descripcion']; ?></p>
+        <span><?php echo $row['fecha_comentario']; ?></span>
+      </div>
       <?php } ?>
     </section>
     <aside class="aside-bar">
