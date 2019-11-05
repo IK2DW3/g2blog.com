@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+
 include_once "base_de_datos.php";
 $id=$_GET['id'];
 $result = $base_de_datos->prepare("SELECT * FROM entradas WHERE id = :post_id");
@@ -19,7 +20,6 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <script src="../js/interaccionesUsuario.js"></script>
-  <script src="../js/entries.js"></script>
   <title>G2BLOG - <?php echo $row['titulo']; ?></title> <!-- Website title -->
 </head>
 <body>
@@ -28,13 +28,13 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
     <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
-        <li><a class="highlight" href="../index.php">Inicio</a></li>
-        <li><a href="entradas.php">Entradas</a></li>
+        <li><a href="../index.php">Inicio</a></li>
+        <li><a class="highlight" href="entradas.php">Entradas</a></li>
         <?php if(empty($_SESSION['nombre_usuario'])) { ?>
         <li><a class="a-buttom" href="login.php">Log in</a></li>
         <li><a class="a-buttom" href="register.php">Registrarse</a></li>
         <?php } else { ?>
-        <li class="a buttonDropdown" id="dropdownMenuButton"><?php echo ("Hey, ".$_SESSION['nombre_usuario']." &#9660"); ?>
+        <li class="a buttonDropdown" id="dropdownMenuButton"><?php echo ("Hey! &#128225 &#9660"); ?>
           <ul class="dropdown" id="dropdown">
             <li><a href="userSettings.php">Mi perfil</a></li>
             <li><a href="#">Modo noche</a></li>
@@ -50,17 +50,17 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
       <article class="showEntrie">
         <h2><?php echo $row['titulo']; ?></h2>
         <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?></span>
-        <p><?php echo $row['descripcion'];?></p>
+        <p id="parrafo"><?php echo nl2br($row['descripcion']);?></p> <!-- Funcion nl2br hace que si lee \n inserta un salto de linea en el texto -->
       </article>
       <?php if(!empty($_SESSION['nombre_usuario'])) { ?>
       <form class="entrie-comment" action="addComment.php" method="post">
         <legend>Deja tu comentario...</legend>
         <input type="hidden" name="entrie-id-comment" value="<?php echo $row['id']; ?>" readonly>
         <textarea name="textarea-comment" id="textarea-comment" placeholder="Deja tu comentario..."></textarea>
+        <p id="contador">200</p>
         <input class="comment-submit" type="submit" name="comment-submit" value="Comentar">
       </form>
       <?php }
-      /*SELECT `comentarios`.*, `usuarios`.`img_avatar` FROM `comentarios` LEFT JOIN `usuarios` ON `comentarios`.`name_usuario` = `usuarios`.`nombre_usuario` WHERE id_entrada = :post_id ORDER BY fecha_comentario DESC*/
       $result = $base_de_datos->prepare("SELECT `comentarios`.*, `usuarios`.img_avatar FROM comentarios  LEFT JOIN `usuarios` ON `comentarios`.`name_usuario` = `usuarios`.`nombre_usuario` WHERE id_entrada = :post_id ORDER BY fecha_comentario DESC");
       $result->bindParam(':post_id', $id);
       $result->execute();
@@ -72,7 +72,16 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
         </aside>
         <article class="comment-dcha">
           <h3><?php echo $row['name_usuario']; ?><span> publicado el <?php echo $row['fecha_comentario']; ?></span></h3>
-          <p><?php echo $row['descripcion']; ?></p>
+          <p><?php echo nl2br($row['descripcion']); ?></p>
+          <?php
+          if(!empty($_SESSION['nombre_usuario'])) {
+            $usuarioLogin = $_SESSION['nombre_usuario'];
+            $consulta= "SELECT tipo_usuario FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
+            $sentencia= $base_de_datos->query($consulta);
+            $results = $sentencia->fetch();
+            if ($results[0] == "Administrador") { ?>
+            <p class="eli-comment"><a href="<?php echo "removeComment.php?id=" . $row['id']?>">Eliminar comentario</a></p>
+          <?php } } ?>
         </article>
       </div>
       <?php } ?>
@@ -81,8 +90,6 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
       <?php if(!empty($_SESSION['nombre_usuario'])) { ?>
       <div class="aside-user-box">
         <?php
-        include_once "base_de_datos.php";
-        $usuarioLogin = $_SESSION['nombre_usuario'];
         $consulta= "SELECT img_avatar FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
         $sentencia= $base_de_datos->query($consulta);
         if ($sentencia == TRUE ) {

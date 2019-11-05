@@ -161,9 +161,9 @@
   text-align: justify;
 }
 .container .entries .showEntrie {
-  border: 1px solid #fb9998;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-  padding: 1.1% 2.5%;
+  margin-bottom: 1%;
+  padding: 1.1% 2.5% 2%;
 }
 .container .entries .showEntrie h2 {
   border: none;
@@ -510,6 +510,7 @@
   background-color: #3c4f70;
   flex-basis: 20%;
   flex-grow: 1;
+  max-width: 20%;
 }
 .panelUsuario .user-aside .user-icon {
   align-items: center;
@@ -525,6 +526,7 @@
 }
 .panelUsuario .user-aside .user-icon h2 {
   color: #dddbdb;
+  font-size: 1em;
 }
 .panelUsuario .user-aside .user-nav{
   height: auto;
@@ -741,7 +743,8 @@
 .container .entries .entrie-comment {
   display: flex;
   flex-wrap: wrap;
-  padding: 1.1% 2.5%;
+  margin-bottom: 1%;
+  padding: 2% 2.5% 1.1%;
 }
 .container .entries .entrie-comment legend {
   display: block;
@@ -775,6 +778,10 @@
   line-height: 20px;
   padding: 3px 10px;
 }
+.container .entries .entrie-comment p {
+  flex-basis: 100%;
+  text-align: right;
+}
 .container .entries .comment {
   border-top: 1px solid rgb(213, 213, 213);
   display: flex;
@@ -793,13 +800,13 @@
   padding: .05% 1.5%;
   flex-grow: 2;
 }
-.container .entries .comment .comment-dcha h3 {
-
-}
 .container .entries .comment .comment-dcha span {
   font-size: 12px;
   padding-left: .5%;
 }
 .container .entries .comment .comment-dcha p {
   padding-top: 1%;
+}
+.container .entries .comment .comment-dcha .eli-comment {
+  font-size: 12px;
 }

@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `comentarios`;
 /* Creamos la tabla de usuarios */
 CREATE TABLE comentarios(
 	id INT(255) NOT NULL AUTO_INCREMENT,
-  descripcion VARCHAR(255) DEFAULT NULL COMMENT 'Contenido',
+  descripcion VARCHAR(200) DEFAULT NULL COMMENT 'Contenido',
   fecha_comentario DATE NOT NULL,
 	hora_comentario TIME,
   id_entrada INT(255) DEFAULT NULL COMMENT 'Título de la entrada',
