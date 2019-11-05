@@ -15,6 +15,10 @@ $sentencia = $base_de_datos->prepare("INSERT INTO entradas(titulo, descripcion, 
 $resultado = $sentencia->execute([$titulo, $descripcion, $fecha_publicacion, $hora_publicacion, $categoria, $num_comentarios, $usuarioLogin]); # Pasar en el mismo orden de los ?
 
 $url = "userSettings.php";
-if($resultado === TRUE) header("Location: $url");
+if($resultado === TRUE) {
+  $sentencia = $base_de_datos->prepare("UPDATE `usuarios` SET `entradas_publicadas`= +1 WHERE nombre_usuario = '$usuarioLogin'");
+  $resultado = $sentencia->execute();
+  header("Location: $url");
+}
 else echo "Algo salió mal. Por favor verifica que la tabla exista";
 ?>
