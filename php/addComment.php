@@ -12,6 +12,10 @@ $sentencia = $base_de_datos->prepare("INSERT INTO comentarios(descripcion, fecha
 $resultado = $sentencia->execute([$descripcion, $fecha_comentario, $id_entrada, $usuarioLogin]); # Pasar en el mismo orden de los ?
 
 $url = "showEntrie.php?id=$id_entrada";
-if($resultado === TRUE) header("Location: $url");
+if($resultado === TRUE) {
+  $sentencia = $base_de_datos->prepare("UPDATE `entradas` SET `num_comentarios`= +1 WHERE id = '$id_entrada'");
+  $resultado = $sentencia->execute();
+  header("Location: $url");
+}
 else echo "Algo salió mal. Por favor verifica que la tabla exista";
 ?>
