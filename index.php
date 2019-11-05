@@ -20,11 +20,11 @@ session_start();
 <body>
   <header class="header" id="header">
     <a class="a-logo" href="index.php"><img src="img/iconlogo.png" alt="G2BLOG"></a>
-    <h1><a class="a-title" href="index.php">G2BLOG</a></h1>
+    <a class="a-title" href="index.php">G2BLOG</a>
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
         <li><a class="highlight" href="index.php">Inicio</a></li>
-        <li><a href="php/entradas.php">Entradas</a></li>
+        <li><a href="php/entries.php">Entradas</a></li>
         <?php if(empty($_SESSION['nombre_usuario'])) { ?>
         <li><a class="a-buttom" href="php/login.php">Log in</a></li>
         <li><a class="a-buttom" href="php/register.php">Registrarse</a></li>
@@ -40,6 +40,12 @@ session_start();
       </ul>
     </nav>
   </header>
+  <div class="principal">
+    <article class="principal-article">
+      <h1>Este es el blog de tus pensamientos</h1>
+      <p>¡Aquí podrás expresar tus conocimientos con las demás personas!</p>
+    </article>
+  </div>
   <div class="container">
     <section class="entries">
       <h2>Últimas publicaciones</h2>
@@ -86,9 +92,10 @@ session_start();
       </nav>
     </aside>
   </div>
-  <footer class="footer">
-    <p>Con la tecnología de nuestra imaginación</p>
-  </footer>
 
+  <?php
+  // footer HTML and JavaScript codes
+  include_once "php/layoutFooter.php";
+  ?>
 </body>
 </html>

@@ -19,7 +19,7 @@ session_start();
 <body>
   <header class="header" id="header">
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
-    <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
+    <a class="a-title" href="../index.php">G2BLOG</a>
   </header>
   <div class="pop-container" id="pop-container">
     <div class="pop" id="pop">
@@ -39,8 +39,9 @@ session_start();
     <input type="submit" name="mandar" value="ACCEDER">
     <a class="link" href="#">¿Contraseña olvidada?</a>
   </form>
-  <footer class="footer">
-    <p>Con la tecnología de nuestra imaginación</p>
-  </footer>
+  <?php
+  // footer HTML and JavaScript codes
+  include_once "layoutFooter.php";
+  ?>
 </body>
 </html>

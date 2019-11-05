@@ -16,12 +16,18 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
 <body>
   <header class="header" id="header">
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
-    <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
+    <a class="a-title" href="../index.php">G2BLOG</a>
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
-        <li><a href="../index.php">Inicio</a></li>
-        <li><a href="entradas.php">Entradas</a></li>
-        <li><a class="a-buttom" href="logout.php">Log out</a></li>
+        <li><a href="index.php">Inicio</a></li>
+        <li><a href="entries.php">Entradas</a></li>
+        <li class="a buttonDropdown" id="dropdownMenuButton"><?php echo ("Hey! &#9889; &#9660"); ?>
+          <ul class="dropdown" id="dropdown">
+            <li><a href="userSettings.php">Mi perfil</a></li>
+            <li><a href="">Modo noche</a></li>
+            <li><a href="logout.php">Desconectar</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
@@ -297,9 +303,9 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </section>
     <?php } ?>
   </div>
-
-  <footer class="footer">
-    <p>Con la tecnología de nuestra imaginación</p>
-  </footer>
+  <?php
+  // footer HTML and JavaScript codes
+  include_once "layoutFooter.php";
+  ?>
 </body>
 </html>

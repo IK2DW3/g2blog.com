@@ -33,14 +33,13 @@
   height: 40px;
   width: 50px;
 }
-.header h1 {
+.header a.a-title {
   flex-basis: 71.5%;
   flex-grow: 3;
   flex-shrink: 1;
-}
-.header h1 a.a-title {
   color: #000;
   font-size: 2rem;
+  font-weight: bold;
   text-decoration: none;
 }
 .header .header-nav {
@@ -111,6 +110,26 @@
 .header .header-nav .dropdown li a{
   color: #000;
   text-decoration: none;
+}
+
+.principal {
+  background-color: rgba(43, 43, 43, 0.83);
+  border-radius: 15px;
+  margin: 1% 10%;
+  overflow: hidden;
+  width: 80%;
+}
+.principal .principal-article {
+  padding: 2.5% 3%;
+}
+.principal .principal-article h1 {
+  color: #eeeeee;
+  font-size: 2.5em;
+}
+.principal .principal-article p {
+  color: #f4f4f4;
+  padding: 2% 0;
+  font-style: italic;
 }
 
 .container {
@@ -239,11 +258,74 @@
   color: #000;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-flow: dense;
+  grid-gap: 10px;
+  background-color: #d6d6d6;
+  padding: 10px;
+}
+.grid-container > div {
+  align-items: flex-start;
+  color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 2% 4%;
+}
+.grid-container div h4 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.85);
+  padding-bottom: .5%;
+}
+.grid-container div p.copy {
+  font-weight: bold;
+  padding: 0;
+}
+.grid-container div p {
+  text-align: justify;
+  padding: 3% 0 1.5%;
+}
+.grid-container div .center {
+  align-items: center;
+  display: inherit;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.grid-container div .center img {
+  height: 100px;
+  width: 120px;
+}
+.grid-container div .center h5 {
+  flex-basis: 100%;
+  font-size: 1em;
+}
+.grid-container div nav {
+  width: 50%;
+  padding: 3% 0 1.5%;
+}
+.grid-container div nav ul {
+  list-style-type: none;
+  text-align: left;
+}
+.grid-container div nav ul li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.28);
+  display: block;
+  padding: 5px 0;
+}
+.grid-container div nav ul li a {
+  color: #000000;
+  text-decoration: none;
+}
+
 .footer {
   align-items: center;
-  background-color: #d1d1d1;
+  background-color: #b9b9b9;
   border-top: 2px solid #ba7b00;
   display: flex;
+  font-size: .85em;
   height: 50px;
   justify-content: center;
   overflow: hidden;
