@@ -1,6 +1,7 @@
 <?php
+// inicializamos sesion
 session_start();
-include_once "base_de_datos.php";
+include_once "base_de_datos.php"; // Incluimos el archivo de base de datos
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +14,12 @@ include_once "base_de_datos.php";
   <!-- Icon pack link https://ionicons.com/ -->
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
-  <script src="../js/showEntrie.js"></script>
+  <script src="../js/app.js"></script>
   <title>G2BLOG - Entradas </title>
 </head>
+<!-- Inicio del body -->
 <body>
+  <!-- Inicio de la cabecera -->
   <header class="header" id="header">
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
@@ -39,14 +42,14 @@ include_once "base_de_datos.php";
       </ul>
     </nav>
   </header>
-
+  <!-- Fin de la cabecera -->
+  <!-- Inicio del contenedor -->
   <div class="container">
     <section class="entries">
       <h2>Lista de entradas</h2>
       <div class="entries-container">
         <?php
-
-        $result = $base_de_datos->prepare("SELECT * FROM entradas ORDER BY hora_publicacion AND fecha_publicacion DESC LIMIT 6");
+        $result = $base_de_datos->prepare("SELECT * FROM entradas ORDER BY fecha_publicacion DESC, hora_publicacion DESC");
         $result->execute();
         for($i=0; $row = $result->fetch(); $i++){ ?>
           <article class="post">
@@ -88,13 +91,22 @@ include_once "base_de_datos.php";
           <?php } ?>
         </ul>
       </nav>
+      <nav class="aside-social">
+        <h4>Redes sociales</h4>
+        <ul>
+          <li><a href="http://www.fptxurdinaga.hezkuntza.net/web/Guest" title="FP"><ion-icon name="logo-rss"></ion-icon></a></li>
+          <li><a href="https://www.youtube.com/channel/UCDBiikZmW0z9_PM3Bn0rqkg" title="Youtube"><ion-icon name="logo-youtube"></ion-icon></a></li>
+          <li><a href="https://github.com/IK2DW3/g2blog.com" title="GitHub"><ion-icon name="logo-github"></ion-icon></a></li>
+        </ul>
+      </nav>
     </aside>
   </div>
-
+  <!-- Fin del contenedor -->
   <?php
-  // footer HTML and JavaScript codes
+  // incluimos el footer
   include_once "layoutFooter.php";
   ?>
-
 </body>
+<!-- Fin del body -->
 </html>
+<!-- Fin del HTML 5 -->

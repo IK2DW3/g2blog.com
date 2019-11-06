@@ -1,8 +1,9 @@
 <?php
+// Iniciar sesion
 session_start();
 $usuarioLogin = $_SESSION['nombre_usuario'];
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- Inicio del HTML 5 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,13 +14,15 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
   <script src="../js/profileSettings.js"></script>
   <title><?php echo "G2BLOG - Perfil ".$usuarioLogin; ?></title>
 </head>
+<!-- Inicio del body -->
 <body>
+  <!-- Inicio de la cabecera -->
   <header class="header" id="header">
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <a class="a-title" href="../index.php">G2BLOG</a>
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
-        <li><a href="index.php">Inicio</a></li>
+        <li><a href="../index.php">Inicio</a></li>
         <li><a href="entries.php">Entradas</a></li>
         <li class="a buttonDropdown" id="dropdownMenuButton"><?php echo ("Hey! &#9889; &#9660"); ?>
           <ul class="dropdown" id="dropdown">
@@ -31,7 +34,8 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       </ul>
     </nav>
   </header>
-
+  <!-- Fin de la cabecera -->
+  <!-- Inicio del contenedor -->
   <div class="panelUsuario">
     <aside class="user-aside">
       <div class="user-icon">
@@ -305,9 +309,12 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </section>
     <?php } ?>
   </div>
+  <!-- Fin del contenedor -->
   <?php
-  // footer HTML and JavaScript codes
+  // inicio del footer
   include_once "layoutFooter.php";
   ?>
 </body>
+<!-- Fin del body -->
 </html>
+<!-- Fin del HTML 5 -->

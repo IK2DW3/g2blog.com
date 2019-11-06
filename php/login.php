@@ -1,7 +1,8 @@
 <?php
+// Inicio de la sesion
 session_start();
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- Inicio del HTML 5 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,9 +15,11 @@ session_start();
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <!-- Validacion login-->
-  <script src="../js/validacion-registro.js"></script>
+  <script src="../js/app.js"></script>
 </head>
+<!-- Inicio del body -->
 <body>
+  <!-- Inicio de la cabecera-->
   <header class="header" id="header">
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <a class="a-title" href="../index.php">G2BLOG</a>
@@ -28,13 +31,17 @@ session_start();
       </ul>
     </nav>
   </header>
+  <!-- Fin de la cabecera -->
+  <!-- Inicio del pop up -->
   <div class="pop-container" id="pop-container">
-    <div class="pop" id="pop">
+    <div class="apop pop" id="pop">
       <div class="icon" id="icon">
       </div>
       <p id="text"></p>
     </div>
   </div>
+  <!-- Fin del pop up -->
+  <!-- Inicio del formulario -->
   <form name="fPrincipal" class="fPrincipal" id="fPrincipal" action="confirmacionLogin.php" onsubmit="return validacionLogin()" method="post">
     <img src="../img/iconlogo.png" alt="G2BLOG">
     <h2>Login</h2>
@@ -50,9 +57,12 @@ session_start();
     <input type="submit" name="mandar" id="entrar" value="ACCEDER">
     <a class="link" href="#">¿Contraseña olvidada?</a>
   </form>
+  <!-- Inicio delformulario -->
   <?php
-  // footer HTML and JavaScript codes
+  // incluimos el footer
   include_once "layoutFooter.php";
   ?>
 </body>
+<!-- Fin del body -->
 </html>
+<!-- Fin del HTML 5 -->

@@ -1,14 +1,14 @@
 <?php
+// inicializamos sesion
 session_start();
-include_once "base_de_datos.php";
-
+include_once "base_de_datos.php"; // Incluimos el archivo de base de datos
+// Inicializamos variables
 $categoria = $_GET['categoria'];
-$result = $base_de_datos->prepare("SELECT * FROM entradas WHERE categoria = :post_category ORDER BY hora_publicacion");
+$result = $base_de_datos->prepare("SELECT * FROM entradas WHERE categoria = :post_category ORDER BY fecha_publicacion DESC, hora_publicacion DESC");
 $result->bindParam(':post_category', $categoria);
-$result->execute();
-
+$result->execute(); //  Recogemos los resultados
  ?>
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- Inicio del HTML 5 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -19,10 +19,12 @@ $result->execute();
   <!-- Icon pack link https://ionicons.com/ -->
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
-  <script src="../js/showEntrie.js"></script>
+  <script src="../js/app.js"></script>
   <title>G2BLOG - <?php echo "$categoria"?> </title>
 </head>
+<!-- Inicio del body -->
 <body>
+  <!-- Inicio de la cabecera -->
   <header class="header" id="header">
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <h1><a class="a-title" href="../index.php">G2BLOG</a></h1>
@@ -45,7 +47,8 @@ $result->execute();
       </ul>
     </nav>
   </header>
-
+  <!-- Fin de la cabecera -->
+  <!-- Inicio del contenedor -->
   <div class="container">
     <section class="entries">
       <h2><?php echo "$categoria";?></h2>
@@ -91,13 +94,22 @@ $result->execute();
           <?php } ?>
         </ul>
       </nav>
+      <nav class="aside-social">
+        <h4>Redes sociales</h4>
+        <ul>
+          <li><a href="http://www.fptxurdinaga.hezkuntza.net/web/Guest" title="FP"><ion-icon name="logo-rss"></ion-icon></a></li>
+          <li><a href="https://www.youtube.com/channel/UCDBiikZmW0z9_PM3Bn0rqkg" title="Youtube"><ion-icon name="logo-youtube"></ion-icon></a></li>
+          <li><a href="https://github.com/IK2DW3/g2blog.com" title="GitHub"><ion-icon name="logo-github"></ion-icon></a></li>
+        </ul>
+      </nav>
     </aside>
   </div>
-
+  <!-- Fin del contenedor -->
   <?php
   // footer HTML and JavaScript codes
   include_once "layoutFooter.php";
   ?>
-
 </body>
+<!-- Fin del body -->
 </html>
+<!-- Fin del HTML 5 -->

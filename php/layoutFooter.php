@@ -1,5 +1,5 @@
-<?php // Pre-Footer ?>
-<div class="grid-container">
+<?php // Diseño del footer para todas las páginas ?>
+<div class="grid-container"> <!-- Inicio del div -->
   <div>
     <p class="copy">RD</p>
   </div>
@@ -10,9 +10,9 @@
   </div>
   <div>
     <h4>Sobre nosotros</h4>
-    <p>Éste diseño esta realizado con la tecnología de RD</p>
+    <p>Éste diseño esta realizado con la tecnología de <a href="https://github.com/IK2DW3" target="_blank">RD</a><br> Las bestias del aprendizaje lento</p>
   </div>
-</div>
-<footer class="footer">
+</div> <!-- Fin del div -->
+<footer class="footer">  <!-- Inicio del footer -->
   <p> 2019 &copy; Con la tecnología de nuestra imaginación</p>
-</footer>
+</footer> <!-- Fin del footer -->
