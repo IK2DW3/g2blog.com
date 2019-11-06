@@ -114,6 +114,7 @@
 .principal {
   background-color: rgba(43, 43, 43, 0.83);
   border-radius: 15px;
+  height: 300px;
   margin: 1% 10%;
   overflow: hidden;
   width: 80%;
@@ -123,11 +124,12 @@
 }
 .principal .principal-article h1 {
   color: #eeeeee;
-  font-size: 2.5em;
+  font-size: 3.2vw;
 }
 .principal .principal-article p {
   color: #f4f4f4;
   padding: 2% 0;
+  font-size: 1.2vw;
   font-style: italic;
 }
 
@@ -152,6 +154,7 @@
   display: flex;
   flex-flow: column;
   padding: 1%;
+
 }
 
 .container .entries-container .post {
@@ -178,6 +181,20 @@
   padding-top: 2.5%;
   text-align: justify;
 }
+.container .entries-container .dVerMas {
+  align-items: center;
+  display: inherit;
+  height: 50px;
+  justify-content: center;
+}
+.container .entries-container .dVerMas .aVerMas {
+  background-color: #fc7978;
+  border-radius: 50%;
+  color: #000;
+  font-size: 2em;
+  padding: 1% 1.7%;
+  text-decoration: none;
+}
 .container .entries .showEntrie {
   box-shadow: 1px 1px 2px rgba(0,0,0,0.8);
   margin-bottom: 1%;
@@ -191,11 +208,13 @@
   padding: 1.5% 0 .1%;
 }
 .container .entries .showEntrie .entrie-img {
+  height: 400px;
   text-align: center;
+  overflow: hidden;
   padding-top: 2%;
 }
 .container .entries .showEntrie .entrie-img img {
-  height: auto;
+  height: 400px;
   width: 80%;
 }
 .container .entries .showEntrie span {

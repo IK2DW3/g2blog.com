@@ -60,6 +60,7 @@ session_start();
             <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?></span>
             <p><?php echo strip_tags(substr($row['descripcion'],0,200)) ;?>... <a href="php/showEntrie.php?id=<?php echo $row['id'];?>">Leer mas...</a></p>
           </article>
+          <?php if ($i == 2) { echo "<div class='dVerMas'><a class='aVerMas' href='php/entries.php' title='Ver mas'>&plus;</a></div>"; break; } ?>
         <?php } ?>
       </div>
     </section>
@@ -86,8 +87,13 @@ session_start();
       <h3>Categorías</h3>
       <nav class="aside-nav">
         <ul>
-          <li><a href="#">Informática</a></li>
-          <li><a href="#">Off-Topics</a></li>
+          <?php
+          include_once "php/base_de_datos.php";
+          $result = $base_de_datos->prepare("SELECT categoria FROM entradas GROUP BY categoria");
+          $result->execute();
+          for($i=0; $row = $result->fetch(); $i++){ ?>
+            <li><a href="php/entriesFilter.php?categoria=<?php echo $row['categoria'];?>"><?php echo $row['categoria'];?></a></li>
+          <?php } ?>
         </ul>
       </nav>
     </aside>

@@ -29,7 +29,7 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
         <li><a href="../index.php">Inicio</a></li>
-        <li><a class="highlight" href="entradas.php">Entradas</a></li>
+        <li><a class="highlight" href="entries.php">Entradas</a></li>
         <?php if(empty($_SESSION['nombre_usuario'])) { ?>
         <li><a class="a-buttom" href="login.php">Log in</a></li>
         <li><a class="a-buttom" href="register.php">Registrarse</a></li>
@@ -113,8 +113,12 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
       <h3>Categorías</h3>
       <nav class="aside-nav">
         <ul>
-          <li><a href="#">Informática</a></li>
-          <li><a href="#">Off-Topics</a></li>
+          <?php
+          $result = $base_de_datos->prepare("SELECT categoria FROM entradas GROUP BY categoria");
+          $result->execute();
+          for($i=0; $row = $result->fetch(); $i++){ ?>
+            <li><a href="entriesFilter.php?categoria=<?php echo $row['categoria'];?>"><?php echo $row['categoria'];?></a></li>
+          <?php } ?>
         </ul>
       </nav>
     </aside>

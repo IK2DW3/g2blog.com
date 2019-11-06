@@ -1,6 +1,12 @@
 <?php
 session_start();
 include_once "base_de_datos.php";
+
+$categoria = $_GET['categoria'];
+$result = $base_de_datos->prepare("SELECT * FROM entradas WHERE categoria = :post_category ORDER BY hora_publicacion");
+$result->bindParam(':post_category', $categoria);
+$result->execute();
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +20,7 @@ include_once "base_de_datos.php";
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <script src="../js/showEntrie.js"></script>
-  <title>G2BLOG - Entradas </title>
+  <title>G2BLOG - <?php echo "$categoria"?> </title>
 </head>
 <body>
   <header class="header" id="header">
@@ -23,7 +29,7 @@ include_once "base_de_datos.php";
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
         <li><a href="../index.php">Inicio</a></li>
-        <li><a class="highlight" href="entradas.php">Entradas</a></li>
+        <li><a class="highlight" href="entries.php">Entradas</a></li>
         <?php if(empty($_SESSION['nombre_usuario'])) { ?>
         <li><a class="a-buttom" href="login.php">Log in</a></li>
         <li><a class="a-buttom" href="register.php">Registrarse</a></li>
@@ -42,12 +48,9 @@ include_once "base_de_datos.php";
 
   <div class="container">
     <section class="entries">
-      <h2>Lista de entradas</h2>
+      <h2><?php echo "$categoria";?></h2>
       <div class="entries-container">
         <?php
-
-        $result = $base_de_datos->prepare("SELECT * FROM entradas ORDER BY hora_publicacion AND fecha_publicacion DESC LIMIT 6");
-        $result->execute();
         for($i=0; $row = $result->fetch(); $i++){ ?>
           <article class="post">
             <h3 class="entrieTitle"><a href="showEntrie.php?id=<?php echo $row['id'];?>"><?php echo $row['titulo']; ?></a></h3>
