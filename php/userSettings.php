@@ -97,7 +97,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
     </section>
 
     <section class="adm user-entries" id="user-entries">
-      <form class="user-entries-form" action="createEntrie.php"  onsubmit="return validarEntrada()" method="post">
+      <form class="user-entries-form" action="createEntrie.php"  onsubmit="return validarEntrada()" method="post" enctype="multipart/form-data">
         <legend>Crear Entrada</legend>
         <label class="label-info" for="entrieTitle">Título de la entrada</label>
         <input class="input-field" id="entrieTitle" type="text" name="entrieTitle" value="" placeholder="Título de entrada..." autocomplete="off">
@@ -109,6 +109,8 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
           <option value="Informatica">Informática</option>
           <option value="Off-Topic">Off-Topic</option>
         </select>
+        <label class="label-info" for="entrieImg">Subir imagen</label>
+        <input type="file" name="entrieImg" id="entrieImg" accept=".jpg, .jpeg, .png">
         <input class="input-submit" type="submit" name="submitEntrie" value="Publicar">
       </form>
       <h3 id="Entradas">Mis entradas</h3>

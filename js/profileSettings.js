@@ -9,6 +9,15 @@ window.onload = function() {
   * Fomulario para el cambio de imagen del usuario
   */
 
+  /* Asignar un tamaño máximo a las imagenes de las entradas */
+  var uploadField1 = document.getElementById("entrieImg");
+  uploadField1.onchange = function() {
+      if(this.files[0].size > 904800){
+         alert("Tamaño de imagen demasiado grande.");
+         this.value = "";
+      };
+  };
+
   /* Asignar un tamaño máximo a las imagenes */
   var uploadField = document.getElementById("cambiarAvatar");
   uploadField.onchange = function() {

@@ -1,24 +1,46 @@
 <?php
 session_start();
-
-// Inicializar variables
-include_once "base_de_datos.php";
-$titulo = $_POST["entrieTitle"];
-$descripcion = $_POST["entrieContent"];
-$fecha_publicacion = date('Y/m/d');
-$hora_publicacion = date('h:i:sa');
-$categoria = $_POST["entrie-categori"];
-$num_comentarios = 0;
 $usuarioLogin = $_SESSION['nombre_usuario'];
+?>
+<?php
+// Inicializar variables
+$target_dir = "../img/entries/";
+include_once "base_de_datos.php";
+if(isset($_POST['submitEntrie'])) {
 
-$sentencia = $base_de_datos->prepare("INSERT INTO entradas(titulo, descripcion, fecha_publicacion, hora_publicacion, categoria, num_comentarios, name_usuario) VALUES (?, ?, ?, ?, ?, ?, ?);");
-$resultado = $sentencia->execute([$titulo, $descripcion, $fecha_publicacion, $hora_publicacion, $categoria, $num_comentarios, $usuarioLogin]); # Pasar en el mismo orden de los ?
+  $file_name = $_FILES["entrieImg"]["name"];
+  echo $file_name;
 
-$url = "userSettings.php";
-if($resultado === TRUE) {
-  $sentencia = $base_de_datos->prepare("UPDATE `usuarios` SET `entradas_publicadas`= +1 WHERE nombre_usuario = '$usuarioLogin'");
-  $resultado = $sentencia->execute();
-  header("Location: $url");
+  $titulo = $_POST["entrieTitle"];
+  $descripcion = $_POST["entrieContent"];
+  $fecha_publicacion = date('Y/m/d');
+  $hora_publicacion = date('h:i:sa');
+  $categoria = $_POST["entrie-categori"];
+  $num_comentarios = 0;
+
+  if(!empty($_FILES["entrieImg"])) {
+
+    $target_dir = $target_dir . basename($file_name);
+    $file_temp = $_FILES["entrieImg"]["tmp_name"];
+
+    if(move_uploaded_file($file_temp, $target_dir)) {
+
+      $sentencia = $base_de_datos->prepare("INSERT INTO entradas (titulo, descripcion, img_entrada, fecha_publicacion, hora_publicacion, categoria, num_comentarios, name_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+      $resultado = $sentencia->execute([$titulo, $descripcion, $file_name, $fecha_publicacion, $hora_publicacion, $categoria, $num_comentarios, $usuarioLogin]); # Pasar en el mismo orden de los ?
+
+      $url = "userSettings.php";
+      if($resultado === TRUE) {
+        $sentencia = $base_de_datos->prepare("UPDATE `usuarios` SET `entradas_publicadas`= +1 WHERE nombre_usuario = '$usuarioLogin'");
+        $resultado = $sentencia->execute();
+        header("Location: $url");
+      } else{
+        header("Location: $url");
+      }
+
+    } else{
+      header("Location: $url");
+    }
+  }
 }
-else echo "Algo salió mal. Por favor verifica que la tabla exista";
+$base_de_datos->close();
 ?>

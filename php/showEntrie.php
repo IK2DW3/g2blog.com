@@ -49,8 +49,13 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
     <section class="entries">
       <article class="showEntrie">
         <h2><?php echo $row['titulo']; ?></h2>
-        <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?></span>
+        <?php if (!($row['img_entrada'] == "")): ?>
+          <div class="entrie-img">
+            <img src="../img/entries/<?php echo $row['img_entrada'] ?>" alt="Imagen representativa de la entrada">
+          </div>
+        <?php endif; ?>
         <p id="parrafo"><?php echo nl2br($row['descripcion']);?></p> <!-- Funcion nl2br hace que si lee \n inserta un salto de linea en el texto -->
+        <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?> por <?php echo $row['name_usuario']; ?></span>
       </article>
       <?php if(!empty($_SESSION['nombre_usuario'])) { ?>
       <form class="entrie-comment" action="addComment.php" method="post">
@@ -90,6 +95,7 @@ for($i=0; $row = $result->fetch(); $i++){ ?>
       <?php if(!empty($_SESSION['nombre_usuario'])) { ?>
       <div class="aside-user-box">
         <?php
+        $usuarioLogin = $_SESSION['nombre_usuario'];
         $consulta= "SELECT img_avatar FROM usuarios WHERE nombre_usuario = '$usuarioLogin'";
         $sentencia= $base_de_datos->query($consulta);
         if ($sentencia == TRUE ) {
