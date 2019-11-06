@@ -115,7 +115,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
       </form>
       <h3 id="Entradas">Mis entradas</h3>
       <div class="user-entries-table">
-        <input type="text" class="user-searchfiled" id="user-searchfiled-0" placeholder="Buscar título..." title="Type in a name">
+        <input type="text" class="user-searchfiled" id="user-searchfiled-0" placeholder="Buscar título..." title="Busca un titulo de entrada">
         <?php
     			include_once "base_de_datos.php";
     			$sentencia = $base_de_datos->query("SELECT * FROM entradas WHERE name_usuario = '$usuarioLogin' ORDER BY fecha_publicacion DESC ;");

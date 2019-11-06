@@ -1,12 +1,16 @@
 window.onload = function() {
-  // Funcion del nevegador
-  function dropdown() {
-    document.getElementById("dropdown").classList.toggle('active');
-  }
+
   // Navegador para el usuario logueado
   document.getElementById("dropdownMenuButton").addEventListener("click", dropdown);
+
+  // Recorrer elemento input para la busqueda de entradas del usuario
+  document.getElementById("user-searchfiled-0").addEventListener("keyup", buscarTablaEntradas);
+
+  // Creacion y validación de entradas
+  document.getElementById('input-textarea').addEventListener("keyup",count_descendente);
+
   /*
-  * Fomulario para el cambio de imagen del usuario
+  * Fomulario para el cambio de imagen del usuario y subida de imagenes
   */
 
   /* Asignar un tamaño máximo a las imagenes de las entradas */
@@ -33,147 +37,17 @@ window.onload = function() {
   input.style.opacity = 0;
   input.addEventListener('change', updateImageDisplay);
 
-  /* Actualizar la visualización de la imagen */
-  function updateImageDisplay() {
-    while(preview.firstChild) {
-      preview.removeChild(preview.firstChild);
-    }
-
-    var curFiles = input.files;
-    if(curFiles.length === 0) {
-      var para = document.createElement('p');
-      para.textContent = 'No se ha seleccionado ningun archivo';
-      preview.appendChild(para);
-    } else {
-      var list = document.createElement('ol');
-      preview.appendChild(list);
-      for(var i = 0; i < curFiles.length; i++) {
-        var listItem = document.createElement('li');
-        var para = document.createElement('p');
-        if(validFileType(curFiles[i])) {
-          para.textContent = 'Nombre de la imagen: ' + curFiles[i].name + ', tamaño archivo ' + returnFileSize(curFiles[i].size) + '.';
-          var image = document.createElement('img');
-          image.src = window.URL.createObjectURL(curFiles[i]);
-
-          listItem.appendChild(image);
-          listItem.appendChild(para);
-
-        } else {
-          para.textContent = 'Nombre de la imagen: ' + curFiles[i].name + ': No es un tipo válido de imagen. Intenta subir en otro formato.';
-          listItem.appendChild(para);
-        }
-
-        list.appendChild(listItem);
-      }
-    }
-  }
-
   /* Tipo de archivos permitidos */
-  var fileTypes = [
-    'image/jpeg',
-    'image/pjpeg',
-    'image/png'
-  ]
-
-  function validFileType(file) {
-    for(var i = 0; i < fileTypes.length; i++) {
-      if(file.type === fileTypes[i]) {
-        return true;
-      }
-    }
-    return false;
-  }
-  /* Devolver el tamaño de archivo que ha subido en KB o MB */
-  function returnFileSize(number) {
-    if(number < 1024) {
-      return number + 'bytes';
-    } else if(number >= 1024 && number < 1048576) {
-      return (number/1024).toFixed(1) + 'KB';
-    } else if(number >= 1048576) {
-      return (number/1048576).toFixed(1) + 'MB';
-    }
-  }
-
+  var fileTypes = ['image/jpeg', 'image/pjpeg','image/png'];
+  // Ocultar los elementos con la clas adm
   for (var i = 0; i < document.getElementsByClassName('adm').length; i++) {
     document.getElementsByClassName('adm')[i].style.display = "none";
   }
+  // Añadir evento onclick ala clase op del navegador
   for (var i = 0; i < document.getElementsByClassName('op').length; i++) {
     document.getElementsByClassName('op')[i].addEventListener("click", mostrarElemento);
   }
-  // Funcion para mostar una sección según el elmento elegido
-  function mostrarElemento(){
-    // Accion por defecto para Buttons;
-    switch (this.id){
-      case 'op1':
-        document.getElementById('user-account').style.display = 'block';
-        document.getElementById('user-entries').style.display = 'none';
-        document.getElementById('adm-users').style.display = 'none';
-        document.getElementById('adm-entries').style.display = 'none';
-        break;
-      case 'op2':
-        document.getElementById('user-account').style.display = 'none';
-        document.getElementById('user-entries').style.display = 'block';
-        document.getElementById('adm-users').style.display = 'none';
-        document.getElementById('adm-entries').style.display = 'none';
-        break;
-      case 'op3':
-        document.getElementById('user-account').style.display = 'none';
-        document.getElementById('user-entries').style.display = 'none';
-        document.getElementById('adm-users').style.display = 'block';
-        document.getElementById('adm-entries').style.display = 'none';
-        break;
-      case 'op4':
-        document.getElementById('user-account').style.display = 'none';
-        document.getElementById('user-entries').style.display = 'none';
-        document.getElementById('adm-users').style.display = 'none';
-        document.getElementById('adm-entries').style.display = 'block';
-        break;
-    }
 
-  }
-
-
-  for (var i = 0; i < document.getElementsByClassName('user-searchfiled').length; i++) {
-    document.getElementsByClassName('user-searchfiled')[i].addEventListener("keyup", buscarTabla);
-  }
-  // Funcion para buscar elementos en una tabla
-  function buscarTabla() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementsByClassName("user-searchfiled");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
-
-
-  // Creacion y validación de entradas
-  document.getElementById('input-textarea').addEventListener("keyup",count_descendente);
-  /* TextArea 2 */
-  function count_descendente() {
-    var element = document.getElementById('contador');
-    var obj = document.getElementById('input-textarea');
-
-    obj.maxLength = 5000;
-    element.innerHTML = 5000 - obj.value.length;
-
-    if (200 - obj.value.length < 0) {
-      element.style.color = 'red';
-
-    } else {
-      element.style.color = 'grey';
-    }
-  }
 
   var tableUserEntries = document.getElementById('user-entries-table');
   // Funcion tabla a campo de Texto a tabla entradas usuario
@@ -213,6 +87,139 @@ window.onload = function() {
       document.getElementById("adm-user-publi").value = this.cells[6].innerHTML;
     };
   }
+
+/*
+Fin window.onload
+*/
+}
+
+// Funcion del nevegador
+function dropdown() {
+  document.getElementById("dropdown").classList.toggle('active');
+}
+
+// Funcion para buscar elementos en una tabla entradas del usuario
+function buscarTablaEntradas() {
+  // Inicializar variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("user-searchfiled-0");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("user-entries-table");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+/* Actualizar la visualización de la imagen */
+function updateImageDisplay() {
+  while(preview.firstChild) {
+    preview.removeChild(preview.firstChild);
+  }
+
+  var curFiles = input.files;
+  if(curFiles.length === 0) {
+    var para = document.createElement('p');
+    para.textContent = 'No se ha seleccionado ningun archivo';
+    preview.appendChild(para);
+  } else {
+    var list = document.createElement('ol');
+    preview.appendChild(list);
+    for(var i = 0; i < curFiles.length; i++) {
+      var listItem = document.createElement('li');
+      var para = document.createElement('p');
+      if(validFileType(curFiles[i])) {
+        para.textContent = 'Nombre de la imagen: ' + curFiles[i].name + ', tamaño archivo ' + returnFileSize(curFiles[i].size) + '.';
+        var image = document.createElement('img');
+        image.src = window.URL.createObjectURL(curFiles[i]);
+
+        listItem.appendChild(image);
+        listItem.appendChild(para);
+
+      } else {
+        para.textContent = 'Nombre de la imagen: ' + curFiles[i].name + ': No es un tipo válido de imagen. Intenta subir en otro formato.';
+        listItem.appendChild(para);
+      }
+
+      list.appendChild(listItem);
+    }
+  }
+}
+
+function validFileType(file) {
+  for(var i = 0; i < fileTypes.length; i++) {
+    if(file.type === fileTypes[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+/* Devolver el tamaño de archivo que ha subido en KB o MB */
+function returnFileSize(number) {
+  if(number < 1024) {
+    return number + 'bytes';
+  } else if(number >= 1024 && number < 1048576) {
+    return (number/1024).toFixed(1) + 'KB';
+  } else if(number >= 1048576) {
+    return (number/1048576).toFixed(1) + 'MB';
+  }
+}
+
+/* TextArea 2 */
+function count_descendente() {
+  var element = document.getElementById('contador');
+  var obj = document.getElementById('input-textarea');
+
+  obj.maxLength = 5000;
+  element.innerHTML = 5000 - obj.value.length;
+
+  if (200 - obj.value.length < 0) {
+    element.style.color = 'red';
+
+  } else {
+    element.style.color = 'grey';
+  }
+}
+
+// Funcion para mostar una sección según el elmento elegido
+function mostrarElemento(){
+  // Accion por defecto para Buttons;
+  switch (this.id){
+    case 'op1':
+      document.getElementById('user-account').style.display = 'block';
+      document.getElementById('user-entries').style.display = 'none';
+      document.getElementById('adm-users').style.display = 'none';
+      document.getElementById('adm-entries').style.display = 'none';
+      break;
+    case 'op2':
+      document.getElementById('user-account').style.display = 'none';
+      document.getElementById('user-entries').style.display = 'block';
+      document.getElementById('adm-users').style.display = 'none';
+      document.getElementById('adm-entries').style.display = 'none';
+      break;
+    case 'op3':
+      document.getElementById('user-account').style.display = 'none';
+      document.getElementById('user-entries').style.display = 'none';
+      document.getElementById('adm-users').style.display = 'block';
+      document.getElementById('adm-entries').style.display = 'none';
+      break;
+    case 'op4':
+      document.getElementById('user-account').style.display = 'none';
+      document.getElementById('user-entries').style.display = 'none';
+      document.getElementById('adm-users').style.display = 'none';
+      document.getElementById('adm-entries').style.display = 'block';
+      break;
+  }
+
 }
 
 /*
