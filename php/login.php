@@ -43,7 +43,11 @@ session_start();
     <label class="labelInput" for="confirmPassword">Contraseña</label>
     <input type="password" name="confirmPassword" class="placeicon" id="confirmPassword" placeholder=" Contraseña..." >
     <input type="hidden" name="<?php echo (session_name()); ?>" value="<?php echo (session_id()); ?>">
-    <input type="submit" name="mandar" value="ACCEDER">
+    <div class="local-storage">
+      <input type="checkbox" name="storage" id="local-storage" value="remember">
+      <label for="storage">Recordar usuario</label>
+    </div>
+    <input type="submit" name="mandar" id="entrar" value="ACCEDER">
     <a class="link" href="#">¿Contraseña olvidada?</a>
   </form>
   <?php

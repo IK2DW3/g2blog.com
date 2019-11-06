@@ -1,5 +1,23 @@
 window.onload = function() {
   document.getElementById('pop').style.display = 'none';
+
+  if(localStorage.getItem("usuario") && localStorage.getItem("contraseña")){
+      document.getElementById("nombreDeUsuario").value = localStorage.getItem("usuario")
+      document.getElementById("confirmPassword").value = localStorage.getItem("contraseña")
+  }
+
+  document.getElementById('entrar').addEventListener('click', funcion);
+}
+
+function funcion() {
+    if(document.getElementById("local-storage").checked ){
+        localStorage.setItem('usuario',document.getElementById("nombreDeUsuario").value);
+        localStorage.setItem('contraseña',document.getElementById("confirmPassword").value);
+    }
+    else{
+        localStorage.removeItem('usuario');
+        localStorage.removeItem('contraseña');
+    }
 }
 /*
 * Creamos una funcion de prototipado para crear mensajes de alerta
