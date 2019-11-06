@@ -34,7 +34,7 @@
   width: 50px;
 }
 .header a.a-title {
-  flex-basis: 71.5%;
+  flex-basis: 10.5%;
   flex-grow: 3;
   flex-shrink: 1;
   color: #000;
@@ -43,7 +43,7 @@
   text-decoration: none;
 }
 .header .header-nav {
-  flex-basis: 25%;
+  flex-basis: 85%;
   flex-grow: 1;
   flex-shrink: 2;
 }
@@ -55,7 +55,6 @@
   flex-wrap: nowrap;
   justify-content: flex-end;
   list-style-type: none;
-  /*overflow: hidden;*/
   height: 37px;
 }
 .header .header-nav ul.hnavegador li {
@@ -452,7 +451,7 @@
 *  Register.php
 *
 */
-.formulario-registro{
+.formulario-registro {
   align-items: center;
   border-bottom: 3px solid #00d5e3;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

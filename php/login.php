@@ -20,6 +20,13 @@ session_start();
   <header class="header" id="header">
     <a class="a-logo" href="../index.php"><img src="../img/iconlogo.png" alt="G2BLOG"></a>
     <a class="a-title" href="../index.php">G2BLOG</a>
+    <nav class="header-nav" id="header-nav">
+      <ul class="hnavegador" id="hnavegador">
+        <li><a href="../index.php">Inicio</a></li>
+        <li><a href="entries.php">Entradas</a></li>
+        <li><a class="a-buttom" href="register.php">Registrarse</a></li>
+      </ul>
+    </nav>
   </header>
   <div class="pop-container" id="pop-container">
     <div class="pop" id="pop">
