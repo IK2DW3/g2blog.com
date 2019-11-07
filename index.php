@@ -33,7 +33,7 @@ session_start();
         <li class="a buttonDropdown" id="dropdownMenuButton"><?php echo ("Hey! &#128276 &#9660"); ?>
           <ul class="dropdown" id="dropdown">
             <li><a href="php/userSettings.php">Mi perfil</a></li>
-            <li><a href="#">Modo noche</a></li>
+            <li><a id="modo" href="#">Modo noche</a></li>
             <li><a href="php/logout.php">Desconectar</a></li>
           </ul>
         </li>

@@ -112,7 +112,13 @@ window.onload = function() {
 
   /* FIN - Panel de administracion */
 
+  /* Coger el evento click del modo noche */
+  document.getElementById('modo').addEventListener("click", cambiarModo);
+  /* FIN - Coger el evento click del modo noche */
 
+  /*
+  * FIN - window.onload
+  */
 }
 
 // Funcion del nevegador para el usuario logueado
@@ -524,3 +530,37 @@ function buscarTablaEntradas() {
     }
   }
 }
+
+/*
+* Funcion de modo noche y modo dia para el usuario
+*/
+// Inicializar variables
+var myVar = setInterval(function(){ myTimer() }, 1000);
+var modoNoche = false;
+// Funciones
+function cambiarModo(){
+    if(modoNoche) modificarDatos(false,"Modo Noche","white","black"), clearInterval(myVar)
+    else modificarDatos(true,"Modo Dia","grey","white"), clearInterval(myVar)
+}
+
+function modificarDatos(modo,txt,bgColor,color){
+    modoNoche = modo;
+    document.getElementById("modo").innerHTML = txt;
+    document.body.style.backgroundColor = bgColor;
+    document.body.style.color = color;
+}
+
+function myTimer() {
+    var hora = new Date();
+    var myhora = hora.toLocaleTimeString();
+    var hora22 = "22:00:00";
+    var hora8 = "08:00:00";
+    if (myhora >= hora22 && myhora <=hora8){
+        modificarDatos(true, "Modo Dia","grey","white");
+    }else{
+        modificarDatos(false,"Modo Noche","white","black");
+    }
+}
+/*
+* FIN - Funcion de modo noche y modo dia para el usuario
+*/

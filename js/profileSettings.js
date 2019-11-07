@@ -51,27 +51,29 @@ window.onload = function() {
 
   var tableUserEntries = document.getElementById('user-entries-table');
   // Funcion tabla a campo de Texto a tabla entradas usuario
-  for(var i = 1; i < tableUserEntries.rows.length; i++) {
-    tableUserEntries.rows[i].onclick = function() {
-      document.getElementById("input-field-id").value = this.cells[0].innerHTML;
-      document.getElementById("input-field-edit").value = this.cells[1].innerHTML;
-      document.getElementById("input-textarea-edit").value = this.cells[2].innerHTML;
-      document.getElementById("entrie-categori-edit").value = this.cells[3].innerHTML;
-    };
+  for(var i = 0; i < tableUserEntries.rows.length; i++) {
+    for(var j = 0; j < tableUserEntries.rows[i].cells.length; j++) {
+      tableUserEntries.rows[i].cells[0].onclick = function() {
+        document.getElementById("input-field-id").value = this.cells[0].innerHTML;
+        document.getElementById("input-field-edit").value = this.cells[1].innerHTML;
+        document.getElementById("input-textarea-edit").value = this.cells[2].innerHTML;
+        document.getElementById("entrie-categori-edit").value = this.cells[3].innerHTML;
+      };
+    }
   }
 
   var tableUsers = document.getElementById('adm-users-table');
   // Funcion tabla a campo de Texto a tabla entradas
   for(var i = 1; i < tableUsers.rows.length; i++) {
     tableUsers.rows[i].onclick = function() {
-      document.getElementById("adm-username-edit").value = this.cells[0].innerHTML;
-      document.getElementById("adm-pwd-edit").value = this.cells[1].innerHTML;
-      document.getElementById("adm-email-edit").value = this.cells[3].innerHTML;
-      document.getElementById("adm-name-edit").value = this.cells[4].innerHTML;
-      document.getElementById("adm-surname-edit").value = this.cells[5].innerHTML;
-      document.getElementById("adm-dateEdit").value = this.cells[6].innerHTML;
-      document.getElementById("adm-sexo-edit").value = this.cells[7].innerHTML;
-      document.getElementById("adm-type-edit").value = this.cells[2].innerHTML;
+        document.getElementById("adm-username-edit").value = this.cells[0].innerHTML;
+        document.getElementById("adm-pwd-edit").value = this.cells[1].innerHTML;
+        document.getElementById("adm-email-edit").value = this.cells[3].innerHTML;
+        document.getElementById("adm-name-edit").value = this.cells[4].innerHTML;
+        document.getElementById("adm-surname-edit").value = this.cells[5].innerHTML;
+        document.getElementById("adm-dateEdit").value = this.cells[6].innerHTML;
+        document.getElementById("adm-sexo-edit").value = this.cells[7].innerHTML;
+        document.getElementById("adm-type-edit").value = this.cells[2].innerHTML;
     };
   }
 
