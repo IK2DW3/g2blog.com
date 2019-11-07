@@ -192,6 +192,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
                 <th>Fecha Nacimiento</th>
                 <th>Género</th>
                 <th>Nº Entradas</th>
+                <th>Accion</th>
               </tr>
             </thead>
             <tbody>
@@ -206,7 +207,9 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
                 <td><?php echo $usuarios->fecha_nacimiento ?></td>
                 <td><?php echo $usuarios->sexo ?></td>
                 <td><?php echo $usuarios->entradas_publicadas ?></td>
-                <!--<td><a href="<?php echo "removeUser.php?nombre_usuario=" . $usuarios->nombre_usuario?>">Eliminar</a></td>-->
+                <?php if (!($usuarios->nombre_usuario == "Admin")){ ?>
+                  <td><a href="<?php echo "removeUser.php?nombre_usuario=" . $usuarios->nombre_usuario?>">Eliminar</a></td>
+                <?php } else { echo "<td></td>";} ?>
               </tr>
               <?php } ?>
             </tbody>

@@ -112,7 +112,7 @@
 }
 
 .principal {
-  background-color: rgba(43, 43, 43, 0.83);
+  background-color: rgba(217, 106, 106, 0.83);
   border-radius: 15px;
   height: 300px;
   margin: 1% 10%;
@@ -123,7 +123,7 @@
   padding: 2.5% 3%;
 }
 .principal .principal-article h1 {
-  color: #eeeeee;
+  color: #ffffff;
   font-size: 3.2vw;
 }
 .principal .principal-article p {

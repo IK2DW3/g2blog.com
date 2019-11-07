@@ -60,6 +60,8 @@ for($i=0; $row = $result->fetch(); $i++){ ?> <!-- Inicio del FOR -->
         <?php endif; ?>
         <p id="parrafo"><?php echo nl2br($row['descripcion']);?></p> <!-- Funcion nl2br hace que si lee \n inserta un salto de linea en el texto -->
         <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?> por <?php echo $row['name_usuario']; ?></span>
+        <br><br>
+        <span class="entrieDate">Categoria: <?php echo $row['categoria']; ?></span>
       </article>
       <?php if(!empty($_SESSION['nombre_usuario'])) { ?>
       <form class="entrie-comment" action="addComment.php" method="post">
