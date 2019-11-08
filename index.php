@@ -60,7 +60,7 @@ session_start();
         for($i=0; $row = $result->fetch(); $i++){ ?>
           <article class="post">
             <h3 class="entrieTitle"><a href="php/showEntrie.php?id=<?php echo $row['id'];?>"><?php echo $row['titulo']; ?></a></h3>
-            <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?></span>
+            <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion'] . " a las " . $row['hora_publicacion']; ?></span>
             <p><?php echo strip_tags(substr($row['descripcion'],0,200)) ;?>... <a href="php/showEntrie.php?id=<?php echo $row['id'];?>">Leer mas...</a></p>
           </article>
           <?php if ($i == 2) { echo "<div class='dVerMas'><a class='aVerMas' href='php/entries.php' title='Ver mas'>&plus;</a></div>"; break; } ?>
