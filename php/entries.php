@@ -54,10 +54,10 @@ include_once "base_de_datos.php"; // Incluimos el archivo de base de datos
         for($i=0; $row = $result->fetch(); $i++){ ?>
           <article class="post">
             <h3 class="entrieTitle"><a href="showEntrie.php?id=<?php echo $row['id'];?>"><?php echo $row['titulo']; ?></a></h3>
-            <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion']; ?></span>
+            <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion'] . " a las " . substr($row['hora_publicacion'],0,5); ?></span>
             <p><?php echo strip_tags(substr($row['descripcion'],0,200)) ;?>... <a href="showEntrie.php?id=<?php echo $row['id'];?>">Leer mas...</a></p>
           </article>
-          <?php if ($i == 4) { echo "<div class='dVerMas'><a class='aVerMas' href='' title='Ver mas'>&plus;</a></div>"; break; } ?>
+          <?php //if ($i == 4) { echo "<div class='dVerMas'><a class='aVerMas' href='' title='Ver mas'>&plus;</a></div>"; break; } ?>
         <?php } ?>
       </div>
     </section>
