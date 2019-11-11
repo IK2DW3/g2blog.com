@@ -26,7 +26,7 @@ include_once "base_de_datos.php"; // Incluimos el archivo de base de datos
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
         <li><a href="../index.php">Inicio</a></li>
-        <li><a class="highlight" href="entradas.php">Entradas</a></li>
+        <li><a class="highlight" href="entries.php">Entradas</a></li>
         <?php if(empty($_SESSION['nombre_usuario'])) { ?>
         <li><a class="a-buttom" href="login.php">Log in</a></li>
         <li><a class="a-buttom" href="register.php">Registrarse</a></li>
