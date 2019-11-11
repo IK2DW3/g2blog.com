@@ -81,7 +81,9 @@ $result->execute(); //  Recogemos los resultados
       </div>
       <?php } ?>
       <div class="searchbox">
-        <input type="text" name="searchfield" placeholder="Buscar...">
+        <form action="entriesSearch.php" method="post">
+          <input type="text" name="searchfield" placeholder="Buscar...">
+        </form>
       </div>
       <h3>Categorías</h3>
       <nav class="aside-nav">

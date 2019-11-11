@@ -85,7 +85,9 @@ session_start();
       </div>
       <?php } ?>
       <div class="searchbox">
-        <input type="text" name="searchfield" placeholder="Buscar...">
+        <form class="" action="php/entriesSearch.php" method="post">
+          <input type="text" name="searchfield" placeholder="Buscar...">
+        </form>
       </div>
       <h3>Categorías</h3>
       <nav class="aside-nav">

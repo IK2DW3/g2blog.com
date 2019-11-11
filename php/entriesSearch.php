@@ -2,8 +2,12 @@
 // inicializamos sesion
 session_start();
 include_once "base_de_datos.php"; // Incluimos el archivo de base de datos
+// Inicializamos variables
+$busqueda = $_POST['searchfield'];
+$result = $base_de_datos->prepare("SELECT * FROM entradas WHERE titulo LIKE '%$busqueda%' ORDER BY fecha_publicacion DESC, hora_publicacion DESC");
+$result->execute(); //  Recogemos los resultados
  ?>
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- Inicio del HTML 5 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,7 +19,7 @@ include_once "base_de_datos.php"; // Incluimos el archivo de base de datos
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <script src="../js/app.js"></script>
-  <title>G2BLOG - Entradas </title>
+  <title>G2BLOG - <?php echo "Resultados de ". "'" . $busqueda . "'"?> </title>
 </head>
 <!-- Inicio del body -->
 <body>
@@ -26,7 +30,7 @@ include_once "base_de_datos.php"; // Incluimos el archivo de base de datos
     <nav class="header-nav" id="header-nav">
       <ul class="hnavegador" id="hnavegador">
         <li><a href="../index.php">Inicio</a></li>
-        <li><a class="highlight" href="entradas.php">Entradas</a></li>
+        <li><a class="highlight" href="entries.php">Entradas</a></li>
         <?php if(empty($_SESSION['nombre_usuario'])) { ?>
         <li><a class="a-buttom" href="login.php">Log in</a></li>
         <li><a class="a-buttom" href="register.php">Registrarse</a></li>
@@ -46,18 +50,16 @@ include_once "base_de_datos.php"; // Incluimos el archivo de base de datos
   <!-- Inicio del contenedor -->
   <div class="container">
     <section class="entries">
-      <h2>Lista de entradas</h2>
+      <h2><?php echo "Resultados de ". "'" . $busqueda . "'";?></h2>
       <div class="entries-container">
         <?php
-        $result = $base_de_datos->prepare("SELECT * FROM entradas ORDER BY fecha_publicacion DESC, hora_publicacion DESC");
-        $result->execute();
         for($i=0; $row = $result->fetch(); $i++){ ?>
           <article class="post">
             <h3 class="entrieTitle"><a href="showEntrie.php?id=<?php echo $row['id'];?>"><?php echo $row['titulo']; ?></a></h3>
             <span class="entrieDate"><ion-icon name="calendar"></ion-icon> publicado el <?php echo $row['fecha_publicacion'] . " a las " . substr($row['hora_publicacion'],0,5); ?></span>
             <p><?php echo strip_tags(substr($row['descripcion'],0,200)) ;?>... <a href="showEntrie.php?id=<?php echo $row['id'];?>">Leer mas...</a></p>
           </article>
-          <?php //if ($i == 4) { echo "<div class='dVerMas'><a class='aVerMas' href='' title='Ver mas'>&plus;</a></div>"; break; } ?>
+          <?php if ($i == 4) { echo "<div class='dVerMas'><a class='aVerMas' href='' title='Ver mas'>&plus;</a></div>"; break; } ?>
         <?php } ?>
       </div>
     </section>
@@ -105,7 +107,7 @@ include_once "base_de_datos.php"; // Incluimos el archivo de base de datos
   </div>
   <!-- Fin del contenedor -->
   <?php
-  // incluimos el footer
+  // footer HTML and JavaScript codes
   include_once "layoutFooter.php";
   ?>
 </body>
