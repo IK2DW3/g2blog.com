@@ -1,14 +1,17 @@
 window.onload = function() {
 
   /* Coger el evento click del modo noche */
-  document.getElementById('modo').addEventListener("click", cambiarModo);
+  if(document.getElementById('modo') != null) document.getElementById('modo').addEventListener("click", cambiarModo);
   /* FIN - Coger el evento click del modo noche */
 
   /* Elementos principales del header */
   // Navegador para el usuario logueado
-  if (!(document.getElementById("dropdownMenuButton").style.display == "none")) {
-    document.getElementById("dropdownMenuButton").addEventListener("click", dropdown);
+  if(document.getElementById('dropdownMenuButton') != null){
+    if (!(document.getElementById("dropdownMenuButton").style.display == "none")) {
+      document.getElementById("dropdownMenuButton").addEventListener("click", dropdown);
+    }
   }
+
   /* FIN - Elementos principales del header */
 
   /* Contadores en los textareas */
@@ -26,42 +29,52 @@ window.onload = function() {
   }
 
   /* Guargar el login del usuario */
-  if(localStorage.getItem("usuario") && localStorage.getItem("contraseña")){
+  if(document.getElementById("nombreDeUsuario") != null){
+    if(localStorage.getItem("usuario") && localStorage.getItem("contraseña")){
       document.getElementById("nombreDeUsuario").value = localStorage.getItem("usuario")
       document.getElementById("confirmPassword").value = localStorage.getItem("contraseña")
   }
+  }
 
-  document.getElementById('entrar').addEventListener('click', funcion);
+
+  if(document.getElementById('entrar') != null)document.getElementById('entrar').addEventListener('click', storageLocal);
   /* FIN - Guargar el login del usuario */
 
   /* Panel de administracion */
   // Recorrer elemento input para la busqueda de entradas del usuario
-  document.getElementById("user-searchfiled-0").addEventListener("keyup", buscarTablaEntradas);
+  if(document.getElementById("user-searchfiled-0") != null)document.getElementById("user-searchfiled-0").addEventListener("keyup", buscarTablaEntradas);
 
   // Fomulario para el cambio de imagen del usuario y subida de imagenes
   /* Asignar un tamaño máximo a las imagenes de las entradas */
-  var uploadField1 = document.getElementById("entrieImg");
-  uploadField1.onchange = function() {
-      if(this.files[0].size > 904800){
-         alert("Tamaño de imagen demasiado grande.");
-         this.value = "";
-      };
-  };
+  if( document.getElementById("entrieImg") != null){
+    var uploadField1 = document.getElementById("entrieImg");
+    uploadField1.onchange = function() {
+        if(this.files[0].size > 904800){
+           alert("Tamaño de imagen demasiado grande.");
+           this.value = "";
+        };
+    };
+  }
 
   /* Asignar un tamaño máximo a las imagenes */
-  var uploadField = document.getElementById("cambiarAvatar");
-  uploadField.onchange = function() {
-      if(this.files[0].size > 304800){
-         alert("Tamaño de imagen demasiado grande.");
-         this.value = "";
-      };
-  };
+  if(document.getElementById("cambiarAvatar") != null){
+    var uploadField = document.getElementById("cambiarAvatar");
+    uploadField.onchange = function() {
+        if(this.files[0].size > 304800){
+           alert("Tamaño de imagen demasiado grande.");
+           this.value = "";
+        };
+    };
+  }
 
   /* Funcion para hacer una preview de la imagen que suba el usuario */
-  var input = document.getElementById("cambiarAvatar");
-  var preview = document.querySelector('.preview');
-  input.style.opacity = 0;
-  input.addEventListener('change', updateImageDisplay);
+  if(document.getElementById("cambiarAvatar") != null) {
+    var input = document.getElementById("cambiarAvatar");
+    var preview = document.querySelector('.preview');
+    input.style.opacity = 0;
+    input.addEventListener('change', updateImageDisplay);
+  }
+
 
   /* Tipo de archivos permitidos */
   var fileTypes = ['image/jpeg', 'image/pjpeg','image/png'];
@@ -74,7 +87,7 @@ window.onload = function() {
     document.getElementsByClassName('op')[i].addEventListener("click", mostrarElemento);
   }
 
-
+if(document.getElementById('user-entries-table') != null){
   var tableUserEntries = document.getElementById('user-entries-table');
   // Funcion tabla a campo de Texto a tabla entradas usuario
   for(var i = 1; i < tableUserEntries.rows.length; i++) {
@@ -85,7 +98,9 @@ window.onload = function() {
       document.getElementById("entrie-categori-edit").value = this.cells[3].innerHTML;
     };
   }
+}
 
+if(document.getElementById('adm-users-table') !=null){
   var tableUsers = document.getElementById('adm-users-table');
   // Funcion tabla a campo de Texto a tabla entradas
   for(var i = 1; i < tableUsers.rows.length; i++) {
@@ -100,7 +115,9 @@ window.onload = function() {
       document.getElementById("adm-type-edit").value = this.cells[2].innerHTML;
     };
   }
+}
 
+if(document.getElementById('adm-entries-table')){
   var tableAdmEntries = document.getElementById('adm-entries-table');
   // Funcion tabla a campo de Texto a tabla entradas
   for(var i = 1; i < tableAdmEntries.rows.length; i++) {
@@ -113,6 +130,7 @@ window.onload = function() {
       document.getElementById("adm-user-publi").value = this.cells[6].innerHTML;
     };
   }
+}
 
   /* FIN - Panel de administracion */
 
@@ -126,7 +144,7 @@ function dropdown() {
   document.getElementById("dropdown").classList.toggle('active');
 }
 
-function localStorage() {
+function storageLocal() {
     if(document.getElementById("local-storage").checked ){
         localStorage.setItem('usuario',document.getElementById("nombreDeUsuario").value);
         localStorage.setItem('contraseña',document.getElementById("confirmPassword").value);
@@ -562,16 +580,28 @@ function buscarTablaEntradas() {
 * Funcion de modo noche y modo dia para el usuario
 */
 // Inicializar variables
-var myVar = setInterval(function(){ myTimer() }, 1000);
+var seconsInterval = 1000
 var modoNoche = false;
+
+if(localStorage.getItem("modoNoche")){
+  seconsInterval = 1
+}
+var myVar = setInterval(function(){ myTimer() }, seconsInterval);
 
 // Funciones
 function cambiarModo(){
-    if(modoNoche) modificarDatos(false,"Modo Noche","white","black"), clearInterval(myVar)
-    else modificarDatos(true,"Modo Dia","grey","white"), clearInterval(myVar)
+    if(modoNoche){
+      localStorage.setItem('modoNoche',"false");      
+      modificarDatos(false,"Modo Noche","white","black"), clearInterval(myVar);
+    } 
+    else {
+      localStorage.setItem('modoNoche',"true");      
+      modificarDatos(true,"Modo Dia","grey","white"), clearInterval(myVar);
+    }
 }
 
 function modificarDatos(modo,txt,bgColor,color){
+  console.log(modo)
     modoNoche = modo;
     document.getElementById("modo").innerHTML = txt;
     document.body.style.backgroundColor = bgColor;
@@ -579,6 +609,11 @@ function modificarDatos(modo,txt,bgColor,color){
 }
 
 function myTimer() {
+  if(localStorage.getItem("modoNoche")){
+    if(localStorage.getItem("modoNoche") == "false") modificarDatos(false,"Modo Noche","white","black"), clearInterval(myVar);
+    else modificarDatos(true,"Modo Dia","grey","white"), clearInterval(myVar);
+    return;
+  }
     var hora = new Date();
     var myhora = hora.toLocaleTimeString();
     var hora22 = "22:00:00";

@@ -1,5 +1,9 @@
 window.onload = function() {
 
+  /* Coger el evento click del modo noche */
+  if(document.getElementById('modo') != null) document.getElementById('modo').addEventListener("click", cambiarModo);
+  /* FIN - Coger el evento click del modo noche */
+  
   // Navegador para el usuario logueado
   document.getElementById("dropdownMenuButton").addEventListener("click", dropdown);
 
@@ -368,3 +372,57 @@ function validarAdmEditUsuario() {
   }
   return true;
 }
+
+
+/*
+* Funcion de modo noche y modo dia para el usuario
+*/
+// Inicializar variables
+var seconsInterval = 1000
+var modoNoche = false;
+
+if(localStorage.getItem("modoNoche")){
+  seconsInterval = 1
+}
+var myVar = setInterval(function(){ myTimer() }, seconsInterval);
+
+// Funciones
+function cambiarModo(){
+    if(modoNoche){
+      localStorage.setItem('modoNoche',"false");      
+      modificarDatos(false,"Modo Noche","white","black"), clearInterval(myVar);
+    } 
+    else {
+      localStorage.setItem('modoNoche',"true");      
+      modificarDatos(true,"Modo Dia","grey","white"), clearInterval(myVar);
+    }
+}
+
+function modificarDatos(modo,txt,bgColor,color){
+  console.log(modo)
+    modoNoche = modo;
+    document.getElementById("modo").innerHTML = txt;
+    document.body.style.backgroundColor = bgColor;
+    document.body.style.color = color;
+}
+
+function myTimer() {
+  if(localStorage.getItem("modoNoche")){
+    if(localStorage.getItem("modoNoche") == "false") modificarDatos(false,"Modo Noche","white","black"), clearInterval(myVar);
+    else modificarDatos(true,"Modo Dia","grey","white"), clearInterval(myVar);
+    return;
+  }
+    var hora = new Date();
+    var myhora = hora.toLocaleTimeString();
+    var hora22 = "22:00:00";
+    var hora24 = "23:59:59";
+    var hora8 = "08:00:00";
+    if ((myhora >= hora22 && myhora <= hora24) || (myhora <= hora8)){
+      if(!modoNoche) modificarDatos(true, "Modo Dia","grey","white");
+    }else{
+      if(modoNoche) modificarDatos(false,"Modo Noche","white","black");
+    }
+}
+/*
+* FIN - Funcion de modo noche y modo dia para el usuario
+*/
