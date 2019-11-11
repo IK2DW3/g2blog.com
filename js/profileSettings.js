@@ -3,7 +3,7 @@ window.onload = function() {
   /* Coger el evento click del modo noche */
   if(document.getElementById('modo') != null) document.getElementById('modo').addEventListener("click", cambiarModo);
   /* FIN - Coger el evento click del modo noche */
-  
+
   // Navegador para el usuario logueado
   document.getElementById("dropdownMenuButton").addEventListener("click", dropdown);
 
@@ -389,17 +389,17 @@ var myVar = setInterval(function(){ myTimer() }, seconsInterval);
 // Funciones
 function cambiarModo(){
     if(modoNoche){
-      localStorage.setItem('modoNoche',"false");      
+      localStorage.setItem('modoNoche',"false");
       modificarDatos(false,"Modo Noche","white","black"), clearInterval(myVar);
-    } 
+    }
     else {
-      localStorage.setItem('modoNoche',"true");      
-      modificarDatos(true,"Modo Dia","grey","white"), clearInterval(myVar);
+      localStorage.setItem('modoNoche',"true");
+      modificarDatos(true,"Modo Dia","#3c3b3b","#000"), clearInterval(myVar);
     }
 }
 
 function modificarDatos(modo,txt,bgColor,color){
-  console.log(modo)
+  //console.log(modo)
     modoNoche = modo;
     document.getElementById("modo").innerHTML = txt;
     document.body.style.backgroundColor = bgColor;
@@ -409,7 +409,7 @@ function modificarDatos(modo,txt,bgColor,color){
 function myTimer() {
   if(localStorage.getItem("modoNoche")){
     if(localStorage.getItem("modoNoche") == "false") modificarDatos(false,"Modo Noche","white","black"), clearInterval(myVar);
-    else modificarDatos(true,"Modo Dia","grey","white"), clearInterval(myVar);
+    else modificarDatos(true,"Modo Dia","#3c3b3b","#000"), clearInterval(myVar);
     return;
   }
     var hora = new Date();
@@ -418,7 +418,7 @@ function myTimer() {
     var hora24 = "23:59:59";
     var hora8 = "08:00:00";
     if ((myhora >= hora22 && myhora <= hora24) || (myhora <= hora8)){
-      if(!modoNoche) modificarDatos(true, "Modo Dia","grey","white");
+      if(!modoNoche) modificarDatos(true, "Modo Dia","#3c3b3b","#000");
     }else{
       if(modoNoche) modificarDatos(false,"Modo Noche","white","black");
     }
