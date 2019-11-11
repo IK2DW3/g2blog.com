@@ -401,7 +401,7 @@ function cambiarModo(){
 function modificarDatos(modo,txt,bgColor,color){
   //console.log(modo)
     modoNoche = modo;
-    document.getElementById("modo").innerHTML = txt;
+    if(document.getElementById('modo') != null) document.getElementById("modo").innerHTML = txt;
     document.body.style.backgroundColor = bgColor;
     document.body.style.color = color;
 }
