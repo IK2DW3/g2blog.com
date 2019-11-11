@@ -5,6 +5,8 @@ window.onload = function() {
 
   // Recorrer elemento input para la busqueda de entradas del usuario
   document.getElementById("user-searchfiled-0").addEventListener("keyup", buscarTablaEntradas);
+  document.getElementById("user-searchfiled-1").addEventListener("keyup", buscarTablaUsuarios);
+  document.getElementById("adm-searchfiled-0").addEventListener("keyup", buscarTablaADMEntradas);
 
   // Creacion y validación de entradas
   document.getElementById('input-textarea').addEventListener("keyup",count_descendente);
@@ -52,14 +54,12 @@ window.onload = function() {
   var tableUserEntries = document.getElementById('user-entries-table');
   // Funcion tabla a campo de Texto a tabla entradas usuario
   for(var i = 0; i < tableUserEntries.rows.length; i++) {
-    for(var j = 0; j < tableUserEntries.rows[i].cells.length; j++) {
-      tableUserEntries.rows[i].cells[0].onclick = function() {
-        document.getElementById("input-field-id").value = this.cells[0].innerHTML;
-        document.getElementById("input-field-edit").value = this.cells[1].innerHTML;
-        document.getElementById("input-textarea-edit").value = this.cells[2].innerHTML;
-        document.getElementById("entrie-categori-edit").value = this.cells[3].innerHTML;
-      };
-    }
+    tableUserEntries.rows[i].onclick = function() {
+      document.getElementById("input-field-id").value = this.cells[0].innerHTML;
+      document.getElementById("input-field-edit").value = this.cells[1].innerHTML;
+      document.getElementById("input-textarea-edit").value = this.cells[2].innerHTML;
+      document.getElementById("entrie-categori-edit").value = this.cells[3].innerHTML;
+    };
   }
 
   var tableUsers = document.getElementById('adm-users-table');
@@ -109,8 +109,50 @@ function buscarTablaEntradas() {
   table = document.getElementById("user-entries-table");
   tr = table.getElementsByTagName("tr");
 
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+// Funcion para buscar elementos en una tabla usuarios del panel administrador
+function buscarTablaUsuarios() {
+  // Inicializar variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("user-searchfiled-1");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("adm-users-table");
+  tr = table.getElementsByTagName("tr");
+
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+// Funcion para buscar elementos en una tabla entradas del usuario
+function buscarTablaADMEntradas() {
+  // Inicializar variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("adm-searchfiled-0");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("adm-entries-table");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
