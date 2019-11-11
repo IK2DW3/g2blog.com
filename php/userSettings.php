@@ -27,7 +27,7 @@ $usuarioLogin = $_SESSION['nombre_usuario'];
         <li class="a buttonDropdown" id="dropdownMenuButton"><?php echo ("Hey! &#9889; &#9660"); ?>
           <ul class="dropdown" id="dropdown">
             <li><a href="userSettings.php">Mi perfil</a></li>
-            <li><a href="">Modo noche</a></li>
+            <li><a href="" id="modo">Modo noche</a></li>
             <li><a href="logout.php">Desconectar</a></li>
           </ul>
         </li>

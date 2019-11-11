@@ -1,5 +1,9 @@
 window.onload = function() {
 
+  /* Coger el evento click del modo noche */
+  document.getElementById('modo').addEventListener("click", cambiarModo);
+  /* FIN - Coger el evento click del modo noche */
+
   /* Elementos principales del header */
   // Navegador para el usuario logueado
   if (!(document.getElementById("dropdownMenuButton").style.display == "none")) {
@@ -9,10 +13,10 @@ window.onload = function() {
 
   /* Contadores en los textareas */
   // Creacion y validación de comentarios
-  document.getElementById('textarea-comment').addEventListener("keyup",countComentarios);
+  if(document.getElementById('textarea-comment') != null) document.getElementById('textarea-comment').addEventListener("keyup",countComentarios);
 
   // Creacion y validación de entradas
-  document.getElementById('input-textarea').addEventListener("keyup",countEntradas);
+  if(document.getElementById('input-textarea') != null) document.getElementById('input-textarea').addEventListener("keyup",countEntradas);
   /* FIN - Contadores en los textareas */
 
   // Esconder el popUp
@@ -111,10 +115,6 @@ window.onload = function() {
   }
 
   /* FIN - Panel de administracion */
-
-  /* Coger el evento click del modo noche */
-  document.getElementById('modo').addEventListener("click", cambiarModo);
-  /* FIN - Coger el evento click del modo noche */
 
   /*
   * FIN - window.onload
@@ -537,6 +537,7 @@ function buscarTablaEntradas() {
 // Inicializar variables
 var myVar = setInterval(function(){ myTimer() }, 1000);
 var modoNoche = false;
+
 // Funciones
 function cambiarModo(){
     if(modoNoche) modificarDatos(false,"Modo Noche","white","black"), clearInterval(myVar)
@@ -554,11 +555,12 @@ function myTimer() {
     var hora = new Date();
     var myhora = hora.toLocaleTimeString();
     var hora22 = "22:00:00";
+    var hora24 = "23:59:59";
     var hora8 = "08:00:00";
-    if (myhora >= hora22 && myhora <=hora8){
-        modificarDatos(true, "Modo Dia","grey","white");
+    if ((myhora >= hora22 && myhora <= hora24) || (myhora <= hora8)){
+      if(!modoNoche) modificarDatos(true, "Modo Dia","grey","white");       
     }else{
-        modificarDatos(false,"Modo Noche","white","black");
+      if(modoNoche) modificarDatos(false,"Modo Noche","white","black");
     }
 }
 /*
