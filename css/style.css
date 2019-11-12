@@ -390,6 +390,7 @@
 .fPrincipal {
   align-items: center;
   border-bottom-left-radius: 25px;
+  background-color: #f6f6f6;
   border-bottom: 3px solid #6ddeab;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
@@ -506,6 +507,7 @@
 */
 .formulario-registro {
   align-items: center;
+  background-color: #f6f6f6;
   border-bottom: 3px solid #00d5e3;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
