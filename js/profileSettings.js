@@ -259,8 +259,8 @@ function mostrarElemento(){
     case 'op2':
       document.getElementById('user-account').style.display = 'none';
       document.getElementById('user-entries').style.display = 'block';
-      document.getElementById('adm-users').style.display = 'none';
-      document.getElementById('adm-entries').style.display = 'none';
+      if(document.getElementById('adm-users') != null) document.getElementById('adm-users').style.display = 'none';
+      if(document.getElementById('adm-entries') != null) document.getElementById('adm-entries').style.display = 'none';
       break;
     case 'op3':
       document.getElementById('user-account').style.display = 'none';
