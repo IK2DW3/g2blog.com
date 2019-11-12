@@ -1,7 +1,7 @@
 <?php
 if(!isset($_GET["id"])) exit();
 $id = $_GET["id"];
-$id_entrada = $_GET["entrie-id-comment"];
+$id_entrada = $_POST["entrie-id-comment"];
 include_once "base_de_datos.php";
 $sentencia = $base_de_datos->prepare("UPDATE `entradas` SET `num_comentarios` = `num_comentarios` - 1 WHERE id = ?;");
 $resultado = $sentencia->execute([$id_entrada]);
