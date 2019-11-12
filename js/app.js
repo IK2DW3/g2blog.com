@@ -254,9 +254,11 @@ function validacionLogin() {
   var y = document.forms["fPrincipal"]["confirmPassword"].value;
   if (x == "") {
     msg.mostrarError("Has dejado el campo nombre sin rellenar");
+    msg.ocultarmsg();
     return false;
   } else if (y == "") {
     msg.mostrarError("Has dejado el campo contraseña sin rellenar");
+    msg.ocultarmsg();
     return false;
   }
   return true;
