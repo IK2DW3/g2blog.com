@@ -1,4 +1,13 @@
 <?php
+// Iniciamos sesion
+session_start();
+$usuarioLogin = $_SESSION['nombre_usuario'];
+// Si el nombre de usuario es administrador global entnces...
+if ($usuarioLogin == "Admin") {
+  exit();
+}
+?>
+<?php
 if(isset($_POST['adm-submitEditUser'])) {
   include_once "base_de_datos.php";
 

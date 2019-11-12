@@ -49,7 +49,7 @@ if (isset($_POST['submitEntrie'])) {
     $resultado = $sentencia->execute([$titulo, $descripcion, $fecha_publicacion, $hora_publicacion, $categoria, $num_comentarios, $usuarioLogin]); # Pasar en el mismo orden de los ?
     // Si el resultado el correcto entonces ...
     if ($resultado === TRUE) {
-      $sentencia = $base_de_datos->prepare("UPDATE `usuarios` SET `entradas_publicadas`= +1 WHERE nombre_usuario = '$usuarioLogin'");
+      $sentencia = $base_de_datos->prepare("UPDATE `usuarios` SET `entradas_publicadas`= `entradas_publicadas` + 1 WHERE nombre_usuario = '$usuarioLogin'");
       $resultado = $sentencia->execute();
       header("Location: $url"); // Redirigimos al usuario
     } else{ // Si no...
