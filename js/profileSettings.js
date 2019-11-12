@@ -8,9 +8,9 @@ window.onload = function() {
   document.getElementById("dropdownMenuButton").addEventListener("click", dropdown);
 
   // Recorrer elemento input para la busqueda de entradas del usuario
-  document.getElementById("user-searchfiled-0").addEventListener("keyup", buscarTablaEntradas);
-  document.getElementById("user-searchfiled-1").addEventListener("keyup", buscarTablaUsuarios);
-  document.getElementById("adm-searchfiled-0").addEventListener("keyup", buscarTablaADMEntradas);
+  if(document.getElementById('user-searchfiled-0') != null) document.getElementById("user-searchfiled-0").addEventListener("keyup", buscarTablaEntradas);
+  if(document.getElementById('user-searchfiled-1') != null) document.getElementById("user-searchfiled-1").addEventListener("keyup", buscarTablaUsuarios);
+  if(document.getElementById('adm-searchfiled-0') != null) document.getElementById("adm-searchfiled-0").addEventListener("keyup", buscarTablaADMEntradas);
 
   // Creacion y validación de entradas
   document.getElementById('input-textarea').addEventListener("keyup",count_descendente);
@@ -54,45 +54,54 @@ window.onload = function() {
     document.getElementsByClassName('op')[i].addEventListener("click", mostrarElemento);
   }
 
-
-  var tableUserEntries = document.getElementById('user-entries-table');
-  // Funcion tabla a campo de Texto a tabla entradas usuario
-  for(var i = 0; i < tableUserEntries.rows.length; i++) {
-    tableUserEntries.rows[i].onclick = function() {
-      document.getElementById("input-field-id").value = this.cells[0].innerHTML;
-      document.getElementById("input-field-edit").value = this.cells[1].innerHTML;
-      document.getElementById("input-textarea-edit").value = this.cells[2].innerHTML;
-      document.getElementById("entrie-categori-edit").value = this.cells[3].innerHTML;
-    };
+  if(document.getElementById('user-entries-table') != null) {
+    var tableUserEntries = document.getElementById('user-entries-table');
+    // Funcion tabla a campo de Texto a tabla entradas usuario
+    for(var i = 0; i < tableUserEntries.rows.length; i++) {
+      tableUserEntries.rows[i].onclick = function() {
+        document.getElementById("input-field-id").value = this.cells[0].innerHTML;
+        document.getElementById("input-field-edit").value = this.cells[1].innerHTML;
+        document.getElementById("input-textarea-edit").value = this.cells[2].innerHTML;
+        document.getElementById("entrie-categori-edit").value = this.cells[3].innerHTML;
+      };
+    }
   }
 
-  var tableUsers = document.getElementById('adm-users-table');
-  // Funcion tabla a campo de Texto a tabla entradas
-  for(var i = 1; i < tableUsers.rows.length; i++) {
-    tableUsers.rows[i].onclick = function() {
-        document.getElementById("adm-username-edit").value = this.cells[0].innerHTML;
-        document.getElementById("adm-pwd-edit").value = this.cells[1].innerHTML;
-        document.getElementById("adm-email-edit").value = this.cells[3].innerHTML;
-        document.getElementById("adm-name-edit").value = this.cells[4].innerHTML;
-        document.getElementById("adm-surname-edit").value = this.cells[5].innerHTML;
-        document.getElementById("adm-dateEdit").value = this.cells[6].innerHTML;
-        document.getElementById("adm-sexo-edit").value = this.cells[7].innerHTML;
-        document.getElementById("adm-type-edit").value = this.cells[2].innerHTML;
-    };
+
+
+  if(document.getElementById('adm-users-table') != null) {
+    var tableUsers = document.getElementById('adm-users-table');
+    // Funcion tabla a campo de Texto a tabla entradas
+    for(var i = 1; i < tableUsers.rows.length; i++) {
+      tableUsers.rows[i].onclick = function() {
+          document.getElementById("adm-username-edit").value = this.cells[0].innerHTML;
+          document.getElementById("adm-pwd-edit").value = this.cells[1].innerHTML;
+          document.getElementById("adm-email-edit").value = this.cells[3].innerHTML;
+          document.getElementById("adm-name-edit").value = this.cells[4].innerHTML;
+          document.getElementById("adm-surname-edit").value = this.cells[5].innerHTML;
+          document.getElementById("adm-dateEdit").value = this.cells[6].innerHTML;
+          document.getElementById("adm-sexo-edit").value = this.cells[7].innerHTML;
+          document.getElementById("adm-type-edit").value = this.cells[2].innerHTML;
+      };
+    }
   }
 
-  var tableAdmEntries = document.getElementById('adm-entries-table');
-  // Funcion tabla a campo de Texto a tabla entradas
-  for(var i = 1; i < tableAdmEntries.rows.length; i++) {
-    tableAdmEntries.rows[i].onclick = function() {
-      document.getElementById("adm-entrie-field-edit-id").value = this.cells[0].innerHTML;
-      document.getElementById("adm-entrie-field-edit").value = this.cells[1].innerHTML;
-      document.getElementById("adm-entrie-textarea-edit").value = this.cells[2].innerHTML;
-      document.getElementById("adm-entrie-categori-edit").value = this.cells[3].innerHTML;
-      document.getElementById("adm-entrie-dateEdit").value = this.cells[5].innerHTML;
-      document.getElementById("adm-user-publi").value = this.cells[6].innerHTML;
-    };
+  if(document.getElementById('adm-entries-table') != null) {
+    var tableAdmEntries = document.getElementById('adm-entries-table');
+    // Funcion tabla a campo de Texto a tabla entradas
+    for(var i = 1; i < tableAdmEntries.rows.length; i++) {
+      tableAdmEntries.rows[i].onclick = function() {
+        document.getElementById("adm-entrie-field-edit-id").value = this.cells[0].innerHTML;
+        document.getElementById("adm-entrie-field-edit").value = this.cells[1].innerHTML;
+        document.getElementById("adm-entrie-textarea-edit").value = this.cells[2].innerHTML;
+        document.getElementById("adm-entrie-categori-edit").value = this.cells[3].innerHTML;
+        document.getElementById("adm-entrie-dateEdit").value = this.cells[5].innerHTML;
+        document.getElementById("adm-user-publi").value = this.cells[6].innerHTML;
+      };
+    }
   }
+
+
 
 /*
 Fin window.onload
