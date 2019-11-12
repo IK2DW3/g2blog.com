@@ -73,6 +73,21 @@ var mensaje = function() {
     document.getElementById('pop').style.display = 'inherit';
   }
 
+  function ocultarPop() {
+    var texto = document.getElementById('text');
+    texto.innerHTML = "";
+    var icono = document.getElementsByTagName('ion-icon');
+    var iconoBox = document.getElementById('icon');
+    while (iconoBox.hasChildNodes()) {
+      iconoBox.removeChild(iconoBox.firstChild);
+    }
+    document.getElementById('pop').style.display = "none";
+  }
+
+  function ocultar() {
+    setTimeout(ocultarPop,3000);
+  }
+
   return {
     mostrarInfo: function(txt) {
       info(txt);
@@ -85,6 +100,9 @@ var mensaje = function() {
     },
     mostrarError: function(txt) {
       error(txt);
+    },
+    ocultarmsg: function() {
+      ocultar();
     }
   }
 }
@@ -105,34 +123,42 @@ function validacion() {
 
   if (nombrePersona == null || nombrePersona.length == 0 || /^\s+$/.test(nombrePersona)) { // nombrePersona
     msg.mostrarError("Se necesita nombre válido");
+    msg.ocultarmsg();
     return false;
   }
   else if (apellidosPersona == null || apellidosPersona.length == 0 || /^\s+$/.test(apellidosPersona)) { // apellidosPersona
     msg.mostrarError("Se necesita apellido válido");
+    msg.ocultarmsg();
     return false;
   }
   else if (nombreUsuario == null || nombreUsuario.length == 0 || /^\s+$/.test(nombreUsuario)) { // nombreUsuario
     msg.mostrarError("Nombre de usuario incorrecto / usuario ya existe");
+    msg.ocultarmsg();
     return false;
   }
   else if (passwordUsuario == null || passwordUsuario.length == 0 || /^\s+$/.test(passwordUsuario)) { // passwordUsuario
     msg.mostrarError("La contraseña debe tener un minimo de 8 carácteres");
+    msg.ocultarmsg();
     return false;
   }
   else if (confirmarPasswordUsuario == null || confirmarPasswordUsuario.length == 0 || /^\s+$/.test(confirmarPasswordUsuario)) { // confirmarPasswordUsuario
     msg.mostrarError("La contraseña debe tener un minimo de 8 carácteres");
+    msg.ocultarmsg();
     return false;
   }
   else if (!(passwordUsuario === confirmarPasswordUsuario)) { // Confirmar que las dos contraseñas son iguales
     msg.mostrarError("Las contraseñas deben coincidir");
+    msg.ocultarmsg();
     return false;
   }
   else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) { // Validar el email
     msg.mostrarError("Debe insertar una dirección de correo válido");
+    msg.ocultarmsg();
     return false;
   }
   else if( !elemento.checked ) {
     msg.mostrarError("Debe aceptar los terminos y condiciones");
+    msg.ocultarmsg();
     return false;
   }
   // Confirmacion del sexo del usuario
