@@ -11,7 +11,7 @@ $id = $_GET["id"];
 // incluimos la base de datos
 include_once "base_de_datos.php";
 // Preparamos la sentencia SQL
-$sentencia = $base_de_datos->prepare("UPDATE `usuarios` SET `entradas_publicadas` = `entradas_publicadas` - 1 WHERE nombre_usuario = (SELECT `entradas`.name_usuario FROM entradas WHERE `entradas`.id = ?);");
+$sentencia = $base_de_datos->prepare("UPDATE `usuarios` SET `entradas_publicadas` = `entradas_publicadas` - 1 WHERE nombre_usuario = (SELECT `entradas`.name_usuario FROM entradas WHERE `entradas`.id = ?)");
 $resultado = $sentencia->execute([$id]);
 $sentencia = $base_de_datos->prepare("DELETE FROM `comentarios` WHERE `id_entrada` = ?;");
 $resultado = $sentencia->execute([$id]);
